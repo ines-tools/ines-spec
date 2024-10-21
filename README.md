@@ -43,6 +43,7 @@ If only one of these is defined, then given parameter values apply to both direc
 
 - The solve_pattern entities define how to solve model over time. It enables operational rolling solves as well as multi-year investment solves.
 - The 'includes_solve_pattern' parameter can be used to create nested solve structures.
+- **Always needed**: solve_pattern --> period
 
 ### Temporal structures
 
