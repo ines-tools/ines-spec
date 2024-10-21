@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [0.6.0]
+
+### Added
+
+- Set: co2_max_cumulative, co2_max_period, co2_price
+- Unit: min_uptime, min_downtime, online_cost
+- Node: commodity_limit, commodity_price_ladder
+- Node: storage_state_binding_method with options 
+- Node: storage_state_fix_method with options
+- Node: storage_loss_absolute, storage_loss_from_storage_capacity, storage_loss_from_stored_energy
+
 
 ## [0.5.0]
 
