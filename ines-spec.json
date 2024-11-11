@@ -762,6 +762,50 @@
             "rolling_window"
         ],
         [
+            "storage_binding_method",
+            "leap_over_forward_only"
+        ],
+        [
+            "storage_binding_method",
+            "leap_over_within_period"
+        ],
+        [
+            "storage_binding_method",
+            "leap_over_within_solve"
+        ],
+        [
+            "storage_binding_method",
+            "fill_with_representatives"
+        ],
+        [
+            "storage_binding_method",
+            "fill_with_interlaced_representatives"
+        ],
+        [
+            "storage_binding_method",
+            "none"
+        ],
+        [
+            "storage_fix_method",
+            "fix_start"
+        ],
+        [
+            "storage_fix_method",
+            "fix_start_and_horizon_end"
+        ],
+        [
+            "storage_fix_method",
+            "fix_all_timesteps"
+        ],
+        [
+            "storage_fix_method",
+            "fix_horizon_end"
+        ],
+        [
+            "storage_fix_method",
+            "none"
+        ],
+        [
             "storage_investment_method",
             "not_allowed"
         ],
@@ -909,7 +953,7 @@
             "capacity",
             null,
             null,
-            "[MW] Capacity in either direction for one transfer link. Constant."
+            "[MW] Capacity of one link in either direction for one transfer link. Constant."
         ],
         [
             "link",
@@ -923,7 +967,7 @@
             "efficiency",
             null,
             null,
-            "[p.u.] Efficiency of transfer in either direction. Not used by all link_tranfer_methods. Constant."
+            "[p.u.] Efficiency of transfer in either direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
         ],
         [
             "link",
@@ -937,7 +981,7 @@
             "interest_rate",
             null,
             null,
-            "[e.g. 0.05] is 5 %. Interest rate for transfer link investments. Constant or array of periods.\r\n"
+            "[e.g. 0.05] is 5 %. Interest rate for transfer link investments. Constant or array of periods."
         ],
         [
             "link",
@@ -972,7 +1016,7 @@
             "links_existing",
             null,
             null,
-            "[Number] of existing transfer links."
+            "[Number] of existing transfer links. Constant or array of periods."
         ],
         [
             "link",
@@ -1052,20 +1096,6 @@
             "How the link transfers."
         ],
         [
-            "link",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "link",
-            "y",
-            null,
-            null,
-            null
-        ],
-        [
             "link__node__reserve",
             "contingency_causing",
             null,
@@ -1077,42 +1107,56 @@
             "max_reserve_provision",
             null,
             null,
-            "[p.u.] Maximum share of the flow that can be allocated to reserve provision."
+            "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant."
         ],
         [
             "link__node__reserve",
             "reservation_cost",
             null,
             null,
-            "[CUR/MWh/h] Cost of providing the reservation."
+            "[CUR/MWh/h] Cost of providing the reservation. Constant, array of periods or time series."
         ],
         [
             "link__node__reserve",
             "reserve_provision_coefficient",
             null,
             null,
-            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement."
+            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
         ],
         [
             "link__node__reserve",
             "reserve_requirement_factor",
             null,
             null,
-            "[p.u.] The factor is multiplied with the flow to increase the reserve requirement."
+            "[p.u.] The factor is multiplied with the flow to increase the reserve requirement. Constant."
         ],
         [
             "node",
             "co2_content",
             null,
             null,
-            "[ton of CO2/MWh] Implicit CO2 content released when fuel used."
+            "[ton of CO2/MWh] Implicit CO2 content released when fuel used. Constant or array of periods."
+        ],
+        [
+            "node",
+            "commodity_limit",
+            null,
+            null,
+            "[MWh] Maximum amount of commodity that can be extracted or deposed (negative value). Constant (cumulative limit) or a map of periods (applies separately to each period)."
         ],
         [
             "node",
             "commodity_price",
             null,
             null,
-            "[CUR/MWh or other unit] Price of the commodity."
+            "[CUR/MWh or other unit] Price of the commodity. Constant, array of periods or time series."
+        ],
+        [
+            "node",
+            "commodity_price_ladder",
+            null,
+            null,
+            "[\u20ac/MWh and MWh] Array of maps with an increasing price and a quantity at that price."
         ],
         [
             "node",
@@ -1175,7 +1219,14 @@
             "storage_capacity",
             null,
             null,
-            "[MWh] Capacity of one storage unit. Constant or array of periods."
+            "[MWh] Capacity of one storage unit. Constant."
+        ],
+        [
+            "node",
+            "storage_cost_of_stored_energy",
+            null,
+            null,
+            "[CUR/MWh/h] Cost of storing energy over time. Constant or map of periods."
         ],
         [
             "node",
@@ -1210,7 +1261,7 @@
             "storage_lifetime",
             null,
             null,
-            "[years] Lifetime of the storage plant for annuity calculation and for retirement decision depending on the storage_retirement_method. Constant or array of periods."
+            "[years] Lifetime of the storage plant for annuity calculation and for retirement decision depending on the storage_retirement_method. Constant."
         ],
         [
             "node",
@@ -1218,6 +1269,27 @@
             null,
             "profile_method",
             "What limits are applied to the storage state."
+        ],
+        [
+            "node",
+            "storage_loss_absolute",
+            null,
+            null,
+            "[MWh/hour] Loss of stored energy over one hour. Constant or map of periods."
+        ],
+        [
+            "node",
+            "storage_loss_from_storage_capacity",
+            null,
+            null,
+            "[p.u./hour] Loss of stored energy over one hour as a fraction of total storage capacity. Constant or map of periods."
+        ],
+        [
+            "node",
+            "storage_loss_from_stored_energy",
+            null,
+            null,
+            "[fraction/hour] Loss of stored energy over one hour as a fraction of the energy stored. Constant or map of periods."
         ],
         [
             "node",
@@ -1235,10 +1307,24 @@
         ],
         [
             "node",
+            "storage_state_binding_method",
+            null,
+            "storage_binding_method",
+            "How storages behave when there are jumps in the timeline. 'leap_over_forward_only' just leaps over the holes connecting last hour to the first hour. 'leap_over_within_period' leaps over holes but also circles back from the end of the period to the beginning of the period. 'leap_over_within_solve' leaps over holes and also between periods but circles back from the end of the solve to the beginning. 'fill_with_representatives' fills the holes using the behaviour of the included periods using 'storage_state_representative_map'. 'fill_with_interlaced_representatives' fills the holes with linear combinations of representative periods based on 'storage_state_interlaced_mapping'."
+        ],
+        [
+            "node",
             "storage_state_fix",
             null,
             null,
-            "[p.u.] Fix the storage state. Time series, constant or array of periods."
+            "[p.u.] Fix the storage state according to the storage_state_fix_method. Time series, constant or array of periods."
+        ],
+        [
+            "node",
+            "storage_state_fix_method",
+            null,
+            "storage_fix_method",
+            "How storage level is possibly fixed over time using 'storage_state_fix' parameter. Often used for rolling window models. 'fix_start' fixes only the fist timestep of the model. 'fix_horizon_end' fixes the end state of the storage in every solve. 'fix_start_and_horizon_end' does both. 'fix_all_timesteps' fixes the storage level to predeterminend time series or constant."
         ],
         [
             "node",
@@ -1259,7 +1345,7 @@
             "storages_existing",
             null,
             null,
-            "[Number] of storages at the start of the model."
+            "[Number] of storages at the start of the model. Constant or map of periods."
         ],
         [
             "node",
@@ -1311,20 +1397,6 @@
             "[Number] of storage units that must be retired. Array of periods."
         ],
         [
-            "node",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "node",
-            "y",
-            null,
-            null,
-            null
-        ],
-        [
             "node__link__node",
             "capacity",
             null,
@@ -1343,28 +1415,14 @@
             "efficiency",
             null,
             null,
-            "[p.u.] Efficiency of transfer in left-to-right direction. Not used by all link_tranfer_methods. Constant."
+            "[p.u.] Efficiency of transfer in left-to-right direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
         ],
         [
             "node__link__node",
             "operational_cost",
             null,
             null,
-            "[CUR/MWh] Variable cost for the flow in left-to-right direction. Applies when transfer_method includes costs. Constant or array of periods."
-        ],
-        [
-            "node__link__node",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "node__link__node",
-            "y",
-            null,
-            null,
-            null
+            "[CUR/MWh] Variable cost for the flow in left-to-right direction. Applies when transfer_method includes costs. Constant, array of periods or time series."
         ],
         [
             "node__node",
@@ -1385,7 +1443,7 @@
             "reserve_requirement",
             null,
             null,
-            "[MW] A reserve requirement for the node. Must be provided into this node."
+            "[MW] A reserve requirement for the node. Must be provided into this node. Constant or time series."
         ],
         [
             "node__to_unit",
@@ -1441,7 +1499,7 @@
             "nox_emission_rate",
             null,
             null,
-            "[kg of NOx emissions/MWh] NOx emission rate per MWh of flow"
+            "[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant."
         ],
         [
             "node__to_unit",
@@ -1514,32 +1572,18 @@
             "[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value)."
         ],
         [
-            "node__to_unit",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "node__to_unit",
-            "y",
-            null,
-            null,
-            null
-        ],
-        [
             "period",
             "duration",
             null,
             null,
-            "Duration of the period"
+            "[Duration] of the period. Needs to use Duration parameter type."
         ],
         [
             "period",
             "start_time",
             null,
             null,
-            "Datetime for the start of the period"
+            "[Date_time] for the start of the period"
         ],
         [
             "period",
@@ -1568,6 +1612,27 @@
             null,
             "reserve_type",
             "What kind of reserve is in question (symmetric means that the reserve must be provided in both directions, contingency means that the reserve requirement is based on the contingency_causing flows)."
+        ],
+        [
+            "set",
+            "co2_max_cumulative",
+            null,
+            null,
+            "[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or a map of periods."
+        ],
+        [
+            "set",
+            "co2_max_period",
+            null,
+            null,
+            "[ton of CO2] CO2 limit for each period separately. Map of periods."
+        ],
+        [
+            "set",
+            "co2_price",
+            null,
+            null,
+            "[CUR/ton] CO2 price for a set of nodes. Constant or a map of periods."
         ],
         [
             "set",
@@ -1658,7 +1723,7 @@
             "reserve_requirement",
             null,
             null,
-            "[MW] A shared reserve requirement for the set of nodes. Reserve can be provided into any of the nodes."
+            "[MW] A shared reserve requirement for the set of nodes. Reserve can be provided into any of the nodes. Constant or time series."
         ],
         [
             "solve_pattern",
@@ -1714,14 +1779,14 @@
             "discount_rate",
             null,
             null,
-            "[e.g. 0.05] is 5%. Discount rate for the value of future compared to today. Constant or array of periods."
+            "[e.g. 0.05] is 5%. Discount rate for the value of future compared to today. Constant or map of periods."
         ],
         [
             "system",
             "timeline",
             null,
             null,
-            "Time steps that can be present in a model instance. Tries to ensure that all time series data is from matching time steps."
+            "Time steps that can be present in a model instance. Needs to be in date_time format. Tries to ensure that all time series data is from matching time steps."
         ],
         [
             "temporality",
@@ -1847,7 +1912,28 @@
             "lifetime",
             null,
             null,
-            "[years] Lifetime of the unit for annuity calculation and for retirement decision depending on the unit_retirement_method. Constant or array of periods."
+            "[years] Lifetime of the unit for annuity calculation and for retirement decision depending on the unit_retirement_method. Constant."
+        ],
+        [
+            "unit",
+            "min_downtime",
+            null,
+            null,
+            "[minutes] When unit is turned off, how many minutes it must stay turned off. Constant."
+        ],
+        [
+            "unit",
+            "min_uptime",
+            null,
+            null,
+            "[minutes] When unit is turned on, how many minutes it must stay turned on. Constant."
+        ],
+        [
+            "unit",
+            "online_cost",
+            null,
+            null,
+            "[CUR/p.u./h] Cost of keeping unit online for one hour. Constant or array of periods."
         ],
         [
             "unit",
@@ -1882,7 +1968,7 @@
             "units_existing",
             null,
             null,
-            "[Number] of existing units."
+            "[Number] of existing units. Constant or array of periods."
         ],
         [
             "unit",
@@ -1934,20 +2020,6 @@
             "[Number] of units that must be retired. Array of periods."
         ],
         [
-            "unit",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "unit",
-            "y",
-            null,
-            null,
-            null
-        ],
-        [
             "unit__node__reserve",
             "contingency_causing",
             null,
@@ -1959,7 +2031,7 @@
             "max_reserve_provision",
             null,
             null,
-            "[p.u.] Maximum share of the flow that can be allocated to reserve provision."
+            "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant."
         ],
         [
             "unit__node__reserve",
@@ -1973,14 +2045,14 @@
             "reserve_provision_coefficient",
             null,
             null,
-            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement."
+            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
         ],
         [
             "unit__node__reserve",
             "reserve_requirement_factor",
             null,
             null,
-            "[p.u.] The factor is multiplied with the flow to increase the reserve requirement."
+            "[p.u.] The factor is multiplied with the flow to increase the reserve requirement. Constant."
         ],
         [
             "unit__to_node",
@@ -2036,7 +2108,7 @@
             "nox_emission_rate",
             null,
             null,
-            "[kg of NOx emissions/MWh] NOx emission rate per MWh of flow"
+            "[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant."
         ],
         [
             "unit__to_node",
@@ -2107,20 +2179,6 @@
             null,
             null,
             "[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value)."
-        ],
-        [
-            "unit__to_node",
-            "x",
-            null,
-            null,
-            null
-        ],
-        [
-            "unit__to_node",
-            "y",
-            null,
-            null,
-            null
         ],
         [
             "unit_flow__unit_flow",
