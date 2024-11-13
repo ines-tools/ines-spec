@@ -57,13 +57,6 @@
             false
         ],
         [
-            "temporality",
-            [],
-            null,
-            280961862398546,
-            false
-        ],
-        [
             "test",
             [],
             null,
@@ -440,14 +433,6 @@
             true
         ],
         [
-            "temporality",
-            [
-                "hourly"
-            ],
-            "init",
-            true
-        ],
-        [
             "unit",
             [
                 "CH4_synthesis"
@@ -576,6 +561,10 @@
         [
             "boolean",
             "false"
+        ],
+        [
+            "capacity_margin_method",
+            "dispatch_based"
         ],
         [
             "flow_scaling_method",
@@ -762,6 +751,30 @@
             "rolling_window"
         ],
         [
+            "stochastic_method",
+            "none"
+        ],
+        [
+            "stochastic_method",
+            "interpolate_time_series_forecasts"
+        ],
+        [
+            "stochastic_method",
+            "analysis_time_forecasts"
+        ],
+        [
+            "stochastic_scope",
+            "none"
+        ],
+        [
+            "stochastic_scope",
+            "whole_model"
+        ],
+        [
+            "stochastic_scope",
+            "set_based_override"
+        ],
+        [
             "storage_binding_method",
             "leap_over_forward_only"
         ],
@@ -844,6 +857,34 @@
         [
             "storage_retirement_method",
             "retire_as_scheduled_or_economic"
+        ],
+        [
+            "storage_state_value_method",
+            "end_of_solve"
+        ],
+        [
+            "storage_state_value_method",
+            "all_timesteps"
+        ],
+        [
+            "storage_state_value_method",
+            "piecewise_linear_relative"
+        ],
+        [
+            "storage_state_value_method",
+            "piecewise_linear_absolute"
+        ],
+        [
+            "storage_state_value_method",
+            "none"
+        ],
+        [
+            "time_resolution_scope",
+            "whole_model"
+        ],
+        [
+            "time_resolution_scope",
+            "set_based_override"
         ],
         [
             "unit_conversion_method",
@@ -946,7 +987,14 @@
             "availability",
             null,
             null,
-            "[e.g. 0.9 means 90%] Fraction of capacity available for transfer link flows. Time series (or constant or array of periods)."
+            "[ratio] e.g. 0.9 means 90%. Fraction of capacity available for transfer link flows. Time series (or constant or array of periods)."
+        ],
+        [
+            "link",
+            "availability_forecasts",
+            null,
+            null,
+            "[p.u.] Availability forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "link",
@@ -967,7 +1015,14 @@
             "efficiency",
             null,
             null,
-            "[p.u.] Efficiency of transfer in either direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
+            "[ratio] Efficiency of transfer in either direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
+        ],
+        [
+            "link",
+            "efficiency_forecasts",
+            null,
+            null,
+            "[ratio] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "link",
@@ -981,7 +1036,7 @@
             "interest_rate",
             null,
             null,
-            "[e.g. 0.05] is 5 %. Interest rate for transfer link investments. Constant or array of periods."
+            "[ratio] e.g. 0.05 is 5 %. Interest rate for transfer link investments. Constant or array of periods."
         ],
         [
             "link",
@@ -1072,7 +1127,14 @@
             "operational_cost",
             null,
             null,
-            "[CUR/MWh] Variable cost for the flow. Applies in both directions when transfer_method includes costs. Constant or array of periods."
+            "[CUR/MWh] Variable cost for the flow. Applies in both directions when transfer_method includes costs. Constant, array of periods or time series."
+        ],
+        [
+            "link",
+            "operational_cost_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "link",
@@ -1121,7 +1183,7 @@
             "reserve_provision_coefficient",
             null,
             null,
-            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
+            "[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
         ],
         [
             "link__node__reserve",
@@ -1150,6 +1212,13 @@
             null,
             null,
             "[CUR/MWh or other unit] Price of the commodity. Constant, array of periods or time series."
+        ],
+        [
+            "node",
+            "commodity_price_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Commodity price forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node",
@@ -1182,6 +1251,13 @@
         [
             "node",
             "flow_profile",
+            null,
+            null,
+            "[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series, constant or array of periods."
+        ],
+        [
+            "node",
+            "flow_profile_forecasts",
             null,
             null,
             "[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series, constant or array of periods."
@@ -1240,7 +1316,7 @@
             "storage_interest_rate",
             null,
             null,
-            "[e.g. 0.05] is 5 %. Interest rate for storage investments. Constant or array of periods."
+            "[ratio] e.g. 0.05 is 5 %. Interest rate for storage investments. Constant or array of periods."
         ],
         [
             "node",
@@ -1314,6 +1390,20 @@
         ],
         [
             "node",
+            "storage_state_downward_absolute_values",
+            null,
+            null,
+            "[CUR/MWh] Downward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh."
+        ],
+        [
+            "node",
+            "storage_state_downward_relative_values",
+            null,
+            null,
+            "[CUR/MWh] Downward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh."
+        ],
+        [
+            "node",
             "storage_state_fix",
             null,
             null,
@@ -1331,14 +1421,49 @@
             "storage_state_lower_limit",
             null,
             null,
-            "[p.u.] Lower limit for the state of the storage. Time series, constant or array of periods."
+            "[p.u.] Minimum limit for the state of the storage. Time series, constant or array of periods."
         ],
         [
             "node",
             "storage_state_upper_limit",
             null,
             null,
-            "[p.u.] Upper limit for the state of the storage. Time series, constant or array of periods."
+            "[p.u.] Maximum limit for the state of the storage. Time series, constant or array of periods."
+        ],
+        [
+            "node",
+            "storage_state_upward_absolute_values",
+            null,
+            null,
+            "[CUR/MWh] Upward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh."
+        ],
+        [
+            "node",
+            "storage_state_upward_relative_values",
+            null,
+            null,
+            "[CUR/MWh] Upward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh."
+        ],
+        [
+            "node",
+            "storage_state_value",
+            null,
+            null,
+            "[CUR] Value (price) of storage state. Constant, time series or array of periods."
+        ],
+        [
+            "node",
+            "storage_state_value_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Storage state value forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node",
+            "storage_state_value_method",
+            null,
+            null,
+            "How to include value of storage state in the objective function. end_of_solve: the last timestep of the solve will get storage_state_value. all_timesteps will apply the storage value to each timestep in the model horizon."
         ],
         [
             "node",
@@ -1419,10 +1544,52 @@
         ],
         [
             "node__link__node",
+            "efficiency_forecasts",
+            null,
+            null,
+            "[ratio] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node__link__node",
             "operational_cost",
             null,
             null,
             "[CUR/MWh] Variable cost for the flow in left-to-right direction. Applies when transfer_method includes costs. Constant, array of periods or time series."
+        ],
+        [
+            "node__link__node",
+            "operational_cost_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node__link__node",
+            "ramp_cost",
+            null,
+            null,
+            "[CUR/MW] Cost of ramping up. Constant or array of periods."
+        ],
+        [
+            "node__link__node",
+            "ramp_limit_down",
+            null,
+            null,
+            "[p.u./minute] Maximum ramp down speed. Constant."
+        ],
+        [
+            "node__link__node",
+            "ramp_limit_up",
+            null,
+            null,
+            "[p.u./minute] Maximum ramp up speed. Constant."
+        ],
+        [
+            "node__link__node",
+            "ramp_method",
+            null,
+            "ramp_method",
+            "How ramps are constrained and/or valued."
         ],
         [
             "node__node",
@@ -1444,6 +1611,13 @@
             null,
             null,
             "[MW] A reserve requirement for the node. Must be provided into this node. Constant or time series."
+        ],
+        [
+            "node__reserve",
+            "reserve_requirement_forecasts",
+            null,
+            null,
+            "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node__to_unit",
@@ -1506,7 +1680,14 @@
             "other_operational_cost",
             null,
             null,
-            "[CUR/MWh] Variable cost for the flow. Constant or array of periods."
+            "[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
+        ],
+        [
+            "node__to_unit",
+            "other_operational_cost_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node__to_unit",
@@ -1520,14 +1701,28 @@
             "profile_limit_lower",
             null,
             null,
-            "[p.u.] Set a maximum flow limit. Time series, constant or array of periods."
+            "[p.u.] Minimum flow limit. Time series, constant or array of periods."
+        ],
+        [
+            "node__to_unit",
+            "profile_limit_lower_forecasts",
+            null,
+            null,
+            "[p.u.] Minimum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node__to_unit",
             "profile_limit_upper",
             null,
             null,
-            "[p.u.] Set a minimum flow limit. Time series, constant or array of periods."
+            "[p.u.] Maximum flow limit. Time series, constant or array of periods."
+        ],
+        [
+            "node__to_unit",
+            "profile_limit_upper_forecasts",
+            null,
+            null,
+            "[p.u.] Maximum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node__to_unit",
@@ -1572,6 +1767,13 @@
             "[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value)."
         ],
         [
+            "node__to_unit",
+            "so2_emission_rate",
+            null,
+            null,
+            "[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant."
+        ],
+        [
             "period",
             "duration",
             null,
@@ -1612,6 +1814,20 @@
             null,
             "reserve_type",
             "What kind of reserve is in question (symmetric means that the reserve must be provided in both directions, contingency means that the reserve requirement is based on the contingency_causing flows)."
+        ],
+        [
+            "set",
+            "capacity_margin",
+            null,
+            null,
+            "[MW] Capacity margin across the set of member nodes. Constant or map of periods."
+        ],
+        [
+            "set",
+            "capacity_margin_method",
+            null,
+            "capacity_margin_method",
+            "How capacity margin is constrained. Dispatch_based: profile limited and storages are dispatched, thermal plants based on their availability."
         ],
         [
             "set",
@@ -1713,10 +1929,73 @@
         ],
         [
             "set",
-            "temporality",
+            "nox_max_cumulative",
             null,
             null,
-            "Which temporality (time resolution) the set will propagate to the set members (node, node__unit, link)."
+            "[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or a map of periods."
+        ],
+        [
+            "set",
+            "nox_max_period",
+            null,
+            null,
+            "[ton of NOx] NOx limit for each period separately from the member flows. Map of periods."
+        ],
+        [
+            "set",
+            "nox_price",
+            null,
+            null,
+            "[CUR/ton] NOx price for a set of member flows. Constant or map of periods."
+        ],
+        [
+            "set",
+            "so2_max_cumulative",
+            null,
+            null,
+            "[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or a map of periods."
+        ],
+        [
+            "set",
+            "so2_max_period",
+            null,
+            null,
+            "[ton of SO2] SO2 limit for each period separately from the member flows. Map of periods."
+        ],
+        [
+            "set",
+            "so2_price",
+            null,
+            null,
+            "[CUR/ton] SO2 price for a set of member flows. Constant or a map of periods."
+        ],
+        [
+            "set",
+            "stochastic_forecast_interpolation_factors",
+            null,
+            null,
+            "[ratio] between 0-1. How much each consequent timestep, starting from the first timestep of the solve, takes from the realization time series (the rest comes from the forecast time series)."
+        ],
+        [
+            "set",
+            "stochastic_forecast_weights",
+            null,
+            null,
+            "[ratio between 0-1] Probability weight of each forecast. Name of forecast combined with its weight."
+        ],
+        [
+            "set",
+            "stochastic_method",
+            null,
+            "stochastic_method",
+            "How to use forecast data. 'interpolate_time_series_forecasts' takes a set of forecast time series (usually high, central and low) and interpolates them towards the realization closer to first solve timestep. 'analysis_time_forecasts' has separate forecasts (1 or more) for each analysis timestep with the assumption the model rolls forward from analysis time to the next."
+        ],
+        [
+            "set",
+            "time_resolution",
+            null,
+            null,
+            "Which time resolution the set will propagate to the set members (node, node__unit, link) overriding time_resolution from the solve_pattern."
         ],
         [
             "set__reserve",
@@ -1763,7 +2042,7 @@
         [
             "solve_pattern",
             "solve_mode",
-            null,
+            "single_solve",
             "solve_mode",
             "Rolling or single solve model."
         ],
@@ -1775,11 +2054,39 @@
             "Start time for the model. If no start time has been provided, the model will start from the beginning of the first period."
         ],
         [
+            "solve_pattern",
+            "stochastic_forecasts_in_use",
+            null,
+            null,
+            "Experimental. [forecast_names] Which forecast branches will be included in the model. If no value, then all are included (if stochastic_scope allows). Array of strings."
+        ],
+        [
+            "solve_pattern",
+            "stochastic_scope",
+            "none",
+            "stochastic_scope",
+            "Which parameters will use the forecast versions if available."
+        ],
+        [
+            "solve_pattern",
+            "time_resolution",
+            null,
+            null,
+            "[duration] Time resolution of the model (unless re-defined by a time resolution of a set)."
+        ],
+        [
+            "solve_pattern",
+            "time_resolution_scope",
+            "whole_model",
+            "time_resolution_scope",
+            "At what level time resolution in the model is defined."
+        ],
+        [
             "system",
             "discount_rate",
             null,
             null,
-            "[e.g. 0.05] is 5%. Discount rate for the value of future compared to today. Constant or map of periods."
+            "[ratio] e.g. 0.05 is 5%. Discount rate for the value of future compared to today. Constant or map of periods."
         ],
         [
             "system",
@@ -1787,13 +2094,6 @@
             null,
             null,
             "Time steps that can be present in a model instance. Needs to be in date_time format. Tries to ensure that all time series data is from matching time steps."
-        ],
-        [
-            "temporality",
-            "resolution",
-            null,
-            null,
-            "Time resolution for model or model part. In minutes."
         ],
         [
             "test",
@@ -1867,6 +2167,13 @@
         ],
         [
             "unit",
+            "availability_forecasts",
+            null,
+            null,
+            "[p.u.] Availability forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "unit",
             "constraint_online_coefficient",
             null,
             null,
@@ -1891,14 +2198,21 @@
             "efficiency",
             null,
             null,
-            "[p.u.] Multiplier for turning inputs to outputs. Usage depends on the conversion_method."
+            "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method."
+        ],
+        [
+            "unit",
+            "efficiency_forecasts",
+            null,
+            null,
+            "[p.u.] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "unit",
             "interest_rate",
             null,
             null,
-            "[e.g. 0.05] is 5 %. Interest rate for investing in the unit. Constant or array of periods."
+            "[ratio] e.g. 0.05 is 5 %. Interest rate for investing in the unit. Constant or array of periods."
         ],
         [
             "unit",
@@ -2045,7 +2359,7 @@
             "reserve_provision_coefficient",
             null,
             null,
-            "[e.g. 0.8] means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
+            "[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the reserve requirement. Constant."
         ],
         [
             "unit__node__reserve",
@@ -2115,7 +2429,14 @@
             "other_operational_cost",
             null,
             null,
-            "[CUR/MWh] Variable cost for the flow. Constant or array of periods."
+            "[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
+        ],
+        [
+            "unit__to_node",
+            "other_operational_cost_forecasts",
+            null,
+            null,
+            "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "unit__to_node",
@@ -2129,19 +2450,33 @@
             "profile_limit_lower",
             null,
             null,
-            "[p.u.] Set a maximum flow limit. Time series, constant or array of periods."
+            "[p.u.] Minimum flow limit. Time series, constant or array of periods."
+        ],
+        [
+            "unit__to_node",
+            "profile_limit_lower_forecasts",
+            null,
+            null,
+            "[p.u.] Minimum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "unit__to_node",
             "profile_limit_upper",
             null,
             null,
-            "[p.u.] Set a minimum flow limit. Time series, constant or array of periods."
+            "[p.u.] Maximum flow limit. Time series, constant or array of periods."
+        ],
+        [
+            "unit__to_node",
+            "profile_limit_upper_forecasts",
+            null,
+            null,
+            "[p.u.] Maximum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "unit__to_node",
             "profile_method",
-            null,
+            "no_profile",
             "profile_method",
             "How to limit the flow based on profiles."
         ],
@@ -2169,7 +2504,7 @@
         [
             "unit__to_node",
             "ramp_method",
-            null,
+            "no_constraint",
             "ramp_method",
             "How ramps are constrained and/or valued."
         ],
@@ -2179,6 +2514,13 @@
             null,
             null,
             "[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value)."
+        ],
+        [
+            "unit__to_node",
+            "so2_emission_rate",
+            null,
+            null,
+            "[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant."
         ],
         [
             "unit_flow__unit_flow",

@@ -10,21 +10,31 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Added
 
 - First draft of ines-output-spec
-
-- Set: co2_max_cumulative, co2_max_period, co2_price
-- Unit: min_uptime, min_downtime, online_cost
-- Node: commodity_limit, commodity_price_ladder
-- Node: storage_state_binding_method with options 
-- Node: storage_state_fix_method with options
-- Node: storage_loss_absolute, storage_loss_from_storage_capacity, storage_loss_from_stored_energy
-- Node: storage_cost_of_stored_energy
+- Stochastic parameters for most parameters with time series
+- set: co2_max_cumulative, co2_max_period, co2_price, same for NOx and SO2
+- unit__to_node and node__to_unit: so2_emission_rate
+- unit: min_uptime, min_downtime, online_cost
+- node: commodity_limit, commodity_price_ladder
+- node: storage_state_binding_method with options 
+- node: storage_state_fix_method with options
+- node: storage_loss_absolute, storage_loss_from_storage_capacity, storage_loss_from_stored_energy
+- node: storage_cost_of_stored_energy
+- node__link__node: Added ramp_limits and ramp_cost and ramp_method
+- link: operational_cost can also be time_series
+- solve_pattern: stochastic_scope, stochastic_forecasts_in_use (experimenta, time_resolution_scope, time_resolution
 
 ### Changed
 
-- Node: storage_lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate storages if functionality needed.)
-- Link: lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate links if functionality needed.)
-- Unit: lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate units if functionality needed.)
-- Link and node__link__node: added array of periods and time series for efficiency parameter.
+- node: storage_lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate storages if functionality needed.)
+- link: lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate links if functionality needed.)
+- unit: lifetime can only be constant (array of periods used to be also possible, but that makes things too complicated in the results side. From now on, use separate units if functionality needed.)
+- link and node__link__node: added array of periods and time series for efficiency parameter.
+- node: commodity_price_ladder changed from array to 1d-map
+- set: temporality renamed to time_resolution
+
+## Removed
+
+- temporality class (moved time_resolution to solve_pattern and set)
 
 
 ## [0.5.0]
