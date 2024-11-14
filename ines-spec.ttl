@@ -1,0 +1,863 @@
+@prefix ines: <ines-spec:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ines:activation_time a owl:DatatypeProperty ;
+    rdfs:domain ines:reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:availability a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:availability_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:capacity a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:capacity_margin a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:capacity_margin_method a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:co2_content a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:co2_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:co2_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:co2_price a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:commodity_limit a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:commodity_price a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:commodity_price_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:commodity_price_ladder a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:constant a owl:DatatypeProperty ;
+    rdfs:domain ines:constraint ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_flow_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_link_count_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_online_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_storage_count_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_storage_state_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:constraint_unit_count_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:contingency_causing a owl:DatatypeProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:conversion_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:conversion_method a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:diffusion_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:node__node ;
+    rdfs:range rdfs:Literal .
+
+ines:discount_rate a owl:DatatypeProperty ;
+    rdfs:domain ines:system ;
+    rdfs:range rdfs:Literal .
+
+ines:downward_slack a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:duration a owl:DatatypeProperty ;
+    rdfs:domain ines:period,
+        ines:reserve,
+        ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:efficiency a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__link__node,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:efficiency_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__link__node,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:equality_constant a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:equality_ratio a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:fixed_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:flow a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_annual a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_max_instant a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_min_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_min_instant a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_profile a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_profile_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:flow_scaling_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:greater_than_constant a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:greater_than_ratio a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:has_link a owl:ObjectProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:node__link__node,
+        ines:set__link ;
+    rdfs:range ines:link .
+
+ines:has_node a owl:ObjectProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:node__link__node,
+        ines:node__node,
+        ines:node__reserve,
+        ines:node__to_unit,
+        ines:set__node,
+        ines:unit__node__reserve,
+        ines:unit__to_node,
+        ines:unit_flow ;
+    rdfs:range ines:node .
+
+ines:has_reserve a owl:ObjectProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:node__reserve,
+        ines:set__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range ines:reserve .
+
+ines:has_set a owl:ObjectProperty ;
+    rdfs:domain ines:set__link,
+        ines:set__node,
+        ines:set__reserve,
+        ines:set__unit,
+        ines:set__unit_flow,
+        ines:tool__set ;
+    rdfs:range ines:set .
+
+ines:has_tool a owl:ObjectProperty ;
+    rdfs:domain ines:tool__set ;
+    rdfs:range ines:tool .
+
+ines:has_unit a owl:ObjectProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:set__unit,
+        ines:unit__node__reserve,
+        ines:unit__to_node,
+        ines:unit_flow ;
+    rdfs:range ines:unit .
+
+ines:has_unit_flow a owl:ObjectProperty ;
+    rdfs:domain ines:set__unit_flow,
+        ines:unit_flow__unit_flow ;
+    rdfs:range ines:unit_flow .
+
+ines:includes_solve_pattern a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:inertia_constant a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:inertia_limit a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:interest_rate a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:invest_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:invest_max_total a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:invest_min_period a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:invest_min_total a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:investment a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:investment_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:investment_method a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:is_non_synchronous a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:junction_type a owl:DatatypeProperty ;
+    rdfs:domain ines:node__node ;
+    rdfs:range rdfs:Literal .
+
+ines:less_than_constant a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:less_than_ratio a owl:DatatypeProperty ;
+    rdfs:domain ines:unit_flow__unit_flow ;
+    rdfs:range rdfs:Literal .
+
+ines:lifetime a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:links_existing a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_fix_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_invest_fix_period a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_invest_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_invest_min_period a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_min_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:links_retire_period a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:max_reserve_provision a owl:DatatypeProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:min_downtime a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:min_uptime a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:network_type a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:node_type a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:non_synchronous_limit a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:nox_emission_rate a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:nox_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:nox_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:nox_price a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:online a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:online_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:operational_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__link__node ;
+    rdfs:range rdfs:Literal .
+
+ines:operational_cost_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__link__node ;
+    rdfs:range rdfs:Literal .
+
+ines:other_operational_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:other_operational_cost_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:penalty_downward a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:penalty_upward a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_fix a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_limit_lower a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_limit_lower_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_limit_upper a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_limit_upper_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:profile_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:ramp_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:ramp_limit_down a owl:DatatypeProperty ;
+    rdfs:domain ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:ramp_limit_up a owl:DatatypeProperty ;
+    rdfs:domain ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:ramp_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node__link__node,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:reservation_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:reserve_provision_coefficient a owl:DatatypeProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:reserve_requirement a owl:DatatypeProperty ;
+    rdfs:domain ines:node__reserve,
+        ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:reserve_requirement_factor a owl:DatatypeProperty ;
+    rdfs:domain ines:link__node__reserve,
+        ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:reserve_requirement_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node__reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:reserve_type a owl:DatatypeProperty ;
+    rdfs:domain ines:reserve ;
+    rdfs:range rdfs:Literal .
+
+ines:retirement a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:retirement_method a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:rolling_horizon a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:rolling_jump a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:salvage_value a owl:DatatypeProperty ;
+    rdfs:domain ines:link,
+        ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:sense a owl:DatatypeProperty ;
+    rdfs:domain ines:constraint ;
+    rdfs:range rdfs:Literal .
+
+ines:shutdown_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:so2_emission_rate a owl:DatatypeProperty ;
+    rdfs:domain ines:node__to_unit,
+        ines:unit__to_node ;
+    rdfs:range rdfs:Literal .
+
+ines:so2_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:so2_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:so2_price a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:solve_mode a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:start_time a owl:DatatypeProperty ;
+    rdfs:domain ines:period,
+        ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:startup_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:startup_method a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:state a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:stochastic_forecast_interpolation_factors a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:stochastic_forecast_weights a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:stochastic_forecasts_in_use a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:stochastic_method a owl:DatatypeProperty ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
+ines:stochastic_scope a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_capacity a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_cost_of_stored_energy a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_fixed_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_interest_rate a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_investment_cost a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_investment_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_lifetime a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_limit_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_loss_absolute a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_loss_from_storage_capacity a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_loss_from_stored_energy a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_retirement_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_salvage_value a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_binding_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_downward_absolute_values a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_downward_relative_values a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_fix a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_fix_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_lower_limit a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_upper_limit a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_upward_absolute_values a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_upward_relative_values a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_value a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_value_forecasts a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storage_state_value_method a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_existing a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_fix_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_invest_fix_period a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_invest_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_invest_min_period a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_min_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:storages_retire_period a owl:DatatypeProperty ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+ines:target a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:time_resolution a owl:DatatypeProperty ;
+    rdfs:domain ines:set,
+        ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:time_resolution_scope a owl:DatatypeProperty ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:timeline a owl:DatatypeProperty ;
+    rdfs:domain ines:system ;
+    rdfs:range rdfs:Literal .
+
+ines:transfer_method a owl:DatatypeProperty ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+ines:units_existing a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_fix_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_invest_fix_period a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_invest_max_period a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_invest_min_period a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_max_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_min_cumulative a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:units_retire_period a owl:DatatypeProperty ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+ines:upward_slack a owl:DatatypeProperty ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:years_represented a owl:DatatypeProperty ;
+    rdfs:domain ines:period ;
+    rdfs:range rdfs:Literal .
+
+ines:tool a owl:Class ;
+    rdfs:label "tool" .
+
+ines:constraint a owl:Class ;
+    rdfs:label "constraint" .
+
+ines:set__link a owl:Class .
+
+ines:set__node a owl:Class .
+
+ines:set__unit a owl:Class .
+
+ines:set__unit_flow a owl:Class .
+
+ines:system a owl:Class ;
+    rdfs:label "system" .
+
+ines:tool__set a owl:Class .
+
+ines:node__node a owl:Class .
+
+ines:period a owl:Class,
+        owl:DatatypeProperty ;
+    rdfs:label "period" ;
+    rdfs:domain ines:solve_pattern ;
+    rdfs:range rdfs:Literal .
+
+ines:set__reserve a owl:Class .
+
+ines:unit_flow a owl:Class .
+
+ines:node__reserve a owl:Class .
+
+ines:reserve a owl:Class,
+        owl:DatatypeProperty ;
+    rdfs:label "reserve" ;
+    rdfs:domain ines:test ;
+    rdfs:range rdfs:Literal .
+
+ines:unit_flow__unit_flow a owl:Class .
+
+ines:link__node__reserve a owl:Class .
+
+ines:unit__node__reserve a owl:Class .
+
+ines:test a owl:Class ;
+    rdfs:label "test" .
+
+ines:solve_pattern a owl:Class ;
+    rdfs:label "solve_pattern" .
+
+ines:node__link__node a owl:Class .
+
+ines:node__to_unit a owl:Class .
+
+ines:unit__to_node a owl:Class .
+
+ines:link a owl:Class ;
+    rdfs:label "link" .
+
+ines:unit a owl:Class ;
+    rdfs:label "unit" .
+
+ines:set a owl:Class ;
+    rdfs:label "set" .
+
+ines:node a owl:Class ;
+    rdfs:label "node" .
+
