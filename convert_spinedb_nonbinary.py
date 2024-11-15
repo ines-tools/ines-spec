@@ -31,22 +31,29 @@ with api.DatabaseMapping(spinepath) as db_map:
 
     for entity_class in fulldata["entity_classes"]:
         if not entity_class[1]:
-            class_uri = URIRef(ines + entity_class[0] + ":")
+            class_uri = getattr(ines, entity_class[0])
             g.add((class_uri, RDF.type, OWL.Class))
             #g.add((class_uri, RDFS.label, Literal(entity_class[0])))
         else:
-            nd_class_uri = URIRef(ines + entity_class[0])
+            nd_class_uri = getattr(ines, entity_class[0])
             g.add((nd_class_uri, RDF.type, OWL.Class))
             for base_class_name in entity_class[1]:
-                base_class = URIRef(ines + base_class_name)
-                has_base_class = URIRef(ines + "has_" + base_class_name)
+                base_class = getattr(ines, base_class_name)
+                has_base_class = getattr(ines, "has_" + base_class_name)
                 g.add((has_base_class, RDF.type, OWL.ObjectProperty))
-                g.add((has_base_class, RDFS.domain, nd_class_uri))
                 g.add((has_base_class, RDFS.range, base_class))
+                class_restriction = BNode()
+                g.add((class_restriction, RDF.type, OWL.Restriction))
+                g.add((class_restriction, OWL.onProperty, has_base_class))
+                g.add((class_restriction, OWL.cardinality, Literal(1)))
+                g.add((nd_class_uri, RDFS.subClassOf, class_restriction))
+                #g.add((has_base_class, RDF.type, OWL.ObjectProperty))
+                #g.add((has_base_class, RDFS.domain, nd_class_uri))
+                #g.add((has_base_class, RDFS.range, base_class))
 
     for param_def in fulldata["parameter_definitions"]:
         class_namespace = Namespace(str(ines) + param_def[0] + ":")
-        has_param = URIRef(class_namespace + ":" + param_def[1])
+        has_param = URIRef(class_namespace + param_def[1])
         class_of_param = URIRef(ines + param_def[0])
         g.add((has_param, RDF.type, OWL.DatatypeProperty))
         g.add((has_param, RDFS.domain, class_of_param))
