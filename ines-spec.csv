@@ -1,0 +1,363 @@
+entity_classes:
+constraint,[],,281246450775340,False
+link,[],,280462687073079,False
+node,[],,280683380142637,False
+period,[],,281105609584759,False
+reserve,[],,281291854967042,False
+set,[],,280569496596882,False
+solve_pattern,[],,281281703244097,False
+system,[],,280741963429022,False
+test,[],,281382822474858,False
+tool,[],,280378333982893,False
+unit,[],,280740537364493,False
+node__node,"['node', 'node']",,,True
+node__reserve,"['node', 'reserve']",,,True
+node__to_unit,"['node', 'unit']",,280566643749643,True
+set__link,"['set', 'link']",,,True
+set__node,"['set', 'node']",,,True
+set__reserve,"['set', 'reserve']",,,True
+set__unit,"['set', 'unit']",,,True
+set__unit_flow,"['set', 'unit_flow']",,,True
+tool__set,"['tool', 'set']",,,True
+unit__to_node,"['unit', 'node']",,280566643749643,True
+unit_flow,"['unit', 'node']",,,True
+unit_flow__unit_flow,"['unit_flow', 'unit_flow']",,280566643749617,True
+link__node__reserve,"['link', 'node', 'reserve']",,,True
+node__link__node,"['node', 'link', 'node']",,280462687072545,True
+unit__node__reserve,"['unit', 'node', 'reserve']",,,True
+"
+",parameter definitions:
+constraint,constant,,,Right hand side of the constraint.
+constraint,sense,,sense,"Is the sense of the constraint equal to, greater than or less than."
+link,availability,,,[ratio] e.g. 0.9 means 90%. Fraction of capacity available for transfer link flows. Time series (or constant or array of periods).
+link,availability_forecasts,,,"[p.u.] Availability forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+link,capacity,,,[MW] Capacity of one link in either direction for one transfer link. Constant.
+link,constraint_link_count_coefficient,,,[p.u.] Multiplier between constraints and the number of the links. Map of constraints and respective coefficients.
+link,efficiency,,,"[ratio] Efficiency of transfer in either direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
+link,efficiency_forecasts,,,"[ratio] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+link,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array of periods.
+link,interest_rate,,,[ratio] e.g. 0.05 is 5 %. Interest rate for transfer link investments. Constant or array of periods.
+link,investment_cost,,,[CUR/MWh] Investment cost for the transfer capacity. Constant or array of periods.
+link,investment_method,,link_invest_method,How investments are treated.
+link,is_non_synchronous,false,boolean,Chooses whether the link connects the two nodes synchronously or not.
+link,lifetime,,,"[years] Lifetime of the unit for annuity calculation and for retirement decision when using retire_at_the_end_of_lifetime method. Constant or array of periods.
+"
+link,links_existing,,,[Number] of existing transfer links. Constant or array of periods.
+link,links_fix_cumulative,,,"[Number] of transfer links that must exist (considers existing, invested and retired units). Constant or array of periods."
+link,links_invest_fix_period,,,[Number] of links that must be invested in. Array of periods.
+link,links_invest_max_period,,,[Number] of links that can be invested in. Array of periods.
+link,links_invest_min_period,,,[Number] of links that must at least be invested in. Array of periods.
+link,links_max_cumulative,,,"[Number] of transfer links that can exist (considers existing, invested and retired units). Constant or array of periods."
+link,links_min_cumulative,,,"[Number] of transfer links that must at least exist (considers existing, invested and retired units). Constant or array of periods."
+link,links_retire_period,,,[Number] of links that must be retired. Array of periods.
+link,operational_cost,,,"[CUR/MWh] Variable cost for the flow. Applies in both directions when transfer_method includes costs. Constant, array of periods or time series."
+link,operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+link,retirement_method,,link_retirement_method,How retirements are treated.
+link,salvage_value,,,[CUR/MW] Salvage value of a transfer link at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value).
+link,transfer_method,,link_transfer_method,How the link transfers.
+link__node__reserve,contingency_causing,,boolean,Whether the flow causes a need for a contingency reserve.
+link__node__reserve,max_reserve_provision,,,[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant.
+link__node__reserve,reservation_cost,,,"[CUR/MWh/h] Cost of providing the reservation. Constant, array of periods or time series."
+link__node__reserve,reserve_provision_coefficient,,,[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the reserve requirement. Constant.
+link__node__reserve,reserve_requirement_factor,,,[p.u.] The factor is multiplied with the flow to increase the reserve requirement. Constant.
+node,co2_content,,,[ton of CO2/MWh] Implicit CO2 content released when fuel used. Constant or array of periods.
+node,commodity_limit,,,[MWh] Maximum amount of commodity that can be extracted or deposed (negative value). Constant (cumulative limit) or a map of periods (applies separately to each period).
+node,commodity_price,,,"[CUR/MWh or other unit] Price of the commodity. Constant, array of periods or time series."
+node,commodity_price_forecasts,,,"[CUR/MWh] Commodity price forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node,commodity_price_ladder,,,[€/MWh and MWh] Array of maps with an increasing price and a quantity at that price.
+node,constraint_storage_count_coefficient,,,[p.u.] Multiplier between constraints and the number of the storage units. Map of constraints and respective coefficients.
+node,constraint_storage_state_coefficient,,,[p.u.] Multiplier between constraints and the state of the storage. Map of constraints and respective coefficients.
+node,flow_annual,,,[MWh] Annual flow to scale flow_profile depending on the flow_scaling_method. Constant or array of periods.
+node,flow_profile,,,"[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series, constant or array of periods."
+node,flow_profile_forecasts,,,"[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series, constant or array of periods."
+node,flow_scaling_method,,flow_scaling_method,How to scale/use the flow_profile.
+node,node_type,,node_type,How the node should behave.
+node,penalty_downward,,,[CUR/MWh] Penalty for removing energy from the node. Constant or array of periods.
+node,penalty_upward,,,[CUR/MWh] Penalty for adding energy to the node. Constant or array of periods.
+node,storage_capacity,,,[MWh] Capacity of one storage unit. Constant.
+node,storage_cost_of_stored_energy,,,[CUR/MWh/h] Cost of storing energy over time. Constant or map of periods.
+node,storage_fixed_cost,,,[CUR/MWh/year] Fixed annual cost for the storage capacity. Constant or array of periods.
+node,storage_interest_rate,,,[ratio] e.g. 0.05 is 5 %. Interest rate for storage investments. Constant or array of periods.
+node,storage_investment_cost,,,[CUR/MWh] Investment cost for the storage capacity. Constant or array of periods.
+node,storage_investment_method,,storage_investment_method,How investments are treated.
+node,storage_lifetime,,,[years] Lifetime of the storage plant for annuity calculation and for retirement decision depending on the storage_retirement_method. Constant.
+node,storage_limit_method,,profile_method,What limits are applied to the storage state.
+node,storage_loss_absolute,,,[MWh/hour] Loss of stored energy over one hour. Constant or map of periods.
+node,storage_loss_from_storage_capacity,,,[p.u./hour] Loss of stored energy over one hour as a fraction of total storage capacity. Constant or map of periods.
+node,storage_loss_from_stored_energy,,,[fraction/hour] Loss of stored energy over one hour as a fraction of the energy stored. Constant or map of periods.
+node,storage_retirement_method,,storage_retirement_method,How retirements are treated.
+node,storage_salvage_value,,,[CUR/MWh] Salvage value of a storage at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value).
+node,storage_state_binding_method,,storage_binding_method,How storages behave when there are jumps in the timeline. 'leap_over_forward_only' just leaps over the holes connecting last hour to the first hour. 'leap_over_within_period' leaps over holes but also circles back from the end of the period to the beginning of the period. 'leap_over_within_solve' leaps over holes and also between periods but circles back from the end of the solve to the beginning. 'fill_with_representatives' fills the holes using the behaviour of the included periods using 'storage_state_representative_map'. 'fill_with_interlaced_representatives' fills the holes with linear combinations of representative periods based on 'storage_state_interlaced_mapping'.
+node,storage_state_downward_absolute_values,,,[CUR/MWh] Downward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh.
+node,storage_state_downward_relative_values,,,[CUR/MWh] Downward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh.
+node,storage_state_fix,,,"[p.u.] Fix the storage state according to the storage_state_fix_method. Time series, constant or array of periods."
+node,storage_state_fix_method,,storage_fix_method,How storage level is possibly fixed over time using 'storage_state_fix' parameter. Often used for rolling window models. 'fix_start' fixes only the fist timestep of the model. 'fix_horizon_end' fixes the end state of the storage in every solve. 'fix_start_and_horizon_end' does both. 'fix_all_timesteps' fixes the storage level to predeterminend time series or constant.
+node,storage_state_lower_limit,,,"[p.u.] Minimum limit for the state of the storage. Time series, constant or array of periods."
+node,storage_state_upper_limit,,,"[p.u.] Maximum limit for the state of the storage. Time series, constant or array of periods."
+node,storage_state_upward_absolute_values,,,[CUR/MWh] Upward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh.
+node,storage_state_upward_relative_values,,,[CUR/MWh] Upward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh.
+node,storage_state_value,,,"[CUR] Value (price) of storage state. Constant, time series or array of periods."
+node,storage_state_value_forecasts,,,"[CUR/MWh] Storage state value forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node,storage_state_value_method,,,How to include value of storage state in the objective function. end_of_solve: the last timestep of the solve will get storage_state_value. all_timesteps will apply the storage value to each timestep in the model horizon.
+node,storages_existing,,,[Number] of storages at the start of the model. Constant or map of periods.
+node,storages_fix_cumulative,,,"[Number] of storage units that must exist (considers existing, invested and retired units). Constant or array of periods."
+node,storages_invest_fix_period,,,[Number] of storage units that must be invested in. Array of periods.
+node,storages_invest_max_period,,,[Number] of storage units that can be invested in. Array of periods.
+node,storages_invest_min_period,,,[Number] of storage units that must at least be invested in. Array of periods.
+node,storages_max_cumulative,,,"[Number] of storage units that can exist (considers existing, invested and retired units). Constant or array of periods."
+node,storages_min_cumulative,,,"[Number] of storage units that must at least exist (considers existing, invested and retired units). Constant or array of periods."
+node,storages_retire_period,,,[Number] of storage units that must be retired. Array of periods.
+node__link__node,capacity,,,[MW] Capacity in left-to-right direction for one transfer link. Replaces link capacity in that direction. Constant.
+node__link__node,constraint_flow_coefficient,,,[p.u.] Multiplier between constraints and the left-to-right flow in the link. Should not be applied in the no_losses_no_cost transfer_method. Map of constraints and respective coefficients.
+node__link__node,efficiency,,,"[p.u.] Efficiency of transfer in left-to-right direction. Not used by all link_tranfer_methods. Constant, array of periods or time series."
+node__link__node,efficiency_forecasts,,,"[ratio] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__link__node,operational_cost,,,"[CUR/MWh] Variable cost for the flow in left-to-right direction. Applies when transfer_method includes costs. Constant, array of periods or time series."
+node__link__node,operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__link__node,ramp_cost,,,[CUR/MW] Cost of ramping up. Constant or array of periods.
+node__link__node,ramp_limit_down,,,[p.u./minute] Maximum ramp down speed. Constant.
+node__link__node,ramp_limit_up,,,[p.u./minute] Maximum ramp up speed. Constant.
+node__link__node,ramp_method,,ramp_method,How ramps are constrained and/or valued.
+node__node,diffusion_coefficient,,,[p.u.] Multiplier for diffusing energy between two nodes based on the difference in the node storage state. Constant or time series.
+node__node,junction_type,,junction_type,What is the interaction type between the two nodes.
+node__reserve,reserve_requirement,,,[MW] A reserve requirement for the node. Must be provided into this node. Constant or time series.
+node__reserve,reserve_requirement_forecasts,,,"[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__to_unit,capacity,,,[MW] Capacity for one unit (is therefore multiplied by number of existing plus invested units). Constant.
+node__to_unit,constraint_flow_coefficient,,,[p.u.] Multiplier between constraints and the flow. Map of constraints and respective coefficients.
+node__to_unit,conversion_coefficient,,,[p.u.] Multiplier between the flow and the conversion equation of the unit. Not used by coefficients_only conversion_method. Constant.
+node__to_unit,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
+node__to_unit,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
+node__to_unit,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
+node__to_unit,is_non_synchronous,false,boolean,Chooses whether the unit is synchronously connected to this node.
+node__to_unit,nox_emission_rate,,,[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.
+node__to_unit,other_operational_cost,,,"[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
+node__to_unit,other_operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__to_unit,profile_fix,,,"[p.u.] Fix the flow. Time series, constant or array of periods."
+node__to_unit,profile_limit_lower,,,"[p.u.] Minimum flow limit. Time series, constant or array of periods."
+node__to_unit,profile_limit_lower_forecasts,,,"[p.u.] Minimum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__to_unit,profile_limit_upper,,,"[p.u.] Maximum flow limit. Time series, constant or array of periods."
+node__to_unit,profile_limit_upper_forecasts,,,"[p.u.] Maximum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+node__to_unit,profile_method,,profile_method,How to limit the flow based on profiles.
+node__to_unit,ramp_cost,,,[CUR/MW] Cost of ramping up. Constant or array of periods.
+node__to_unit,ramp_limit_down,,,[p.u./minute] Maximum ramp down speed. Constant.
+node__to_unit,ramp_limit_up,,,[p.u./minute] Maximum ramp up speed. Constant.
+node__to_unit,ramp_method,,ramp_method,How ramps are constrained and/or valued.
+node__to_unit,salvage_value,,,[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value).
+node__to_unit,so2_emission_rate,,,[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant.
+period,duration,,,[Duration] of the period. Needs to use Duration parameter type.
+period,start_time,,,[Date_time] for the start of the period
+period,years_represented,,,How many years the period represents before the next period in the solve. Used for discounting. Can be below one (multiple periods in one year).
+reserve,activation_time,,,[duration] How fast the reserve must be provided.
+reserve,duration,,,[duration] How long the reserve provision needs to last.
+reserve,reserve_type,,reserve_type,"What kind of reserve is in question (symmetric means that the reserve must be provided in both directions, contingency means that the reserve requirement is based on the contingency_causing flows)."
+set,capacity_margin,,,[MW] Capacity margin across the set of member nodes. Constant or map of periods.
+set,capacity_margin_method,,capacity_margin_method,"How capacity margin is constrained. Dispatch_based: profile limited and storages are dispatched, thermal plants based on their availability."
+set,co2_max_cumulative,,,[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or a map of periods.
+set,co2_max_period,,,[ton of CO2] CO2 limit for each period separately. Map of periods.
+set,co2_price,,,[CUR/ton] CO2 price for a set of nodes. Constant or a map of periods.
+set,flow_max_cumulative,,,"[MW] Maximum aggregated average flow for the set members (unit__to_node, node__to_unit, link). The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods."
+set,flow_max_instant,,,[MW] Maximum instantenous flow for the aggregated flow of all set members. Constant or period.
+set,flow_min_cumulative,,,"[MW] Maximum aggregated average flow for the set members (unit__to_node, node__to_unit, link). The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods."
+set,flow_min_instant,,,[MW] Minimum instantenous flow for the aggregated flow of all set members. Constant or period.
+set,inertia_limit,,,"[MWs] Minimum for synchronous inertia in the group of nodes. Constant, period, time, or period__time."
+set,invest_max_period,,,"[MW or MWh] Maximum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods."
+set,invest_max_total,,,"[MW or MWh] Maximum investment to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods. Constant."
+set,invest_min_period,,,"[MW or MWh] Minimum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods."
+set,invest_min_total,,,"[MW or MWh] Minimum investment to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods. Constant."
+set,network_type,,network_type,What is the network type for the nodes connected to the set.
+set,non_synchronous_limit,,,"[share, e.g. 0.8 means 80%] The maximum share of non-synchronous generation in the set of nodes. Constant or period."
+set,nox_max_cumulative,,,[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or a map of periods.
+set,nox_max_period,,,[ton of NOx] NOx limit for each period separately from the member flows. Map of periods.
+set,nox_price,,,[CUR/ton] NOx price for a set of member flows. Constant or map of periods.
+set,so2_max_cumulative,,,[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or a map of periods.
+set,so2_max_period,,,[ton of SO2] SO2 limit for each period separately from the member flows. Map of periods.
+set,so2_price,,,[CUR/ton] SO2 price for a set of member flows. Constant or a map of periods.
+set,stochastic_forecast_interpolation_factors,,,"[ratio] between 0-1. How much each consequent timestep, starting from the first timestep of the solve, takes from the realization time series (the rest comes from the forecast time series)."
+set,stochastic_forecast_weights,,,[ratio between 0-1] Probability weight of each forecast. Name of forecast combined with its weight.
+set,stochastic_method,,stochastic_method,"How to use forecast data. 'interpolate_time_series_forecasts' takes a set of forecast time series (usually high, central and low) and interpolates them towards the realization closer to first solve timestep. 'analysis_time_forecasts' has separate forecasts (1 or more) for each analysis timestep with the assumption the model rolls forward from analysis time to the next."
+set,time_resolution,,,"Which time resolution the set will propagate to the set members (node, node__unit, link) overriding time_resolution from the solve_pattern."
+set__reserve,reserve_requirement,,,[MW] A shared reserve requirement for the set of nodes. Reserve can be provided into any of the nodes. Constant or time series.
+solve_pattern,duration,,,"Duration of the model. In case no duration has been provided, the model will extend to the end of the last period."
+solve_pattern,includes_solve_pattern,,,Points to an inner solve_pattern. Used to create nested model structures.
+solve_pattern,period,,,A single period or an array of periods or a map of period arrays (for rolling and possibly myopic invesments).
+solve_pattern,rolling_horizon,,,Duration of the model horizon for rolling window models.
+solve_pattern,rolling_jump,,,Duration of the model jump between two solves in rolling window models.
+solve_pattern,solve_mode,single_solve,solve_mode,Rolling or single solve model.
+solve_pattern,start_time,,,"Start time for the model. If no start time has been provided, the model will start from the beginning of the first period."
+solve_pattern,stochastic_forecasts_in_use,,,"Experimental. [forecast_names] Which forecast branches will be included in the model. If no value, then all are included (if stochastic_scope allows). Array of strings."
+solve_pattern,stochastic_scope,none,stochastic_scope,Which parameters will use the forecast versions if available.
+solve_pattern,time_resolution,,,[duration] Time resolution of the model (unless re-defined by a time resolution of a set).
+solve_pattern,time_resolution_scope,whole_model,time_resolution_scope,At what level time resolution in the model is defined.
+system,discount_rate,,,[ratio] e.g. 0.05 is 5%. Discount rate for the value of future compared to today. Constant or map of periods.
+system,timeline,,,Time steps that can be present in a model instance. Needs to be in date_time format. Tries to ensure that all time series data is from matching time steps.
+test,downward_slack,,,[MWh] Used for correct answer when downward slack variable is being tested.
+test,flow,,,[MWh] Used for correct answer when flow variable is being tested.
+test,investment,,,[MW] Used for correct answer when investment variable is being tested.
+test,online,,,[MW] Used for correct answer when online variable is being tested.
+test,reserve,,,[MW] Used for correct answer when reserve variable is being tested.
+test,retirement,,,[MW] Used for correct answer when retirement variable is being tested.
+test,state,,,[MWh] Used for correct answer when storage state variable is being tested.
+test,target,,,[entity_class__entity] to be tested.
+test,upward_slack,,,[MWh] Used for correct answer when upward slack variable is being tested.
+unit,availability,,,[p.u.] Fraction of the unit available for operation. Time series (or constant or array of periods).
+unit,availability_forecasts,,,"[p.u.] Availability forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+unit,constraint_online_coefficient,,,[p.u.] Multiplier between constraints and the online status of the unit. Map of constraints and respective coefficients.
+unit,constraint_unit_count_coefficient,,,[p.u.] Multiplier between constraints and the number of the units. Map of constraints and respective coefficients.
+unit,conversion_method,,unit_conversion_method,What method to use when converting inputs to outputs.
+unit,efficiency,,,[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method.
+unit,efficiency_forecasts,,,"[p.u.] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+unit,interest_rate,,,[ratio] e.g. 0.05 is 5 %. Interest rate for investing in the unit. Constant or array of periods.
+unit,investment_method,,unit_invest_method,How investments are treated.
+unit,lifetime,,,[years] Lifetime of the unit for annuity calculation and for retirement decision depending on the unit_retirement_method. Constant.
+unit,min_downtime,,,"[minutes] When unit is turned off, how many minutes it must stay turned off. Constant."
+unit,min_uptime,,,"[minutes] When unit is turned on, how many minutes it must stay turned on. Constant."
+unit,online_cost,,,[CUR/p.u./h] Cost of keeping unit online for one hour. Constant or array of periods.
+unit,retirement_method,,unit_retirement_method,How retirements are treated.
+unit,shutdown_cost,,,[CUR/p.u.] Cost of one full shutdown. Constant or array of periods.
+unit,startup_cost,,,[CUR/p.u.] Cost of one full startup. Constant or array of periods.
+unit,startup_method,,unit_startup_method,What method is used for unit startups.
+unit,units_existing,,,[Number] of existing units. Constant or array of periods.
+unit,units_fix_cumulative,,,"[Number] of units that must exist (considers existing, invested and retired units). Constant or array of periods."
+unit,units_invest_fix_period,,,[Number] of units that must be invested in. Array of periods.
+unit,units_invest_max_period,,,[Number] of units that can be invested in. Array of periods.
+unit,units_invest_min_period,,,[Number] of units that must at least be invested in. Array of periods.
+unit,units_max_cumulative,,,"[Number] of units that can exist (considers existing, invested and retired units). Constant or array of periods."
+unit,units_min_cumulative,,,"[Number] of units that must at least exist (considers existing, invested and retired units). Constant or array of periods."
+unit,units_retire_period,,,[Number] of units that must be retired. Array of periods.
+unit__node__reserve,contingency_causing,,boolean,Whether the flow causes a need for a contingency reserve.
+unit__node__reserve,max_reserve_provision,,,[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant.
+unit__node__reserve,reservation_cost,,,[CUR/MWh/h] Cost of providing the reservation.
+unit__node__reserve,reserve_provision_coefficient,,,[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the reserve requirement. Constant.
+unit__node__reserve,reserve_requirement_factor,,,[p.u.] The factor is multiplied with the flow to increase the reserve requirement. Constant.
+unit__to_node,capacity,,,[MW] Capacity for one unit (is therefore multiplied by number of existing plus invested units). Constant.
+unit__to_node,constraint_flow_coefficient,,,[p.u.] Multiplier between constraints and the flow. Map of constraints and respective coefficients.
+unit__to_node,conversion_coefficient,,,[p.u.] Multiplier between the flow and the conversion equation of the unit. Not used by coefficients_only conversion_method. Constant.
+unit__to_node,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
+unit__to_node,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
+unit__to_node,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
+unit__to_node,is_non_synchronous,false,boolean,Chooses whether the unit is synchronously connected to this node.
+unit__to_node,nox_emission_rate,,,[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.
+unit__to_node,other_operational_cost,,,"[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
+unit__to_node,other_operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+unit__to_node,profile_fix,,,"[p.u.] Fix the flow. Time series, constant or array of periods."
+unit__to_node,profile_limit_lower,,,"[p.u.] Minimum flow limit. Time series, constant or array of periods."
+unit__to_node,profile_limit_lower_forecasts,,,"[p.u.] Minimum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+unit__to_node,profile_limit_upper,,,"[p.u.] Maximum flow limit. Time series, constant or array of periods."
+unit__to_node,profile_limit_upper_forecasts,,,"[p.u.] Maximum flow limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+unit__to_node,profile_method,no_profile,profile_method,How to limit the flow based on profiles.
+unit__to_node,ramp_cost,,,[CUR/MW] Cost of ramping up. Constant or array of periods.
+unit__to_node,ramp_limit_down,,,[p.u./minute] Maximum ramp down speed. Constant.
+unit__to_node,ramp_limit_up,,,[p.u./minute] Maximum ramp up speed. Constant.
+unit__to_node,ramp_method,no_constraint,ramp_method,How ramps are constrained and/or valued.
+unit__to_node,salvage_value,,,[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a particular age (map of periods with age and salvage value).
+unit__to_node,so2_emission_rate,,,[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant.
+unit_flow__unit_flow,equality_constant,,,[MW] Constant C in [flow_1 = A x flow_2 + C] for equality constraints
+unit_flow__unit_flow,equality_ratio,,,[ratio] Ratio A in [flow_1 = A x flow_2 + C] for equality constraints
+unit_flow__unit_flow,greater_than_constant,,,[MW] Constant C in [flow_1 = A x flow_2 + C] for greater than constraints
+unit_flow__unit_flow,greater_than_ratio,,,[ratio] Ratio A in [flow_1 = A x flow_2 + C] for greater than constraints
+unit_flow__unit_flow,less_than_constant,,,[MW] Constant C in [flow_1 = A x flow_2 + C] for less than constraints
+unit_flow__unit_flow,less_than_ratio,,,[ratio] Ratio A in [flow_1 = A x flow_2 + C] for less than constraints
+"
+",parameter value lists:
+boolean,true
+boolean,false
+capacity_margin_method,dispatch_based
+flow_scaling_method,no_inflow
+flow_scaling_method,use_profile_directly
+flow_scaling_method,scale_to_annual
+junction_type,diffusion
+link_invest_method,not_allowed
+link_invest_method,no_limits
+link_invest_method,cumulative_limits
+link_invest_method,period_limits
+link_invest_method,cumulative_and_period_limits
+link_invest_method,fix_investments
+link_retirement_method,not_retired
+link_retirement_method,economic_retirement
+link_retirement_method,retire_as_scheduled
+link_retirement_method,retire_as_scheduled_or_economic
+link_transfer_method,no_losses_no_cost
+link_transfer_method,regular_linear
+link_transfer_method,exact_integer
+link_transfer_method,only_cost
+link_transfer_method,one_way
+link_transfer_method,only_losses
+network_type,none
+network_type,transfer
+network_type,DC_load_flow
+node_type,balance
+node_type,commodity
+node_type,storage
+node_type,node_breaker
+node_type,bus_branch
+profile_method,upper_limit
+profile_method,lower_limit
+profile_method,upper_and_lower_limit
+profile_method,fixed
+profile_method,no_profile
+ramp_method,no_constraint
+ramp_method,ramp_limit
+ramp_method,ramp_cost
+ramp_method,ramp_limit_and_cost
+reserve_type,upward
+reserve_type,downward
+reserve_type,symmetric
+reserve_type,contingency
+sense,equal
+sense,greater_than
+sense,less_than
+solve_mode,single_solve
+solve_mode,rolling_window
+stochastic_method,none
+stochastic_method,interpolate_time_series_forecasts
+stochastic_method,analysis_time_forecasts
+stochastic_scope,none
+stochastic_scope,whole_model
+stochastic_scope,set_based_override
+storage_binding_method,leap_over_forward_only
+storage_binding_method,leap_over_within_period
+storage_binding_method,leap_over_within_solve
+storage_binding_method,fill_with_representatives
+storage_binding_method,fill_with_interlaced_representatives
+storage_binding_method,none
+storage_fix_method,fix_start
+storage_fix_method,fix_start_and_horizon_end
+storage_fix_method,fix_all_timesteps
+storage_fix_method,fix_horizon_end
+storage_fix_method,none
+storage_investment_method,not_allowed
+storage_investment_method,no_limits
+storage_investment_method,cumulative_limits
+storage_investment_method,period_limits
+storage_investment_method,cumulative_and_period_limits
+storage_investment_method,fix_investments
+storage_retirement_method,not_retired
+storage_retirement_method,economic_retirement
+storage_retirement_method,retire_as_scheduled
+storage_retirement_method,retire_as_scheduled_or_economic
+storage_state_value_method,end_of_solve
+storage_state_value_method,all_timesteps
+storage_state_value_method,piecewise_linear_relative
+storage_state_value_method,piecewise_linear_absolute
+storage_state_value_method,none
+time_resolution_scope,whole_model
+time_resolution_scope,set_based_override
+unit_conversion_method,constant_efficiency
+unit_conversion_method,partial_load_efficiency
+unit_conversion_method,piecewise_linear
+unit_conversion_method,piecewise_SOS2
+unit_conversion_method,two_way_linear
+unit_conversion_method,coefficients_only
+unit_invest_method,not_allowed
+unit_invest_method,no_limits
+unit_invest_method,cumulative_limits
+unit_invest_method,period_limits
+unit_invest_method,cumulative_and_period_limits
+unit_invest_method,fix_investments
+unit_retirement_method,not_retired
+unit_retirement_method,economic_retirement
+unit_retirement_method,retire_as_scheduled
+unit_retirement_method,retire_as_scheduled_or_economic
+unit_startup_method,no_startup
+unit_startup_method,linear
+unit_startup_method,integer
+unit_startup_method,trajectory

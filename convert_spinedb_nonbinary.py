@@ -4,6 +4,7 @@ import spinedb_api as api
 import json
 import toml
 import yaml
+import csv
 from rdflib import Graph, Namespace, URIRef, RDF, RDFS, Literal, BNode, OWL
 
 filedirectory = Path(__file__).parent.resolve()
@@ -12,6 +13,7 @@ spinepath = "sqlite:///ines-spec.sqlite"
 jsonpath = "ines-spec.json"
 yamlpath = "ines-spec.yaml"
 tomlpath = "ines-spec.toml"
+csvpath = "ines-spec.csv"
 
 with api.DatabaseMapping(spinepath) as db_map:
     fulldata = api.export_data(db_map,parse_value=api.parameter_value.load_db_value)
@@ -62,9 +64,17 @@ with api.DatabaseMapping(spinepath) as db_map:
     g.serialize(destination="ines-spec.ttl")
 
 # the direct conversion from spinedb to yaml causes problems so the conversion is done indirectly through json
-with open(jsonpath, 'r') as f:
-    data = json.load(f)
-    with open(yamlpath, 'w') as f:
-        yaml.dump(data, f)
-    with open(tomlpath, 'w') as f:
-        toml.dump(data, f, encoder=toml.TomlEncoder())
+with open(jsonpath, 'r') as json_f:
+    data = json.load(json_f)
+    with open(yamlpath, 'w') as yaml_f:
+        yaml.dump(data, yaml_f)
+    with open(tomlpath, 'w') as toml_f:
+        toml.dump(data, toml_f, encoder=toml.TomlEncoder())
+    with open(csvpath, 'w', newline='') as csv_f:
+        writer = csv.writer(csv_f)
+        writer.writerow(["entity_classes:"])
+        writer.writerows(data['entity_classes'])
+        writer.writerow(['\n', 'parameter definitions:'])
+        writer.writerows(data['parameter_definitions'])
+        writer.writerow(['\n', 'parameter value lists:'])
+        writer.writerows(data['parameter_value_lists'])
