@@ -1,0 +1,27 @@
+'class name',dimensions,description,symbol,'active by default'
+constraint,[],,281246450775340,False
+link,[],,280462687073079,False
+node,[],,280683380142637,False
+period,[],,281105609584759,False
+reserve,[],,281291854967042,False
+set,[],,280569496596882,False
+solve_pattern,[],,281281703244097,False
+system,[],,280741963429022,False
+test,[],,281382822474858,False
+tool,[],,280378333982893,False
+unit,[],,280740537364493,False
+node__node,"['node', 'node']",,,True
+node__reserve,"['node', 'reserve']",,,True
+node__to_unit,"['node', 'unit']",,280566643749643,True
+set__link,"['set', 'link']",,,True
+set__node,"['set', 'node']",,,True
+set__reserve,"['set', 'reserve']",,,True
+set__unit,"['set', 'unit']",,,True
+set__unit_flow,"['set', 'unit_flow']",,,True
+tool__set,"['tool', 'set']",,,True
+unit__to_node,"['unit', 'node']",,280566643749643,True
+unit_flow,"['unit', 'node']",,,True
+unit_flow__unit_flow,"['unit_flow', 'unit_flow']",,280566643749617,True
+link__node__reserve,"['link', 'node', 'reserve']",,,True
+node__link__node,"['node', 'link', 'node']",,280462687072545,True
+unit__node__reserve,"['unit', 'node', 'reserve']",,,True

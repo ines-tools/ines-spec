@@ -13,7 +13,6 @@ spinepath = "sqlite:///ines-spec.sqlite"
 jsonpath = "ines-spec.json"
 yamlpath = "ines-spec.yaml"
 tomlpath = "ines-spec.toml"
-csvpath = "ines-spec.csv"
 
 with api.DatabaseMapping(spinepath) as db_map:
     fulldata = api.export_data(db_map,parse_value=api.parameter_value.load_db_value)
@@ -70,11 +69,15 @@ with open(jsonpath, 'r') as json_f:
         yaml.dump(data, yaml_f)
     with open(tomlpath, 'w') as toml_f:
         toml.dump(data, toml_f, encoder=toml.TomlEncoder())
-    with open(csvpath, 'w', newline='') as csv_f:
+    with open("ines-spec-entity-classes.csv", "w", newline="") as csv_f:
         writer = csv.writer(csv_f)
-        writer.writerow(["entity_classes:"])
-        writer.writerows(data['entity_classes'])
-        writer.writerow(['\n', 'parameter definitions:'])
-        writer.writerows(data['parameter_definitions'])
-        writer.writerow(['\n', 'parameter value lists:'])
-        writer.writerows(data['parameter_value_lists'])
+        writer.writerow(["'class name'","dimensions","description","symbol","'active by default'"])
+        writer.writerows(data["entity_classes"])
+    with open("ines-spec-parameter-definitions.csv", "w", newline="") as csv_f:
+        writer = csv.writer(csv_f)
+        writer.writerow(["'class name'","'parameter name'","'valid types'","'value list name'","description"])
+        writer.writerows(data["parameter_definitions"])
+    with open("ines-spec-parameter-value-lists.csv", "w", newline="") as csv_f:
+        writer = csv.writer(csv_f)
+        writer.writerow(["'parameter name'","'list member name'"])
+        writer.writerows(data["parameter_value_lists"])
