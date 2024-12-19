@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Git branching strategy has been changed (19.12.2024). Main branch is ditched and replaced by branch v0.x. The next branch with major breaking changes is v1.x. One can already start using it, but it will still be modified in small ways. As ines-spec is used mainly by conversion tools that depend on specific data structures, we are taking an explicit approach to the choice of the version to be used.
+
 # INES Specification (ines-spec)
 
 The INES (Interoperable Energy System) Specification defines a standardized data format for exchanging energy system models. This specification aims to facilitate interoperability between different energy modeling tools and platforms.
