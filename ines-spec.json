@@ -231,328 +231,6 @@
             true
         ]
     ],
-    "entity_alternatives": [
-        [
-            "constraint",
-            [
-                "fix_gas_CHP"
-            ],
-            "gas_CHP",
-            true
-        ],
-        [
-            "constraint",
-            [
-                "fix_water_flow"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "link",
-            [
-                "north_east"
-            ],
-            "north_east",
-            true
-        ],
-        [
-            "link",
-            [
-                "west_east"
-            ],
-            "west_east",
-            true
-        ],
-        [
-            "link",
-            [
-                "west_north"
-            ],
-            "west_north",
-            true
-        ],
-        [
-            "link",
-            [
-                "west_south"
-            ],
-            "west_south",
-            true
-        ],
-        [
-            "node",
-            [
-                "CH4_east"
-            ],
-            "CH4_network",
-            true
-        ],
-        [
-            "node",
-            [
-                "CH4_market"
-            ],
-            "CH4_node",
-            true
-        ],
-        [
-            "node",
-            [
-                "CH4_north"
-            ],
-            "CH4_network",
-            true
-        ],
-        [
-            "node",
-            [
-                "CH4_south"
-            ],
-            "CH4_network",
-            true
-        ],
-        [
-            "node",
-            [
-                "CH4_west"
-            ],
-            "CH4_network",
-            true
-        ],
-        [
-            "node",
-            [
-                "DH_north"
-            ],
-            "DH",
-            true
-        ],
-        [
-            "node",
-            [
-                "H2"
-            ],
-            "hydrogen",
-            true
-        ],
-        [
-            "node",
-            [
-                "battery_south"
-            ],
-            "battery",
-            true
-        ],
-        [
-            "node",
-            [
-                "building_north"
-            ],
-            "building",
-            true
-        ],
-        [
-            "node",
-            [
-                "east"
-            ],
-            "east",
-            true
-        ],
-        [
-            "node",
-            [
-                "hydro_lower"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "node",
-            [
-                "hydro_upper"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "node",
-            [
-                "north"
-            ],
-            "north",
-            true
-        ],
-        [
-            "node",
-            [
-                "south"
-            ],
-            "south",
-            true
-        ],
-        [
-            "node",
-            [
-                "uranium"
-            ],
-            "init",
-            true
-        ],
-        [
-            "node",
-            [
-                "west"
-            ],
-            "west",
-            true
-        ],
-        [
-            "period",
-            [
-                "y2025"
-            ],
-            "init",
-            true
-        ],
-        [
-            "solve_pattern",
-            [
-                "test_24h"
-            ],
-            "init",
-            true
-        ],
-        [
-            "system",
-            [
-                "test"
-            ],
-            "init",
-            true
-        ],
-        [
-            "unit",
-            [
-                "CH4_synthesis"
-            ],
-            "CH4_synthesis",
-            true
-        ],
-        [
-            "unit",
-            [
-                "battery_inverter_south"
-            ],
-            "battery",
-            true
-        ],
-        [
-            "unit",
-            [
-                "electrolyser_north"
-            ],
-            "electrolyser",
-            true
-        ],
-        [
-            "unit",
-            [
-                "fuel_cell_north"
-            ],
-            "fuel_cell",
-            true
-        ],
-        [
-            "unit",
-            [
-                "gas_CC_east"
-            ],
-            "gas_CC",
-            true
-        ],
-        [
-            "unit",
-            [
-                "gas_CHP_north"
-            ],
-            "gas_CHP",
-            true
-        ],
-        [
-            "unit",
-            [
-                "gas_OC_west"
-            ],
-            "gas_OC",
-            true
-        ],
-        [
-            "unit",
-            [
-                "heatpump_north_DH"
-            ],
-            "DH",
-            true
-        ],
-        [
-            "unit",
-            [
-                "heatpump_north_building"
-            ],
-            "building",
-            true
-        ],
-        [
-            "unit",
-            [
-                "hydro1_north"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "unit",
-            [
-                "hydro2_north"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "unit",
-            [
-                "hydro_spill_1_to_2"
-            ],
-            "hydro",
-            true
-        ],
-        [
-            "unit",
-            [
-                "nuclear_west"
-            ],
-            "nuclear",
-            true
-        ],
-        [
-            "unit",
-            [
-                "pv_south"
-            ],
-            "pv",
-            true
-        ],
-        [
-            "unit",
-            [
-                "wind_north"
-            ],
-            "wind",
-            true
-        ]
-    ],
     "parameter_value_lists": [
         [
             "boolean",
@@ -911,6 +589,10 @@
             "coefficients_only"
         ],
         [
+            "unit_conversion_method",
+            "piecewise_linear_for_each_flow"
+        ],
+        [
             "unit_invest_method",
             "not_allowed"
         ],
@@ -1026,6 +708,13 @@
         ],
         [
             "link",
+            "fixed_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods."
+        ],
+        [
+            "link",
             "fixed_cost",
             null,
             null,
@@ -1040,6 +729,13 @@
         ],
         [
             "link",
+            "investment_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant or array of periods."
+        ],
+        [
+            "link",
             "investment_cost",
             null,
             null,
@@ -1051,6 +747,13 @@
             null,
             "link_invest_method",
             "How investments are treated."
+        ],
+        [
+            "link",
+            "investment_uses_integer",
+            null,
+            "boolean",
+            "Whether investment decisions are using integer variables."
         ],
         [
             "link",
@@ -1306,6 +1009,13 @@
         ],
         [
             "node",
+            "storage_fixed_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MWh/year] Emissions caused by the existense of the asset. Constant or array of periods."
+        ],
+        [
+            "node",
             "storage_fixed_cost",
             null,
             null,
@@ -1320,6 +1030,13 @@
         ],
         [
             "node",
+            "storage_investment_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MWh] Emissions embedded in the assets to be constructed. Constant or array of periods."
+        ],
+        [
+            "node",
             "storage_investment_cost",
             null,
             null,
@@ -1331,6 +1048,13 @@
             null,
             "storage_investment_method",
             "How investments are treated."
+        ],
+        [
+            "node",
+            "storage_investment_uses_integer",
+            null,
+            "boolean",
+            "Whether investment decisions are using integer variables."
         ],
         [
             "node",
@@ -1607,6 +1331,20 @@
         ],
         [
             "node__reserve",
+            "gate_closure",
+            null,
+            null,
+            "[duration] How much time there is between the procurement of reserves (fixing the reserve contributions) and when the reserve provision starts."
+        ],
+        [
+            "node__reserve",
+            "reserve_reactivation_time",
+            null,
+            null,
+            "[duration] How soon after provision of reserve the reserves must be available again."
+        ],
+        [
+            "node__reserve",
             "reserve_requirement",
             null,
             null,
@@ -1618,6 +1356,13 @@
             null,
             null,
             "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node__reserve",
+            "update_frequency",
+            null,
+            null,
+            "[duration] How often the reserve is procured (update of reserve contributions)."
         ],
         [
             "node__to_unit",
@@ -1796,20 +1541,6 @@
         ],
         [
             "reserve",
-            "activation_time",
-            null,
-            null,
-            "[duration] How fast the reserve must be provided."
-        ],
-        [
-            "reserve",
-            "duration",
-            null,
-            null,
-            "[duration] How long the reserve provision needs to last."
-        ],
-        [
-            "reserve",
             "reserve_type",
             null,
             "reserve_type",
@@ -1820,7 +1551,7 @@
             "capacity_margin",
             null,
             null,
-            "[MW] Capacity margin across the set of member nodes. Constant or map of periods."
+            "[MW] Capacity margin across the set of member nodes. Constant or array of periods."
         ],
         [
             "set",
@@ -1834,21 +1565,21 @@
             "co2_max_cumulative",
             null,
             null,
-            "[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or a map of periods."
+            "[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or array of periods."
         ],
         [
             "set",
             "co2_max_period",
             null,
             null,
-            "[ton of CO2] CO2 limit for each period separately. Map of periods."
+            "[ton of CO2] CO2 limit for each period separately. Array of periods."
         ],
         [
             "set",
             "co2_price",
             null,
             null,
-            "[CUR/ton] CO2 price for a set of nodes. Constant or a map of periods."
+            "[CUR/ton] CO2 price for a set of nodes. Constant, array of periods or time series."
         ],
         [
             "set",
@@ -1932,42 +1663,42 @@
             "nox_max_cumulative",
             null,
             null,
-            "[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or a map of periods."
+            "[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or array of periods."
         ],
         [
             "set",
             "nox_max_period",
             null,
             null,
-            "[ton of NOx] NOx limit for each period separately from the member flows. Map of periods."
+            "[ton of NOx] NOx limit for each period separately from the member flows. Array of periods."
         ],
         [
             "set",
             "nox_price",
             null,
             null,
-            "[CUR/ton] NOx price for a set of member flows. Constant or map of periods."
+            "[CUR/ton] NOx price for a set of member flows. Constant or array of periods."
         ],
         [
             "set",
             "so2_max_cumulative",
             null,
             null,
-            "[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or a map of periods."
+            "[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or array of periods."
         ],
         [
             "set",
             "so2_max_period",
             null,
             null,
-            "[ton of SO2] SO2 limit for each period separately from the member flows. Map of periods."
+            "[ton of SO2] SO2 limit for each period separately from the member flows. Array of periods."
         ],
         [
             "set",
             "so2_price",
             null,
             null,
-            "[CUR/ton] SO2 price for a set of member flows. Constant or a map of periods."
+            "[CUR/ton] SO2 price for a set of member flows. Constant or array of periods."
         ],
         [
             "set",
@@ -1999,10 +1730,52 @@
         ],
         [
             "set__reserve",
+            "activation_time",
+            null,
+            null,
+            "[duration] How fast the reserve must be provided. Typically not used by models, but can help to set max_reserve_provision for specific technologies."
+        ],
+        [
+            "set__reserve",
+            "duration",
+            null,
+            null,
+            "[duration] How long the reserve provision needs to last."
+        ],
+        [
+            "set__reserve",
+            "gate_closure",
+            null,
+            null,
+            "[duration] How much time there is between the procurement of reserves (fixing the reserve contributions) and when the reserve provision starts."
+        ],
+        [
+            "set__reserve",
+            "reserve_reactivation_time",
+            null,
+            null,
+            "[duration] How soon after provision of reserve the reserves must be available again."
+        ],
+        [
+            "set__reserve",
             "reserve_requirement",
             null,
             null,
             "[MW] A shared reserve requirement for the set of nodes. Reserve can be provided into any of the nodes. Constant or time series."
+        ],
+        [
+            "set__reserve",
+            "reserve_requirement_forecasts",
+            null,
+            null,
+            "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "set__reserve",
+            "update_frequency",
+            null,
+            null,
+            "[duration] How often the reserve is procured (update of reserve contributions)."
         ],
         [
             "solve_pattern",
@@ -2198,7 +1971,7 @@
             "efficiency",
             null,
             null,
-            "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method."
+            "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method (coefficients_only and piecewise_linear_for_each_flow use conversion_coefficient instead of efficiency). Map is used to give pairs of operating point (float) and efficiency (float) - in partial_load_efficiency only the first and last pair is used. Constant, map and time series."
         ],
         [
             "unit",
@@ -2209,6 +1982,13 @@
         ],
         [
             "unit",
+            "fixed_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods."
+        ],
+        [
+            "unit",
             "interest_rate",
             null,
             null,
@@ -2216,10 +1996,24 @@
         ],
         [
             "unit",
+            "investment_co2_emissions",
+            null,
+            null,
+            "[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant or array of periods."
+        ],
+        [
+            "unit",
             "investment_method",
             null,
             "unit_invest_method",
             "How investments are treated."
+        ],
+        [
+            "unit",
+            "investment_uses_integer",
+            null,
+            "boolean",
+            "Whether investment decisions are using integer variables."
         ],
         [
             "unit",
@@ -2342,10 +2136,24 @@
         ],
         [
             "unit__node__reserve",
+            "forward_reserve_to_reserve",
+            null,
+            null,
+            "[p.u.] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value."
+        ],
+        [
+            "unit__node__reserve",
             "max_reserve_provision",
             null,
             null,
             "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant."
+        ],
+        [
+            "unit__node__reserve",
+            "offline_reserve_provision_share",
+            null,
+            null,
+            "[p.u.] The share of capacity that can be used to provide reserve while unit is offline. Constant."
         ],
         [
             "unit__node__reserve",

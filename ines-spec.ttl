@@ -43,6 +43,11 @@
     rdfs:domain ines:link ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:link:fixed_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods." ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:link:fixed_cost> a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array of periods." ;
     rdfs:domain ines:link ;
@@ -53,6 +58,11 @@
     rdfs:domain ines:link ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:link:investment_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant or array of periods." ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:link:investment_cost> a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MWh] Investment cost for the transfer capacity. Constant or array of periods." ;
     rdfs:domain ines:link ;
@@ -60,6 +70,11 @@
 
 <ines-spec:link:investment_method> a owl:DatatypeProperty ;
     rdfs:comment "How investments are treated." ;
+    rdfs:domain ines:link ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:link:investment_uses_integer> a owl:DatatypeProperty ;
+    rdfs:comment "Whether investment decisions are using integer variables." ;
     rdfs:domain ines:link ;
     rdfs:range rdfs:Literal .
 
@@ -244,6 +259,11 @@
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node:storage_fixed_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MWh/year] Emissions caused by the existense of the asset. Constant or array of periods." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node:storage_fixed_cost> a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MWh/year] Fixed annual cost for the storage capacity. Constant or array of periods." ;
     rdfs:domain ines:node ;
@@ -254,6 +274,11 @@
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node:storage_investment_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MWh] Emissions embedded in the assets to be constructed. Constant or array of periods." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node:storage_investment_cost> a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MWh] Investment cost for the storage capacity. Constant or array of periods." ;
     rdfs:domain ines:node ;
@@ -261,6 +286,11 @@
 
 <ines-spec:node:storage_investment_method> a owl:DatatypeProperty ;
     rdfs:comment "How investments are treated." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:node:storage_investment_uses_integer> a owl:DatatypeProperty ;
+    rdfs:comment "Whether investment decisions are using integer variables." ;
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
@@ -459,6 +489,16 @@
     rdfs:domain ines:node__node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node__reserve:gate_closure> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How much time there is between the procurement of reserves (fixing the reserve contributions) and when the reserve provision starts." ;
+    rdfs:domain ines:node__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:node__reserve:reserve_reactivation_time> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How soon after provision of reserve the reserves must be available again." ;
+    rdfs:domain ines:node__reserve ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node__reserve:reserve_requirement> a owl:DatatypeProperty ;
     rdfs:comment "[MW] A reserve requirement for the node. Must be provided into this node. Constant or time series." ;
     rdfs:domain ines:node__reserve ;
@@ -466,6 +506,11 @@
 
 <ines-spec:node__reserve:reserve_requirement_forecasts> a owl:DatatypeProperty ;
     rdfs:comment "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:domain ines:node__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:node__reserve:update_frequency> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How often the reserve is procured (update of reserve contributions)." ;
     rdfs:domain ines:node__reserve ;
     rdfs:range rdfs:Literal .
 
@@ -594,23 +639,13 @@
     rdfs:domain ines:period ;
     rdfs:range rdfs:Literal .
 
-<ines-spec:reserve:activation_time> a owl:DatatypeProperty ;
-    rdfs:comment "[duration] How fast the reserve must be provided." ;
-    rdfs:domain ines:reserve ;
-    rdfs:range rdfs:Literal .
-
-<ines-spec:reserve:duration> a owl:DatatypeProperty ;
-    rdfs:comment "[duration] How long the reserve provision needs to last." ;
-    rdfs:domain ines:reserve ;
-    rdfs:range rdfs:Literal .
-
 <ines-spec:reserve:reserve_type> a owl:DatatypeProperty ;
     rdfs:comment "What kind of reserve is in question (symmetric means that the reserve must be provided in both directions, contingency means that the reserve requirement is based on the contingency_causing flows)." ;
     rdfs:domain ines:reserve ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:capacity_margin> a owl:DatatypeProperty ;
-    rdfs:comment "[MW] Capacity margin across the set of member nodes. Constant or map of periods." ;
+    rdfs:comment "[MW] Capacity margin across the set of member nodes. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
@@ -620,17 +655,17 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:co2_max_cumulative> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or a map of periods." ;
+    rdfs:comment "[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:co2_max_period> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of CO2] CO2 limit for each period separately. Map of periods." ;
+    rdfs:comment "[ton of CO2] CO2 limit for each period separately. Array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:co2_price> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/ton] CO2 price for a set of nodes. Constant or a map of periods." ;
+    rdfs:comment "[CUR/ton] CO2 price for a set of nodes. Constant, array of periods or time series." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
@@ -690,32 +725,32 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:nox_max_cumulative> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or a map of periods." ;
+    rdfs:comment "[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:nox_max_period> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of NOx] NOx limit for each period separately from the member flows. Map of periods." ;
+    rdfs:comment "[ton of NOx] NOx limit for each period separately from the member flows. Array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:nox_price> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/ton] NOx price for a set of member flows. Constant or map of periods." ;
+    rdfs:comment "[CUR/ton] NOx price for a set of member flows. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:so2_max_cumulative> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or a map of periods." ;
+    rdfs:comment "[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:so2_max_period> a owl:DatatypeProperty ;
-    rdfs:comment "[ton of SO2] SO2 limit for each period separately from the member flows. Map of periods." ;
+    rdfs:comment "[ton of SO2] SO2 limit for each period separately from the member flows. Array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:set:so2_price> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/ton] SO2 price for a set of member flows. Constant or a map of periods." ;
+    rdfs:comment "[CUR/ton] SO2 price for a set of member flows. Constant or array of periods." ;
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
@@ -755,18 +790,48 @@ ines:set__node a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
 
+<ines-spec:set__reserve:activation_time> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How fast the reserve must be provided. Typically not used by models, but can help to set max_reserve_provision for specific technologies." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:set__reserve:duration> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How long the reserve provision needs to last." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:set__reserve:gate_closure> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How much time there is between the procurement of reserves (fixing the reserve contributions) and when the reserve provision starts." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:set__reserve:reserve_reactivation_time> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How soon after provision of reserve the reserves must be available again." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:set__reserve:reserve_requirement> a owl:DatatypeProperty ;
     rdfs:comment "[MW] A shared reserve requirement for the set of nodes. Reserve can be provided into any of the nodes. Constant or time series." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:set__reserve:reserve_requirement_forecasts> a owl:DatatypeProperty ;
+    rdfs:comment "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:domain ines:set__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:set__reserve:update_frequency> a owl:DatatypeProperty ;
+    rdfs:comment "[duration] How often the reserve is procured (update of reserve contributions)." ;
     rdfs:domain ines:set__reserve ;
     rdfs:range rdfs:Literal .
 
 ines:set__unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:set__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -889,10 +954,10 @@ ines:set__unit_flow a owl:Class ;
 ines:tool__set a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_tool ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_tool ] .
 
 <ines-spec:unit:availability> a owl:DatatypeProperty ;
     rdfs:comment "[p.u.] Fraction of the unit available for operation. Time series (or constant or array of periods)." ;
@@ -920,7 +985,7 @@ ines:tool__set a owl:Class ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:unit:efficiency> a owl:DatatypeProperty ;
-    rdfs:comment "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method." ;
+    rdfs:comment "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method (coefficients_only and piecewise_linear_for_each_flow use conversion_coefficient instead of efficiency). Map is used to give pairs of operating point (float) and efficiency (float) - in partial_load_efficiency only the first and last pair is used. Constant, map and time series." ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
@@ -929,13 +994,28 @@ ines:tool__set a owl:Class ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:unit:fixed_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:unit:interest_rate> a owl:DatatypeProperty ;
     rdfs:comment "[ratio] e.g. 0.05 is 5 %. Interest rate for investing in the unit. Constant or array of periods." ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:unit:investment_co2_emissions> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant or array of periods." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:unit:investment_method> a owl:DatatypeProperty ;
     rdfs:comment "How investments are treated." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:unit:investment_uses_integer> a owl:DatatypeProperty ;
+    rdfs:comment "Whether investment decisions are using integer variables." ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
@@ -1024,8 +1104,18 @@ ines:tool__set a owl:Class ;
     rdfs:domain ines:unit__node__reserve ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:unit__node__reserve:forward_reserve_to_reserve> a owl:DatatypeProperty ;
+    rdfs:comment "[p.u.] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value." ;
+    rdfs:domain ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:unit__node__reserve:max_reserve_provision> a owl:DatatypeProperty ;
     rdfs:comment "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant." ;
+    rdfs:domain ines:unit__node__reserve ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:unit__node__reserve:offline_reserve_provision_share> a owl:DatatypeProperty ;
+    rdfs:comment "[p.u.] The share of capacity that can be used to provide reserve while unit is offline. Constant." ;
     rdfs:domain ines:unit__node__reserve ;
     rdfs:range rdfs:Literal .
 
@@ -1187,14 +1277,6 @@ ines:tool__set a owl:Class ;
 ines:has_tool a owl:ObjectProperty ;
     rdfs:range ines:tool .
 
-ines:set__reserve a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
-
 ines:tool a owl:Class .
 
 ines:unit_flow a owl:Class ;
@@ -1215,13 +1297,7 @@ ines:node__node a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
 
-ines:node__reserve a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+ines:reserve a owl:Class .
 
 ines:system a owl:Class .
 
@@ -1235,8 +1311,6 @@ ines:period a owl:Class .
 
 ines:has_reserve a owl:ObjectProperty ;
     rdfs:range ines:reserve .
-
-ines:reserve a owl:Class .
 
 ines:has_unit a owl:ObjectProperty ;
     rdfs:range ines:unit .
@@ -1252,16 +1326,13 @@ ines:link__node__reserve a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_link ] .
 
-ines:unit__node__reserve a owl:Class ;
+ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
-        [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:has_set a owl:ObjectProperty ;
     rdfs:range ines:set .
@@ -1273,6 +1344,25 @@ ines:unit_flow__unit_flow a owl:Class ;
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_unit_flow ] .
+
+ines:set__reserve a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_set ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_reserve ] .
+
+ines:unit__node__reserve a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_node ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_reserve ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_unit ] .
 
 ines:test a owl:Class .
 
@@ -1308,11 +1398,11 @@ ines:unit__to_node a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_unit ] .
 
+ines:set a owl:Class .
+
 ines:link a owl:Class .
 
 ines:unit a owl:Class .
-
-ines:set a owl:Class .
 
 ines:node a owl:Class .
 
