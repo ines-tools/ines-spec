@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
-## [0.6.0]
+## [1.0.0]
+
+### *Important*
+
+Moving to version based branches - main branch is ditched. The reason is to make it clear that certain version of ines-spec is in use. Moving to new major version likely means considerable amount of code updates to scripts that read/write ines-spec. There can also be changes within branch, but they should be limited to additions (that shouldn't break anything) or to very minor changes that should have minimal consequences for downstream code.
 
 ### Added
 
@@ -22,6 +26,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - node__link__node: Added ramp_limits and ramp_cost and ramp_method
 - link: operational_cost can also be time_series
 - solve_pattern: stochastic_scope, stochastic_forecasts_in_use (experimenta, time_resolution_scope, time_resolution
+- set: co2_price can be also time_series
+- New reserve parameters: 
+    * unit__node__reserve: offline_reserve_provision_share, forward_reserve_to_reserve
+    * set_reserve: update_frequency, gate_closure, reserve_reactivation_time, reserve_requirement_forecast
+- unit, node, link: investment_uses_integer, investment_co2_emissions, fixed_co2_emissions
 
 ### Changed
 
@@ -31,12 +40,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - link and node__link__node: added array of periods and time series for efficiency parameter.
 - node: commodity_price_ladder changed from array to 1d-map
 - set: temporality renamed to time_resolution
+- reserve: activation_time and duration moved to set__reserve entity_class
 
 ## Removed
 
 - temporality class (moved time_resolution to solve_pattern and set)
 
-
+git commit -m "v1.0.0 updates including investment CO2, integer investments, reserve parameters"
 ## [0.5.0]
 
 ### Added

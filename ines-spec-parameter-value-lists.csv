@@ -88,6 +88,7 @@ unit_conversion_method,piecewise_linear
 unit_conversion_method,piecewise_SOS2
 unit_conversion_method,two_way_linear
 unit_conversion_method,coefficients_only
+unit_conversion_method,piecewise_linear_for_each_flow
 unit_invest_method,not_allowed
 unit_invest_method,no_limits
 unit_invest_method,cumulative_limits
