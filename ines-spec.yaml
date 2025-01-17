@@ -300,8 +300,8 @@ parameter_definitions:
   - null
   - null
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
-    (1st dimension forecast name, 2nd dimension time series) or updating forecasts
-    (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+    (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension
+    forecast name, 2nd analysis time, 3rd time series).'
 - - link
   - retirement_method
   - null
@@ -407,8 +407,9 @@ parameter_definitions:
   - flow_profile_forecasts
   - null
   - null
-  - '[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series,
-    constant or array of periods.'
+  - '[MWh or ratio] Inflow forecasts either through forecast time series (1st dimension
+    forecast name, 2nd time series) or updating forecasts (1st dimension forecast
+    name, 2nd analysis time, 3rd time series).'
 - - node
   - flow_scaling_method
   - null
@@ -590,8 +591,8 @@ parameter_definitions:
   - null
   - null
   - '[CUR/MWh] Storage state value forecasts either through forecast time series (1st
-    dimension forecast name, 2nd dimension time series) or updating forecasts (1st
-    dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+    dimension forecast name, 2nd time series) or updating forecasts (1st dimension
+    forecast name, 2nd analysis time, 3rd time series).'
 - - node
   - storage_state_value_method
   - null
@@ -735,8 +736,8 @@ parameter_definitions:
   - null
   - null
   - '[MW] Reserve requirement forecasts either through forecast time series (1st dimension
-    forecast name, 2nd dimension time series) or updating forecasts (1st dimension
-    forecast name, 2nd dimension analysis time, 3rd time series).'
+    forecast name, 2nd time series) or updating forecasts (1st dimension forecast
+    name, 2nd analysis time, 3rd time series).'
 - - node__reserve
   - update_frequency
   - null
@@ -795,8 +796,8 @@ parameter_definitions:
   - null
   - null
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
-    (1st dimension forecast name, 2nd dimension time series) or updating forecasts
-    (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+    (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension
+    forecast name, 2nd analysis time, 3rd time series).'
 - - node__to_unit
   - profile_fix
   - null
@@ -862,11 +863,6 @@ parameter_definitions:
   - null
   - null
   - '[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant.'
-- - period
-  - duration
-  - null
-  - null
-  - '[Duration] of the period. Needs to use Duration parameter type.'
 - - period
   - start_time
   - null
@@ -1090,8 +1086,10 @@ parameter_definitions:
   - duration
   - null
   - null
-  - Duration of the model. In case no duration has been provided, the model will extend
-    to the end of the last period.
+  - Duration (from start_time). Array of duration needs to be matched with an array
+    of start_times to pick multiple sequences from the timeline. In case no duration
+    has been provided, the model will extend to the end of the timeline. Duration
+    or array of durations.
 - - solve_pattern
   - includes_solve_pattern
   - null
@@ -1122,8 +1120,10 @@ parameter_definitions:
   - start_time
   - null
   - null
-  - Start time for the model. If no start time has been provided, the model will start
-    from the beginning of the first period.
+  - Start time (from timeline). Array of start_times will need to be matched with
+    an array of durations to pick multiple sequences from the timeline. If no start
+    time has been provided, the model will start from the beginning of the timeline.
+    Date_time or an array of date_times.
 - - solve_pattern
   - stochastic_forecasts_in_use
   - null
@@ -1248,8 +1248,8 @@ parameter_definitions:
   - null
   - null
   - '[p.u.] Efficiency forecasts either through forecast time series (1st dimension
-    forecast name, 2nd dimension time series) or updating forecasts (1st dimension
-    forecast name, 2nd dimension analysis time, 3rd time series).'
+    forecast name, 2nd time series) or updating forecasts (1st dimension forecast
+    name, 2nd analysis time, 3rd time series).'
 - - unit
   - fixed_co2_emissions
   - null

@@ -135,7 +135,7 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:link:operational_cost_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:comment "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:link ;
     rdfs:range rdfs:Literal .
 
@@ -225,7 +225,7 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:node:flow_profile_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series, constant or array of periods." ;
+    rdfs:comment "[MWh or ratio] Inflow forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
@@ -380,7 +380,7 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:node:storage_state_value_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/MWh] Storage state value forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:comment "[CUR/MWh] Storage state value forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
@@ -505,7 +505,7 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:node__reserve:reserve_requirement_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:comment "[MW] Reserve requirement forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:node__reserve ;
     rdfs:range rdfs:Literal .
 
@@ -560,7 +560,7 @@
     rdfs:range rdfs:Literal .
 
 <ines-spec:node__to_unit:other_operational_cost_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:comment "[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:node__to_unit ;
     rdfs:range rdfs:Literal .
 
@@ -622,11 +622,6 @@
 <ines-spec:node__to_unit:so2_emission_rate> a owl:DatatypeProperty ;
     rdfs:comment "[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant." ;
     rdfs:domain ines:node__to_unit ;
-    rdfs:range rdfs:Literal .
-
-<ines-spec:period:duration> a owl:DatatypeProperty ;
-    rdfs:comment "[Duration] of the period. Needs to use Duration parameter type." ;
-    rdfs:domain ines:period ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:period:start_time> a owl:DatatypeProperty ;
@@ -828,10 +823,10 @@ ines:set__node a owl:Class ;
 ines:set__unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -842,7 +837,7 @@ ines:set__unit_flow a owl:Class ;
             owl:onProperty ines:has_set ] .
 
 <ines-spec:solve_pattern:duration> a owl:DatatypeProperty ;
-    rdfs:comment "Duration of the model. In case no duration has been provided, the model will extend to the end of the last period." ;
+    rdfs:comment "Duration (from start_time). Array of duration needs to be matched with an array of start_times to pick multiple sequences from the timeline. In case no duration has been provided, the model will extend to the end of the timeline. Duration or array of durations." ;
     rdfs:domain ines:solve_pattern ;
     rdfs:range rdfs:Literal .
 
@@ -872,7 +867,7 @@ ines:set__unit_flow a owl:Class ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:solve_pattern:start_time> a owl:DatatypeProperty ;
-    rdfs:comment "Start time for the model. If no start time has been provided, the model will start from the beginning of the first period." ;
+    rdfs:comment "Start time (from timeline). Array of start_times will need to be matched with an array of durations to pick multiple sequences from the timeline. If no start time has been provided, the model will start from the beginning of the timeline. Date_time or an array of date_times." ;
     rdfs:domain ines:solve_pattern ;
     rdfs:range rdfs:Literal .
 
@@ -954,10 +949,10 @@ ines:set__unit_flow a owl:Class ;
 ines:tool__set a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_tool ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_tool ] .
+            owl:onProperty ines:has_set ] .
 
 <ines-spec:unit:availability> a owl:DatatypeProperty ;
     rdfs:comment "[p.u.] Fraction of the unit available for operation. Time series (or constant or array of periods)." ;
@@ -990,7 +985,7 @@ ines:tool__set a owl:Class ;
     rdfs:range rdfs:Literal .
 
 <ines-spec:unit:efficiency_forecasts> a owl:DatatypeProperty ;
-    rdfs:comment "[p.u.] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:comment "[p.u.] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)." ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
@@ -1297,6 +1292,8 @@ ines:node__node a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
 
+ines:period a owl:Class .
+
 ines:reserve a owl:Class .
 
 ines:system a owl:Class .
@@ -1307,8 +1304,6 @@ ines:has_link a owl:ObjectProperty ;
 ines:has_unit_flow a owl:ObjectProperty ;
     rdfs:range ines:unit_flow .
 
-ines:period a owl:Class .
-
 ines:has_reserve a owl:ObjectProperty ;
     rdfs:range ines:reserve .
 
@@ -1318,13 +1313,13 @@ ines:has_unit a owl:ObjectProperty ;
 ines:link__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
+            owl:onProperty ines:has_link ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_node ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1356,10 +1351,10 @@ ines:set__reserve a owl:Class ;
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_unit ] .
@@ -1369,10 +1364,10 @@ ines:test a owl:Class .
 ines:node__link__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
@@ -1385,10 +1380,10 @@ ines:solve_pattern a owl:Class .
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
