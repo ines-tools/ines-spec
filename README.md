@@ -69,9 +69,9 @@ If only one of these is defined, then given parameter values apply to both direc
 
 ### Unit, node and link capacities
 
-- Units and links are invested in and turned on/off on per unit basis. Consequently, every unit/link needs to have capacity of one unit defined. 
-For units, the capacity is defined for each unit_flow. If unit has one input or one output, it can be sufficient to define capacity only for that
-(but with multiple inputs/outputs, care has to be taken to define a valid operating area). Links and nodes have capacity defined on the link/node entity,
+- Units and links are invested in and turned on/off on per unit basis. Consequently, every unit/link needs to have capacity of one unit defined. For units this is defined in unit__to_node and node__to_unit allowing different capacities across multiple inputs and outputs. Number of units is a property of unit class.
+- For units, the capacity is defined for each unit_flow. If unit has one input or one output, it can be sufficient to define capacity only for that (but with multiple inputs/outputs, care has to be taken to define a valid operating area).
+- Links and nodes have capacity defined on the link/node entity,
 but links can redefine the capacity through node__link__node if the two directions differ.
 - In order to unequivocally define something to be invested in, there needs to be investment_cost and capacity defined.
 

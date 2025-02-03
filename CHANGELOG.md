@@ -5,6 +5,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [1.1.1]
+
+### Added
+
+- node: spill_lower_limit, spill_upper_limit
+- node: storage_state_fix_forecasts, storage_state_lower_limit_forecasts, storage_state_upper_limit_forecasts
+- set: co2_price_forecasts
+- unit: startup_cost_tiers, cooling_time_to_tiers, startup_co2_emission, startup_co2_emission_tiers
+- unit: unit_startup_method has more options
+
+## [1.1.0]
+
+### Added
+
+- solve_pattern: start_time and duration can also be arrays of date_time and duration. (Allows representative periods and picking multiple sections from multi-year timelines).
+
+### Removed
+
+- period: Duration parameter removed. years_represented remains, because using e.g. 1M in duration would cause disambiguoty.
+
 ## [1.0.0]
 
 ### *Important*

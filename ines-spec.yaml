@@ -431,6 +431,18 @@ parameter_definitions:
   - null
   - '[CUR/MWh] Penalty for adding energy to the node. Constant or array of periods.'
 - - node
+  - spill_lower_limit
+  - null
+  - null
+  - '[MW] Minimum spill (removed from model scope). Time series, constant or array
+    of periods.'
+- - node
+  - spill_upper_limit
+  - null
+  - null
+  - '[MW] Maximum spill (removed from model scope). Time series, constant or array
+    of periods.'
+- - node
   - storage_capacity
   - null
   - null
@@ -549,6 +561,13 @@ parameter_definitions:
   - '[p.u.] Fix the storage state according to the storage_state_fix_method. Time
     series, constant or array of periods.'
 - - node
+  - storage_state_fix_forecasts
+  - null
+  - null
+  - '[p.u.] Storage state fix forecasts either through forecast time series (1st dimension
+    forecast name, 2nd dimension time series) or updating forecasts (1st dimension
+    forecast name, 2nd dimension analysis time, 3rd time series).'
+- - node
   - storage_state_fix_method
   - null
   - storage_fix_method
@@ -564,11 +583,25 @@ parameter_definitions:
   - '[p.u.] Minimum limit for the state of the storage. Time series, constant or array
     of periods.'
 - - node
+  - storage_state_lower_limit_forecasts
+  - null
+  - null
+  - '[p.u.] Storage state lower limit forecasts either through forecast time series
+    (1st dimension forecast name, 2nd dimension time series) or updating forecasts
+    (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+- - node
   - storage_state_upper_limit
   - null
   - null
   - '[p.u.] Maximum limit for the state of the storage. Time series, constant or array
     of periods.'
+- - node
+  - storage_state_upper_limit_forecasts
+  - null
+  - null
+  - '[p.u.] Storage state upper limit forecasts either through forecast time series
+    (1st dimension forecast name, 2nd dimension time series) or updating forecasts
+    (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
 - - node
   - storage_state_upward_absolute_values
   - null
@@ -596,7 +629,7 @@ parameter_definitions:
 - - node
   - storage_state_value_method
   - null
-  - null
+  - storage_state_value_method
   - 'How to include value of storage state in the objective function. end_of_solve:
     the last timestep of the solve will get storage_state_value. all_timesteps will
     apply the storage value to each timestep in the model horizon.'
@@ -908,6 +941,13 @@ parameter_definitions:
   - null
   - null
   - '[CUR/ton] CO2 price for a set of nodes. Constant, array of periods or time series.'
+- - set
+  - co2_price_forecasts
+  - null
+  - null
+  - '[CUR/ton] CO2 price forecasts either through forecast time series (1st dimension
+    forecast name, 2nd dimension time series) or updating forecasts (1st dimension
+    forecast name, 2nd dimension analysis time, 3rd time series).'
 - - set
   - flow_max_cumulative
   - null
@@ -1235,6 +1275,11 @@ parameter_definitions:
   - unit_conversion_method
   - What method to use when converting inputs to outputs.
 - - unit
+  - cooling_time_to_tiers
+  - null
+  - null
+  - '[minutes] Time to cool to the startup tier from shutdown.'
+- - unit
   - efficiency
   - null
   - null
@@ -1311,10 +1356,28 @@ parameter_definitions:
   - null
   - '[CUR/p.u.] Cost of one full shutdown. Constant or array of periods.'
 - - unit
+  - startup_co2_emission
+  - null
+  - null
+  - '[ton of CO2] Additional CO2 emissions from one full startup (do not include emissions
+    already included in fuel use).'
+- - unit
+  - startup_co2_emission_tiers
+  - null
+  - null
+  - '[ton of CO2] Additional CO2 emissions from one full startup started from the
+    tier temperature (do not include emissions already included in fuel use).'
+- - unit
   - startup_cost
   - null
   - null
   - '[CUR/p.u.] Cost of one full startup. Constant or array of periods.'
+- - unit
+  - startup_cost_tiers
+  - null
+  - null
+  - '[CUR/p.u.] Cost of one full startup for tiers of cooldown. Array of tiers starting
+    from 0, whic is ''hot'' start and uses no cooling time.'
 - - unit
   - startup_method
   - null
@@ -1616,6 +1679,8 @@ parameter_value_lists:
   - node_breaker
 - - node_type
   - bus_branch
+- - node_type
+  - balance_within_period
 - - profile_method
   - upper_limit
 - - profile_method
@@ -1762,3 +1827,9 @@ parameter_value_lists:
   - integer
 - - unit_startup_method
   - trajectory
+- - unit_startup_method
+  - linear_with_tiers
+- - unit_startup_method
+  - integer_with_tiers
+- - unit_startup_method
+  - trajectory_with_tiers

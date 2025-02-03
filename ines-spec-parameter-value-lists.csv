@@ -30,6 +30,7 @@ node_type,commodity
 node_type,storage
 node_type,node_breaker
 node_type,bus_branch
+node_type,balance_within_period
 profile_method,upper_limit
 profile_method,lower_limit
 profile_method,upper_and_lower_limit
@@ -103,3 +104,6 @@ unit_startup_method,no_startup
 unit_startup_method,linear
 unit_startup_method,integer
 unit_startup_method,trajectory
+unit_startup_method,linear_with_tiers
+unit_startup_method,integer_with_tiers
+unit_startup_method,trajectory_with_tiers

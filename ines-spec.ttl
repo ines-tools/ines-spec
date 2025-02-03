@@ -249,6 +249,16 @@
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node:spill_lower_limit> a owl:DatatypeProperty ;
+    rdfs:comment "[MW] Minimum spill (removed from model scope). Time series, constant or array of periods." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:node:spill_upper_limit> a owl:DatatypeProperty ;
+    rdfs:comment "[MW] Maximum spill (removed from model scope). Time series, constant or array of periods." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node:storage_capacity> a owl:DatatypeProperty ;
     rdfs:comment "[MWh] Capacity of one storage unit. Constant." ;
     rdfs:domain ines:node ;
@@ -349,6 +359,11 @@
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node:storage_state_fix_forecasts> a owl:DatatypeProperty ;
+    rdfs:comment "[p.u.] Storage state fix forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node:storage_state_fix_method> a owl:DatatypeProperty ;
     rdfs:comment "How storage level is possibly fixed over time using 'storage_state_fix' parameter. Often used for rolling window models. 'fix_start' fixes only the fist timestep of the model. 'fix_horizon_end' fixes the end state of the storage in every solve. 'fix_start_and_horizon_end' does both. 'fix_all_timesteps' fixes the storage level to predeterminend time series or constant." ;
     rdfs:domain ines:node ;
@@ -359,8 +374,18 @@
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:node:storage_state_lower_limit_forecasts> a owl:DatatypeProperty ;
+    rdfs:comment "[p.u.] Storage state lower limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:node:storage_state_upper_limit> a owl:DatatypeProperty ;
     rdfs:comment "[p.u.] Maximum limit for the state of the storage. Time series, constant or array of periods." ;
+    rdfs:domain ines:node ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:node:storage_state_upper_limit_forecasts> a owl:DatatypeProperty ;
+    rdfs:comment "[p.u.] Storage state upper limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
     rdfs:domain ines:node ;
     rdfs:range rdfs:Literal .
 
@@ -664,6 +689,11 @@
     rdfs:domain ines:set ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:set:co2_price_forecasts> a owl:DatatypeProperty ;
+    rdfs:comment "[CUR/ton] CO2 price forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)." ;
+    rdfs:domain ines:set ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:set:flow_max_cumulative> a owl:DatatypeProperty ;
     rdfs:comment "[MW] Maximum aggregated average flow for the set members (unit__to_node, node__to_unit, link). The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
     rdfs:domain ines:set ;
@@ -772,18 +802,18 @@
 ines:set__link a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_link ] .
 
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 <ines-spec:set__reserve:activation_time> a owl:DatatypeProperty ;
     rdfs:comment "[duration] How fast the reserve must be provided. Typically not used by models, but can help to set max_reserve_provision for specific technologies." ;
@@ -979,6 +1009,11 @@ ines:tool__set a owl:Class ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:unit:cooling_time_to_tiers> a owl:DatatypeProperty ;
+    rdfs:comment "[minutes] Time to cool to the startup tier from shutdown." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:unit:efficiency> a owl:DatatypeProperty ;
     rdfs:comment "[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method (coefficients_only and piecewise_linear_for_each_flow use conversion_coefficient instead of efficiency). Map is used to give pairs of operating point (float) and efficiency (float) - in partial_load_efficiency only the first and last pair is used. Constant, map and time series." ;
     rdfs:domain ines:unit ;
@@ -1044,8 +1079,23 @@ ines:tool__set a owl:Class ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
+<ines-spec:unit:startup_co2_emission> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2] Additional CO2 emissions from one full startup (do not include emissions already included in fuel use)." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:unit:startup_co2_emission_tiers> a owl:DatatypeProperty ;
+    rdfs:comment "[ton of CO2] Additional CO2 emissions from one full startup started from the tier temperature (do not include emissions already included in fuel use)." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
 <ines-spec:unit:startup_cost> a owl:DatatypeProperty ;
     rdfs:comment "[CUR/p.u.] Cost of one full startup. Constant or array of periods." ;
+    rdfs:domain ines:unit ;
+    rdfs:range rdfs:Literal .
+
+<ines-spec:unit:startup_cost_tiers> a owl:DatatypeProperty ;
+    rdfs:comment "[CUR/p.u.] Cost of one full startup for tiers of cooldown. Array of tiers starting from 0, whic is 'hot' start and uses no cooling time." ;
     rdfs:domain ines:unit ;
     rdfs:range rdfs:Literal .
 
@@ -1316,10 +1366,10 @@ ines:link__node__reserve a owl:Class ;
             owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1351,13 +1401,13 @@ ines:set__reserve a owl:Class ;
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:test a owl:Class .
 

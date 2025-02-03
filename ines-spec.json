@@ -357,6 +357,10 @@
             "bus_branch"
         ],
         [
+            "node_type",
+            "balance_within_period"
+        ],
+        [
             "profile_method",
             "upper_limit"
         ],
@@ -647,6 +651,18 @@
         [
             "unit_startup_method",
             "trajectory"
+        ],
+        [
+            "unit_startup_method",
+            "linear_with_tiers"
+        ],
+        [
+            "unit_startup_method",
+            "integer_with_tiers"
+        ],
+        [
+            "unit_startup_method",
+            "trajectory_with_tiers"
         ]
     ],
     "parameter_definitions": [
@@ -995,6 +1011,20 @@
         ],
         [
             "node",
+            "spill_lower_limit",
+            null,
+            null,
+            "[MW] Minimum spill (removed from model scope). Time series, constant or array of periods."
+        ],
+        [
+            "node",
+            "spill_upper_limit",
+            null,
+            null,
+            "[MW] Maximum spill (removed from model scope). Time series, constant or array of periods."
+        ],
+        [
+            "node",
             "storage_capacity",
             null,
             null,
@@ -1135,6 +1165,13 @@
         ],
         [
             "node",
+            "storage_state_fix_forecasts",
+            null,
+            null,
+            "[p.u.] Storage state fix forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node",
             "storage_state_fix_method",
             null,
             "storage_fix_method",
@@ -1149,10 +1186,24 @@
         ],
         [
             "node",
+            "storage_state_lower_limit_forecasts",
+            null,
+            null,
+            "[p.u.] Storage state lower limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "node",
             "storage_state_upper_limit",
             null,
             null,
             "[p.u.] Maximum limit for the state of the storage. Time series, constant or array of periods."
+        ],
+        [
+            "node",
+            "storage_state_upper_limit_forecasts",
+            null,
+            null,
+            "[p.u.] Storage state upper limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
         ],
         [
             "node",
@@ -1186,7 +1237,7 @@
             "node",
             "storage_state_value_method",
             null,
-            null,
+            "storage_state_value_method",
             "How to include value of storage state in the objective function. end_of_solve: the last timestep of the solve will get storage_state_value. all_timesteps will apply the storage value to each timestep in the model horizon."
         ],
         [
@@ -1576,6 +1627,13 @@
         ],
         [
             "set",
+            "co2_price_forecasts",
+            null,
+            null,
+            "[CUR/ton] CO2 price forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
+        ],
+        [
+            "set",
             "flow_max_cumulative",
             null,
             null,
@@ -1961,6 +2019,13 @@
         ],
         [
             "unit",
+            "cooling_time_to_tiers",
+            null,
+            null,
+            "[minutes] Time to cool to the startup tier from shutdown."
+        ],
+        [
+            "unit",
             "efficiency",
             null,
             null,
@@ -2052,10 +2117,31 @@
         ],
         [
             "unit",
+            "startup_co2_emission",
+            null,
+            null,
+            "[ton of CO2] Additional CO2 emissions from one full startup (do not include emissions already included in fuel use)."
+        ],
+        [
+            "unit",
+            "startup_co2_emission_tiers",
+            null,
+            null,
+            "[ton of CO2] Additional CO2 emissions from one full startup started from the tier temperature (do not include emissions already included in fuel use)."
+        ],
+        [
+            "unit",
             "startup_cost",
             null,
             null,
             "[CUR/p.u.] Cost of one full startup. Constant or array of periods."
+        ],
+        [
+            "unit",
+            "startup_cost_tiers",
+            null,
+            null,
+            "[CUR/p.u.] Cost of one full startup for tiers of cooldown. Array of tiers starting from 0, whic is 'hot' start and uses no cooling time."
         ],
         [
             "unit",

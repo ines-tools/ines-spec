@@ -49,6 +49,8 @@ node,flow_scaling_method,,flow_scaling_method,How to scale/use the flow_profile.
 node,node_type,,node_type,How the node should behave.
 node,penalty_downward,,,[CUR/MWh] Penalty for removing energy from the node. Constant or array of periods.
 node,penalty_upward,,,[CUR/MWh] Penalty for adding energy to the node. Constant or array of periods.
+node,spill_lower_limit,,,"[MW] Minimum spill (removed from model scope). Time series, constant or array of periods."
+node,spill_upper_limit,,,"[MW] Maximum spill (removed from model scope). Time series, constant or array of periods."
 node,storage_capacity,,,[MWh] Capacity of one storage unit. Constant.
 node,storage_cost_of_stored_energy,,,[CUR/MWh/h] Cost of storing energy over time. Constant or map of periods.
 node,storage_fixed_co2_emissions,,,[ton of CO2/MWh/year] Emissions caused by the existense of the asset. Constant or array of periods.
@@ -69,14 +71,17 @@ node,storage_state_binding_method,,storage_binding_method,How storages behave wh
 node,storage_state_downward_absolute_values,,,[CUR/MWh] Downward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh.
 node,storage_state_downward_relative_values,,,[CUR/MWh] Downward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh.
 node,storage_state_fix,,,"[p.u.] Fix the storage state according to the storage_state_fix_method. Time series, constant or array of periods."
+node,storage_state_fix_forecasts,,,"[p.u.] Storage state fix forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
 node,storage_state_fix_method,,storage_fix_method,How storage level is possibly fixed over time using 'storage_state_fix' parameter. Often used for rolling window models. 'fix_start' fixes only the fist timestep of the model. 'fix_horizon_end' fixes the end state of the storage in every solve. 'fix_start_and_horizon_end' does both. 'fix_all_timesteps' fixes the storage level to predeterminend time series or constant.
 node,storage_state_lower_limit,,,"[p.u.] Minimum limit for the state of the storage. Time series, constant or array of periods."
+node,storage_state_lower_limit_forecasts,,,"[p.u.] Storage state lower limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
 node,storage_state_upper_limit,,,"[p.u.] Maximum limit for the state of the storage. Time series, constant or array of periods."
+node,storage_state_upper_limit_forecasts,,,"[p.u.] Storage state upper limit forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
 node,storage_state_upward_absolute_values,,,[CUR/MWh] Upward price ladder for storage state using MWh (absolute) piecewise points. MWh value and price/cost in CUR/MWh.
 node,storage_state_upward_relative_values,,,[CUR/MWh] Upward price ladder for storage state using per unit (relative) piecewise points. Per unit value and price/cost in CUR/MWh.
 node,storage_state_value,,,"[CUR] Value (price) of storage state. Constant, time series or array of periods."
 node,storage_state_value_forecasts,,,"[CUR/MWh] Storage state value forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)."
-node,storage_state_value_method,,,How to include value of storage state in the objective function. end_of_solve: the last timestep of the solve will get storage_state_value. all_timesteps will apply the storage value to each timestep in the model horizon.
+node,storage_state_value_method,,storage_state_value_method,How to include value of storage state in the objective function. end_of_solve: the last timestep of the solve will get storage_state_value. all_timesteps will apply the storage value to each timestep in the model horizon.
 node,storages_existing,,,[Number] of storages at the start of the model. Constant or map of periods.
 node,storages_fix_cumulative,,,"[Number] of storage units that must exist (considers existing, invested and retired units). Constant or array of periods."
 node,storages_invest_fix_period,,,[Number] of storage units that must be invested in. Array of periods.
@@ -132,6 +137,7 @@ set,capacity_margin_method,,capacity_margin_method,"How capacity margin is const
 set,co2_max_cumulative,,,[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant or array of periods.
 set,co2_max_period,,,[ton of CO2] CO2 limit for each period separately. Array of periods.
 set,co2_price,,,"[CUR/ton] CO2 price for a set of nodes. Constant, array of periods or time series."
+set,co2_price_forecasts,,,"[CUR/ton] CO2 price forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
 set,flow_max_cumulative,,,"[MW] Maximum aggregated average flow for the set members (unit__to_node, node__to_unit, link). The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods."
 set,flow_max_instant,,,[MW] Maximum instantenous flow for the aggregated flow of all set members. Constant or period.
 set,flow_min_cumulative,,,"[MW] Maximum aggregated average flow for the set members (unit__to_node, node__to_unit, link). The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods."
@@ -187,6 +193,7 @@ unit,availability_forecasts,,,"[p.u.] Availability forecasts either through fore
 unit,constraint_online_coefficient,,,[p.u.] Multiplier between constraints and the online status of the unit. Map of constraints and respective coefficients.
 unit,constraint_unit_count_coefficient,,,[p.u.] Multiplier between constraints and the number of the units. Map of constraints and respective coefficients.
 unit,conversion_method,,unit_conversion_method,What method to use when converting inputs to outputs.
+unit,cooling_time_to_tiers,,,[minutes] Time to cool to the startup tier from shutdown.
 unit,efficiency,,,"[ratio] Multiplier for turning inputs to outputs. Usage depends on the conversion_method (coefficients_only and piecewise_linear_for_each_flow use conversion_coefficient instead of efficiency). Map is used to give pairs of operating point (float) and efficiency (float) - in partial_load_efficiency only the first and last pair is used. Constant, map and time series."
 unit,efficiency_forecasts,,,"[p.u.] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)."
 unit,fixed_co2_emissions,,,[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods.
@@ -200,7 +207,10 @@ unit,min_uptime,,,"[minutes] When unit is turned on, how many minutes it must st
 unit,online_cost,,,[CUR/p.u./h] Cost of keeping unit online for one hour. Constant or array of periods.
 unit,retirement_method,,unit_retirement_method,How retirements are treated.
 unit,shutdown_cost,,,[CUR/p.u.] Cost of one full shutdown. Constant or array of periods.
+unit,startup_co2_emission,,,[ton of CO2] Additional CO2 emissions from one full startup (do not include emissions already included in fuel use).
+unit,startup_co2_emission_tiers,,,[ton of CO2] Additional CO2 emissions from one full startup started from the tier temperature (do not include emissions already included in fuel use).
 unit,startup_cost,,,[CUR/p.u.] Cost of one full startup. Constant or array of periods.
+unit,startup_cost_tiers,,,"[CUR/p.u.] Cost of one full startup for tiers of cooldown. Array of tiers starting from 0, whic is 'hot' start and uses no cooling time."
 unit,startup_method,,unit_startup_method,What method is used for unit startups.
 unit,units_existing,,,[Number] of existing units. Constant or array of periods.
 unit,units_fix_cumulative,,,"[Number] of units that must exist (considers existing, invested and retired units). Constant or array of periods."
