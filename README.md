@@ -17,14 +17,16 @@ The INES Specification is designed to support the seamless exchange of energy sy
 
 ## Installation
 
-To use the INES Specification, you need to have Spine Toolbox v0.8 or later installed. You can download Spine Toolbox from the official [Spine Toolbox repository](https://github.com/spine-tools/Spine-Toolbox).
+The specification does not need to be installed. It is a schema to be followed and the schema is stored, for convenience, in multiple formats. The fastest way to see the schema is to open the csv files in this repository in your browser. For more structured views, use an ontology editor like Protégé to open a ttl file or Spine Toolbox to open the sqlite file (you can also open the sqlite file in the DB Browser, but it's not very convenient to browse that way).
+
+However, when using the schema to convert data from and to INES, the current implementation uses Spine Database API (and Spine Toolbox as a GUI). This includes all the sister repositories in this GitHub organisation. Please use the latest versions of Spine tools, which you can download them from the official [Spine Toolbox repository](https://github.com/spine-tools/Spine-Toolbox).
 
 ## Usage
 
-- **Edit data yourself** Use Spine Toolbox database editor to add and edit data
+- **Edit data yourself** Take a copy of the sqlite that contains the schema and then use Spine Toolbox database editor to add and edit actual data
 - **Transform existing model data to ines** Use one of the adjacent repositories (e.g. ines-osemosys) to translate an existing energy system model to the ines format
 - **Transform ines data to energy system model format** Use one of the adjacent repositories (e.g. ines-flextool) to translate data from the ines format to an existing energy system model format
-- **Use data pipelines** The adjacent repository data-pipelines has scripts and data sources that can be imported to ines-spec to create a model instance
+- **Use data pipelines** The adjacent repository data-pipelines has scripts and data sources that can be imported to ines-spec to create a model instance in INES format (that can then be taken to the supported model formats)
 
 ## Structural notes
 
@@ -33,9 +35,9 @@ To use the INES Specification, you need to have Spine Toolbox v0.8 or later inst
 - Storages are special nodes (nodes that have a state)
 - Commodities are also special nodes (nodes that do not have a balance constraint, but have a price).
 - Units and links are quite similar - they could be grouped into one, but they are kept separate to allow better organisation of energy system model data.
-The intention is that units convert energy (or material) while links transfer. Transfer links are often two-way, but not necessarily. Similarly, units are typically one-way,
+The intention is that units convert energy (or material) while links transfer energy (or material). Transfer links are often two-way, but not necessarily. Similarly, units are typically one-way,
 but two-way option is available.
-- Links connect always two nodes. The connections are represented by node__link__node entity.
+- Links always connect two nodes. The connections are represented by node__link__node entity.
 - It is possible to define both directions: nodeA__link__nodeB and nodeB__link__nodeA. This enables giving separate parameter values to both directions (e.g. 'capacity'). 
 If only one of these is defined, then given parameter values apply to both directions.
 - Units can have none, one or multiple inputs and/or outputs.
@@ -79,6 +81,7 @@ but links can redefine the capacity through node__link__node if the two directio
 
 We welcome contributions to the INES Specification. Please follow these steps to contribute:
 
+0. Discuss with the current authors about the contribution (e.g. using issue tracker)
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
 3. Make your changes.
