@@ -7,7 +7,7 @@ The INES (Interoperable Energy System) Specification defines a standardized data
 
 ## Overview
 
-The INES Specification is designed to support the seamless exchange of energy system data. It is currently hosted by the Spine Toolbox database file `ines-spec.sqlite` and requires Spine Toolbox v0.8 or later. The specification is also available in JSON and YAML formats for faster access.
+The INES Specification is designed to support the seamless exchange of energy system data. It is currently hosted by the Spine Toolbox database file `ines-spec.sqlite` and requires Spine Toolbox v0.8 or later. The specification is also available in csv, ttl, JSON and YAML formats. For a quick look, open the csv files in your browser.
 
 ## Features
 
