@@ -27,8 +27,11 @@ with api.DatabaseMapping(spinepath) as db_map:
         json.dump(data, f, indent=4)
     g = Graph()
     ines = Namespace("ines-spec#")
+    SCHEMA = Namespace("http://schema.org/")
     g.bind("ines", ines)
     g.bind("owl", OWL)
+    #g.bind("schema", SCHEMA)
+
 
     for entity_class in fulldata["entity_classes"]:
         if not entity_class[1]:
@@ -55,10 +58,13 @@ with api.DatabaseMapping(spinepath) as db_map:
     for param_def in fulldata["parameter_definitions"]:
         has_param = ines[f"{param_def[0]}.{param_def[1]}"]
         g.add((has_param, RDF.type, OWL.DatatypeProperty))
-        g.add((has_param, RDFS.domain, ines[param_def[0]]))
+        g.add((has_param, SCHEMA.domainIncludes, ines[param_def[0]]))
+        #g.add((has_param, RDFS.domain, ines[param_def[0]]))
         g.add((has_param, RDFS.range, RDFS.Literal))  # Range is literal value
         g.add((has_param, RDFS.comment, Literal(param_def[4])))
     g.serialize(destination="ines-spec.ttl", format="turtle")
+    for prefix, namespace in g.namespaces():
+        print(f"{prefix}: {namespace}")
 
 # the direct conversion from spinedb to yaml causes problems so the conversion is done indirectly through json
 with open(jsonpath, 'r') as json_f:
