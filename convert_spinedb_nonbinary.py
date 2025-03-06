@@ -26,7 +26,7 @@ with api.DatabaseMapping(spinepath) as db_map:
     with open(jsonpath, 'w') as f:
         json.dump(data, f, indent=4)
     g = Graph()
-    ines = Namespace("ines-spec:")
+    ines = Namespace("ines-spec#")
     g.bind("ines", ines)
     g.bind("owl", OWL)
 
@@ -53,14 +53,12 @@ with api.DatabaseMapping(spinepath) as db_map:
                 #g.add((has_base_class, RDFS.range, base_class))
 
     for param_def in fulldata["parameter_definitions"]:
-        class_namespace = Namespace(str(ines) + param_def[0] + ":")
-        has_param = URIRef(class_namespace + param_def[1])
-        class_of_param = URIRef(ines + param_def[0])
+        has_param = ines[f"{param_def[0]}.{param_def[1]}"]
         g.add((has_param, RDF.type, OWL.DatatypeProperty))
-        g.add((has_param, RDFS.domain, class_of_param))
+        g.add((has_param, RDFS.domain, ines[param_def[0]]))
         g.add((has_param, RDFS.range, RDFS.Literal))  # Range is literal value
         g.add((has_param, RDFS.comment, Literal(param_def[4])))
-    g.serialize(destination="ines-spec.ttl")
+    g.serialize(destination="ines-spec.ttl", format="turtle")
 
 # the direct conversion from spinedb to yaml causes problems so the conversion is done indirectly through json
 with open(jsonpath, 'r') as json_f:
