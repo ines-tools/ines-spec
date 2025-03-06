@@ -1,5 +1,10 @@
 > [!IMPORTANT]
-> Git branching strategy has been changed (19.12.2024). Main branch is ditched and replaced by branch v0.x. The next branch with major breaking changes is v1.x. One can already start using it, but it will still be modified in small ways. As ines-spec is used mainly by conversion tools that depend on specific data structures, we are taking an explicit approach to the choice of the version to be used.
+> - We use version-specific branches (e.g., "v1.x") instead of a "main" branch
+> - This approach is deliberate since ines-spec primarily serves conversion tools that depend on specific data structures
+> - Users can continue using older specification versions by staying on their current branch
+> - Changes within major versions add functionality without breaking existing features (after the major branch is stable)
+> - When a new major branch becomes stable, it's designated as the default branch
+
 
 # INES Specification (ines-spec)
 
