@@ -14,7 +14,7 @@ link,investment_co2_emissions,,,[ton of CO2/MW] Emissions embedded in the assets
 link,investment_cost,,,[CUR/MWh] Investment cost for the transfer capacity. Constant or array of periods.
 link,investment_method,,link_invest_method,How investments are treated.
 link,investment_uses_integer,,boolean,Whether investment decisions are using integer variables.
-link,is_non_synchronous,false,boolean,Chooses whether the link connects the two nodes synchronously or not.
+link,is_non_synchronous,False,boolean,Chooses whether the link connects the two nodes synchronously or not.
 link,lifetime,,,"[years] Lifetime of the unit for annuity calculation and for retirement decision when using retire_at_the_end_of_lifetime method. Constant or array of periods.
 "
 link,links_existing,,,[Number] of existing transfer links. Constant or array of periods.
@@ -113,7 +113,7 @@ node__to_unit,conversion_coefficient,,,[p.u.] Multiplier between the flow and th
 node__to_unit,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
 node__to_unit,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
 node__to_unit,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
-node__to_unit,is_non_synchronous,false,boolean,Chooses whether the unit is synchronously connected to this node.
+node__to_unit,is_non_synchronous,False,boolean,Chooses whether the unit is synchronously connected to this node.
 node__to_unit,nox_emission_rate,,,[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.
 node__to_unit,other_operational_cost,,,"[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
 node__to_unit,other_operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension forecast name, 2nd analysis time, 3rd time series)."
@@ -173,7 +173,6 @@ solve_pattern,rolling_horizon,,,Duration of the model horizon for rolling window
 solve_pattern,rolling_jump,,,Duration of the model jump between two solves in rolling window models.
 solve_pattern,solve_mode,single_solve,solve_mode,Rolling or single solve model.
 solve_pattern,start_time,,,"Start time (from timeline). Array of start_times will need to be matched with an array of durations to pick multiple sequences from the timeline. If no start time has been provided, the model will start from the beginning of the timeline. Date_time or an array of date_times."
-solve_pattern,stochastic_forecasts_in_use,,,"Experimental. [forecast_names] Which forecast branches will be included in the model. If no value, then all are included (if stochastic_scope allows). Array of strings."
 solve_pattern,stochastic_scope,none,stochastic_scope,Which parameters will use the forecast versions if available.
 solve_pattern,time_resolution,,,[duration] Time resolution of the model (unless re-defined by a time resolution of a set).
 solve_pattern,time_resolution_scope,whole_model,time_resolution_scope,At what level time resolution in the model is defined.
@@ -233,7 +232,7 @@ unit__to_node,conversion_coefficient,,,[p.u.] Multiplier between the flow and th
 unit__to_node,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
 unit__to_node,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
 unit__to_node,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
-unit__to_node,is_non_synchronous,false,boolean,Chooses whether the unit is synchronously connected to this node.
+unit__to_node,is_non_synchronous,False,boolean,Chooses whether the unit is synchronously connected to this node.
 unit__to_node,nox_emission_rate,,,[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.
 unit__to_node,other_operational_cost,,,"[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series."
 unit__to_node,other_operational_cost_forecasts,,,"[CUR/MWh] Variable operational cost forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."

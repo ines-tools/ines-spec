@@ -64,13 +64,6 @@
             false
         ],
         [
-            "tool",
-            [],
-            null,
-            280378333982893,
-            false
-        ],
-        [
             "unit",
             [],
             null,
@@ -158,16 +151,6 @@
             true
         ],
         [
-            "tool__set",
-            [
-                "tool",
-                "set"
-            ],
-            null,
-            null,
-            true
-        ],
-        [
             "unit__to_node",
             [
                 "unit",
@@ -234,11 +217,11 @@
     "parameter_value_lists": [
         [
             "boolean",
-            "true"
+            true
         ],
         [
             "boolean",
-            "false"
+            false
         ],
         [
             "capacity_margin_method",
@@ -454,7 +437,11 @@
         ],
         [
             "stochastic_scope",
-            "set_based_override"
+            "single_set"
+        ],
+        [
+            "stochastic_scope",
+            "multiple_sets"
         ],
         [
             "storage_binding_method",
@@ -774,7 +761,7 @@
         [
             "link",
             "is_non_synchronous",
-            "false",
+            false,
             "boolean",
             "Chooses whether the link connects the two nodes synchronously or not."
         ],
@@ -1460,7 +1447,7 @@
         [
             "node__to_unit",
             "is_non_synchronous",
-            "false",
+            false,
             "boolean",
             "Chooses whether the unit is synchronously connected to this node."
         ],
@@ -1879,13 +1866,6 @@
         ],
         [
             "solve_pattern",
-            "stochastic_forecasts_in_use",
-            null,
-            null,
-            "Experimental. [forecast_names] Which forecast branches will be included in the model. If no value, then all are included (if stochastic_scope allows). Array of strings."
-        ],
-        [
-            "solve_pattern",
             "stochastic_scope",
             "none",
             "stochastic_scope",
@@ -2300,7 +2280,7 @@
         [
             "unit__to_node",
             "is_non_synchronous",
-            "false",
+            false,
             "boolean",
             "Chooses whether the unit is synchronously connected to this node."
         ],

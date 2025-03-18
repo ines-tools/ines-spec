@@ -1,6 +1,6 @@
 'parameter name','list member name'
-boolean,true
-boolean,false
+boolean,True
+boolean,False
 capacity_margin_method,dispatch_based
 flow_scaling_method,no_inflow
 flow_scaling_method,use_profile_directly
@@ -54,7 +54,8 @@ stochastic_method,interpolate_time_series_forecasts
 stochastic_method,analysis_time_forecasts
 stochastic_scope,none
 stochastic_scope,whole_model
-stochastic_scope,set_based_override
+stochastic_scope,single_set
+stochastic_scope,multiple_sets
 storage_binding_method,leap_over_forward_only
 storage_binding_method,leap_over_within_period
 storage_binding_method,leap_over_within_solve

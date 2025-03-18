@@ -8,7 +8,6 @@ set,[],,280569496596882,False
 solve_pattern,[],,281281703244097,False
 system,[],,280741963429022,False
 test,[],,281382822474858,False
-tool,[],,280378333982893,False
 unit,[],,280740537364493,False
 node__node,"['node', 'node']",,,True
 node__reserve,"['node', 'reserve']",,,True
@@ -18,7 +17,6 @@ set__node,"['set', 'node']",,,True
 set__reserve,"['set', 'reserve']",,,True
 set__unit,"['set', 'unit']",,,True
 set__unit_flow,"['set', 'unit_flow']",,,True
-tool__set,"['tool', 'set']",,,True
 unit__to_node,"['unit', 'node']",,280566643749643,True
 unit_flow,"['unit', 'node']",,,True
 unit_flow__unit_flow,"['unit_flow', 'unit_flow']",,280566643749617,True

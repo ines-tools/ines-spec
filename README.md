@@ -60,9 +60,20 @@ If only one of these is defined, then given parameter values apply to both direc
 - System entity has a parameter 'timeline' that defines the timesteps that can be present in a model instance. Allows to domain check the input data.
 - The timesteps defined in the timeline can then be used across multiple time relevant parameters.
 - The timesteps need to be expressed in ISO standard datetime
-- Timeline often uses historical datetimes, since profile like information is typically sourced from the past.
-- Period class is used to define data that refers to longer timespans - typically a year. Period data usually concern future (unless backcasting).
-- Temporality class can be used to define a time resolution for a portion of the model
+- Timeline often (but not necessarily) uses historical datetimes, since profile like information is typically sourced from the past.
+- Period class is used to define data that refers to longer timespans - typically a year. Period data usually concerns the future (unless backcasting).
+- Solve_pattern parameter time_resolution_scope defines whether the model has only one time resolution or if it can be redefined by a set based override.
+- Solve-pattern parameter time_resolution sets the default time resolution for the model.
+- Set parameter time_resolution can be used to define a time resolution for a portion of the model (all entities connected to the set).
+
+### Stochastic structures
+
+- Solve_pattern parameter stochastic_scope defines whether the model has stochastics and how it should be applied (for whole model, part of the model or multiple separate stochastics).
+- Stochastic data can be given to each parameter that has a '_forecasts' in its name. Those parameters contain only forecasts - the realization is in the regular parameter (without '_forecasts').
+- Whether stochastic parameter is used, depends on the stochastic_scope and possibly the set level choices (including entity_alternative status of the set).
+- Set parameter stochastic_method allows to choose between methods to organize stochastic forecasts.
+- Set parameter stochastic_forecast_weights contains the probabilistic weight for each forecast branch.
+- Set parameter stochastic_forecast_interpolation factors are used with the stochastic method that uses interpolation to make forecasts approach the realization.
 
 ### Sets define shared constraints
 

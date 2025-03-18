@@ -803,18 +803,18 @@ ines:set.time_resolution a owl:DatatypeProperty ;
 ines:set__link a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -862,10 +862,10 @@ ines:set__unit a owl:Class ;
 ines:set__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit_flow ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_unit_flow ] .
 
 ines:solve_pattern.duration a owl:DatatypeProperty ;
     ns1:domainIncludes ines:solve_pattern ;
@@ -900,11 +900,6 @@ ines:solve_pattern.solve_mode a owl:DatatypeProperty ;
 ines:solve_pattern.start_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:solve_pattern ;
     rdfs:comment "Start time (from timeline). Array of start_times will need to be matched with an array of durations to pick multiple sequences from the timeline. If no start time has been provided, the model will start from the beginning of the timeline. Date_time or an array of date_times." ;
-    rdfs:range rdfs:Literal .
-
-ines:solve_pattern.stochastic_forecasts_in_use a owl:DatatypeProperty ;
-    ns1:domainIncludes ines:solve_pattern ;
-    rdfs:comment "Experimental. [forecast_names] Which forecast branches will be included in the model. If no value, then all are included (if stochastic_scope allows). Array of strings." ;
     rdfs:range rdfs:Literal .
 
 ines:solve_pattern.stochastic_scope a owl:DatatypeProperty ;
@@ -976,14 +971,6 @@ ines:test.upward_slack a owl:DatatypeProperty ;
     ns1:domainIncludes ines:test ;
     rdfs:comment "[MWh] Used for correct answer when upward slack variable is being tested." ;
     rdfs:range rdfs:Literal .
-
-ines:tool__set a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_tool ] .
 
 ines:unit.availability a owl:DatatypeProperty ;
     ns1:domainIncludes ines:unit ;
@@ -1320,11 +1307,6 @@ ines:unit_flow__unit_flow.less_than_ratio a owl:DatatypeProperty ;
     rdfs:comment "[ratio] Ratio A in [flow_1 = A x flow_2 + C] for less than constraints" ;
     rdfs:range rdfs:Literal .
 
-ines:has_tool a owl:ObjectProperty ;
-    rdfs:range ines:tool .
-
-ines:tool a owl:Class .
-
 ines:unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
@@ -1358,19 +1340,22 @@ ines:has_unit_flow a owl:ObjectProperty ;
 ines:has_reserve a owl:ObjectProperty ;
     rdfs:range ines:reserve .
 
+ines:has_set a owl:ObjectProperty ;
+    rdfs:range ines:set .
+
 ines:has_unit a owl:ObjectProperty ;
     rdfs:range ines:unit .
 
 ines:link__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
             owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_link ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_reserve ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1379,9 +1364,6 @@ ines:node__reserve a owl:Class ;
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ] .
-
-ines:has_set a owl:ObjectProperty ;
-    rdfs:range ines:set .
 
 ines:unit_flow__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1394,47 +1376,47 @@ ines:unit_flow__unit_flow a owl:Class ;
 ines:set__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ] .
+            owl:onProperty ines:has_set ] .
 
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_node ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty ines:has_unit ] .
 
 ines:test a owl:Class .
 
 ines:node__link__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_node ] .
+
+ines:solve_pattern a owl:Class .
 
 ines:has_node a owl:ObjectProperty ;
     rdfs:range ines:node .
 
-ines:solve_pattern a owl:Class .
-
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;

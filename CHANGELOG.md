@@ -3,7 +3,18 @@ All structural changes to ines-spec are documented here. Changes to the example 
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
-## [Unreleased]
+## [1.1.2]
+
+### Changed
+
+- Boolean list was using true and false strings instead of True and False boolean. This was corrected and also the defaults were updated.
+- solve_pattern: stochastic_scope choice set_based_override was split to single_set and multiple_sets. This allows to test whether there is just one active stochastic set in the model instance when using single_set.
+- Improved rdf/owl output in Turtle format
+
+### Removed
+
+- tool and tool__set classes removed - they were not used, so no need to update the major version
+- stochastic_forecasts_in_use - just rely on the forecasts that are in the set(s). This was experimental, so can be removed without a major version change.
 
 ## [1.1.1]
 

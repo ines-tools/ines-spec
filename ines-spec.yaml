@@ -44,11 +44,6 @@ entity_classes:
   - null
   - 281382822474858
   - false
-- - tool
-  - []
-  - null
-  - 280378333982893
-  - false
 - - unit
   - []
   - null
@@ -99,12 +94,6 @@ entity_classes:
 - - set__unit_flow
   - - set
     - unit_flow
-  - null
-  - null
-  - true
-- - tool__set
-  - - tool
-    - set
   - null
   - null
   - true
@@ -236,7 +225,7 @@ parameter_definitions:
   - Whether investment decisions are using integer variables.
 - - link
   - is_non_synchronous
-  - 'false'
+  - false
   - boolean
   - Chooses whether the link connects the two nodes synchronously or not.
 - - link
@@ -811,7 +800,7 @@ parameter_definitions:
   - '[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.'
 - - node__to_unit
   - is_non_synchronous
-  - 'false'
+  - false
   - boolean
   - Chooses whether the unit is synchronously connected to this node.
 - - node__to_unit
@@ -1165,13 +1154,6 @@ parameter_definitions:
     time has been provided, the model will start from the beginning of the timeline.
     Date_time or an array of date_times.
 - - solve_pattern
-  - stochastic_forecasts_in_use
-  - null
-  - null
-  - Experimental. [forecast_names] Which forecast branches will be included in the
-    model. If no value, then all are included (if stochastic_scope allows). Array
-    of strings.
-- - solve_pattern
   - stochastic_scope
   - none
   - stochastic_scope
@@ -1501,7 +1483,7 @@ parameter_definitions:
   - '[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.'
 - - unit__to_node
   - is_non_synchronous
-  - 'false'
+  - false
   - boolean
   - Chooses whether the unit is synchronously connected to this node.
 - - unit__to_node
@@ -1618,9 +1600,9 @@ parameter_definitions:
   - '[ratio] Ratio A in [flow_1 = A x flow_2 + C] for less than constraints'
 parameter_value_lists:
 - - boolean
-  - 'true'
+  - true
 - - boolean
-  - 'false'
+  - false
 - - capacity_margin_method
   - dispatch_based
 - - flow_scaling_method
@@ -1728,7 +1710,9 @@ parameter_value_lists:
 - - stochastic_scope
   - whole_model
 - - stochastic_scope
-  - set_based_override
+  - single_set
+- - stochastic_scope
+  - multiple_sets
 - - storage_binding_method
   - leap_over_forward_only
 - - storage_binding_method
