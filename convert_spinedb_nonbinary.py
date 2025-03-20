@@ -14,13 +14,62 @@ jsonpath = "ines-spec.json"
 yamlpath = "ines-spec.yaml"
 tomlpath = "ines-spec.toml"
 
+
+class MultilineTomlEncoder(toml.TomlEncoder):
+    """
+    Custom TOML encoder that formats nested lists with each item on a separate line,
+    but keeps the inner list elements on a single line.
+    """
+
+    def __init__(self, _dict=dict, preserve=False):
+        super().__init__(_dict, preserve)
+
+    def dump_list(self, v):
+        if not v:
+            return "[]"
+
+        # Handle lists of lists (put each sublist on its own line)
+        if any(isinstance(item, list) for item in v):
+            retval = "[\n"
+            for item in v:
+                if isinstance(item, list):
+                    # Convert inner list to string manually to avoid encoding issues
+                    inner_items = []
+                    for x in item:
+                        if isinstance(x, str):
+                            # Properly handle string values
+                            inner_items.append(f'"{x}"')
+                        elif isinstance(x, bool):
+                            # Properly handle boolean values
+                            inner_items.append(str(x).lower())
+                        else:
+                            # Handle numbers and other types
+                            inner_items.append(str(x))
+
+                    inner_list = "[" + ", ".join(inner_items) + "]"
+                    retval += f"    {inner_list},\n"
+                else:
+                    # For non-list items
+                    retval += f"    {self.dump_value(item)},\n"
+
+            # Remove trailing comma if present
+            if retval.endswith(",\n"):
+                retval = retval[:-2] + "\n"
+
+            return retval + "]"
+
+        # For simple lists (not containing other lists)
+        return super().dump_list(v)
+
+    
 with api.DatabaseMapping(spinepath) as db_map:
     fulldata = api.export_data(db_map,parse_value=api.parameter_value.load_db_value)
     data = {
         k:fulldata[k] for k in [
             "entity_classes",
             "parameter_value_lists",
-            "parameter_definitions"
+            "parameter_definitions",
+            "parameter_types"
         ]
     }
     with open(jsonpath, 'w') as f:
@@ -72,7 +121,9 @@ with open(jsonpath, 'r') as json_f:
     with open(yamlpath, 'w') as yaml_f:
         yaml.dump(data, yaml_f)
     with open(tomlpath, 'w') as toml_f:
-        toml.dump(data, toml_f, encoder=toml.TomlEncoder())
+        toml.dump(data, toml_f, encoder=MultilineTomlEncoder())
+    #with open(tomlpath, 'w') as toml_f:
+    #    toml.dump(data, toml_f, encoder=toml.TomlEncoder())
     with open("ines-spec-entity-classes.csv", "w", newline="") as csv_f:
         writer = csv.writer(csv_f)
         writer.writerow(["'class name'","dimensions","description","symbol","'active by default'"])
@@ -85,3 +136,5 @@ with open(jsonpath, 'r') as json_f:
         writer = csv.writer(csv_f)
         writer.writerow(["'parameter name'","'list member name'"])
         writer.writerows(data["parameter_value_lists"])
+
+
