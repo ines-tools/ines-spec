@@ -3214,3 +3214,8 @@ parameter_value_lists:
   - integer_with_tiers
 - - unit_startup_method
   - trajectory_with_tiers
+superclass_subclasses:
+- - unit_flow
+  - node__to_unit
+- - unit_flow
+  - unit__to_node

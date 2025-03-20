@@ -4527,5 +4527,15 @@
             "float",
             0
         ]
+    ],
+    "superclass_subclasses": [
+        [
+            "unit_flow",
+            "node__to_unit"
+        ],
+        [
+            "unit_flow",
+            "unit__to_node"
+        ]
     ]
 }

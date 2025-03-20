@@ -23,7 +23,7 @@ entity_classes = [
     ["link__node__reserve", ['link', 'node', 'reserve'], None, None, true],
     ["node__link__node", ['node', 'link', 'node'], None, 280462687072545, true],
     ["unit__node__reserve", ['unit', 'node', 'reserve'], None, None, true]
-],
+]
 parameter_value_lists = [
     ["boolean", true],
     ["boolean", false],
@@ -742,4 +742,8 @@ parameter_types = [
     ["unit_flow__unit_flow", "greater_than_ratio", "float", 0],
     ["unit_flow__unit_flow", "less_than_constant", "float", 0],
     ["unit_flow__unit_flow", "less_than_ratio", "float", 0]
+]
+superclass_subclasses = [
+    ["unit_flow", "node__to_unit"],
+    ["unit_flow", "unit__to_node"]
 ]

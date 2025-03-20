@@ -61,7 +61,7 @@ class MultilineTomlEncoder(toml.TomlEncoder):
         # For simple lists (not containing other lists)
         return super().dump_list(v)
 
-    
+
 with api.DatabaseMapping(spinepath) as db_map:
     fulldata = api.export_data(db_map,parse_value=api.parameter_value.load_db_value)
     data = {
@@ -69,7 +69,8 @@ with api.DatabaseMapping(spinepath) as db_map:
             "entity_classes",
             "parameter_value_lists",
             "parameter_definitions",
-            "parameter_types"
+            "parameter_types",
+            "superclass_subclasses"
         ]
     }
     with open(jsonpath, 'w') as f:

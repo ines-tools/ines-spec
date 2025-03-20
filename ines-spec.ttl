@@ -803,18 +803,18 @@ ines:set.time_resolution a owl:DatatypeProperty ;
 ines:set__link a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_link ] .
 
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -1352,18 +1352,18 @@ ines:link__node__reserve a owl:Class ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_link ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:unit_flow__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1376,31 +1376,31 @@ ines:unit_flow__unit_flow a owl:Class ;
 ines:set__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ] .
+            owl:onProperty ines:has_set ] .
 
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:test a owl:Class .
 
 ines:node__link__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
@@ -1413,18 +1413,18 @@ ines:has_node a owl:ObjectProperty ;
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:set a owl:Class .
 
