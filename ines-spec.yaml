@@ -49,6 +49,11 @@ entity_classes:
   - null
   - 280740537364493
   - false
+- - unit_flow
+  - []
+  - null
+  - null
+  - true
 - - node__node
   - - node
     - node
@@ -102,12 +107,6 @@ entity_classes:
     - node
   - null
   - 280566643749643
-  - true
-- - unit_flow
-  - - unit
-    - node
-  - null
-  - null
   - true
 - - unit_flow__unit_flow
   - - unit_flow
