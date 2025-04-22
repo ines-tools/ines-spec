@@ -113,8 +113,6 @@ with api.DatabaseMapping(spinepath) as db_map:
         g.add((has_param, RDFS.range, RDFS.Literal))  # Range is literal value
         g.add((has_param, RDFS.comment, Literal(param_def[4])))
     g.serialize(destination="ines-spec.ttl", format="turtle")
-    for prefix, namespace in g.namespaces():
-        print(f"{prefix}: {namespace}")
 
 # the direct conversion from spinedb to yaml causes problems so the conversion is done indirectly through json
 with open(jsonpath, 'r') as json_f:
@@ -123,8 +121,6 @@ with open(jsonpath, 'r') as json_f:
         yaml.dump(data, yaml_f)
     with open(tomlpath, 'w') as toml_f:
         toml.dump(data, toml_f, encoder=MultilineTomlEncoder())
-    #with open(tomlpath, 'w') as toml_f:
-    #    toml.dump(data, toml_f, encoder=toml.TomlEncoder())
     with open("ines-spec-entity-classes.csv", "w", newline="") as csv_f:
         writer = csv.writer(csv_f)
         writer.writerow(["'class name'","dimensions","description","symbol","'active by default'"])
@@ -139,3 +135,4 @@ with open(jsonpath, 'r') as json_f:
         writer.writerows(data["parameter_value_lists"])
 
 
+print ("Done writing out ines-spec to json, yaml, toml, csv and ttl")

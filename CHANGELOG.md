@@ -3,6 +3,12 @@ All structural changes to ines-spec are documented here. Changes to the example 
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [1.1.3]
+
+### Added
+
+- set: max_cumulative and min_cumulative parameters
+
 ## [1.1.2]
 
 ### Changed

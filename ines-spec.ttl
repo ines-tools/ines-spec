@@ -722,7 +722,7 @@ ines:set.inertia_limit a owl:DatatypeProperty ;
 
 ines:set.invest_max_period a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set ;
-    rdfs:comment "[MW or MWh] Maximum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods." ;
+    rdfs:comment "[MW or MWh] Maximum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods." ;
     rdfs:range rdfs:Literal .
 
 ines:set.invest_max_total a owl:DatatypeProperty ;
@@ -732,12 +732,22 @@ ines:set.invest_max_total a owl:DatatypeProperty ;
 
 ines:set.invest_min_period a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set ;
-    rdfs:comment "[MW or MWh] Minimum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods." ;
+    rdfs:comment "[MW or MWh] Minimum investment per period to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods." ;
     rdfs:range rdfs:Literal .
 
 ines:set.invest_min_total a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set ;
     rdfs:comment "[MW or MWh] Minimum investment to the aggregated capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods. Constant." ;
+    rdfs:range rdfs:Literal .
+
+ines:set.max_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:set ;
+    rdfs:comment "[MW or MWh] Maximum cumulative capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Constant or array of periods." ;
+    rdfs:range rdfs:Literal .
+
+ines:set.min_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:set ;
+    rdfs:comment "[MW or MWh] Minimum cumulative capacity of set member flows (unit__to_node, node__to_unit, link) and storage capacity. Constant or array of periods." ;
     rdfs:range rdfs:Literal .
 
 ines:set.network_type a owl:DatatypeProperty ;
@@ -803,18 +813,18 @@ ines:set.time_resolution a owl:DatatypeProperty ;
 ines:set__link a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_link ] .
 
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -1343,13 +1353,13 @@ ines:has_set a owl:ObjectProperty ;
 ines:link__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1378,13 +1388,13 @@ ines:set__reserve a owl:Class ;
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
+            owl:onProperty ines:has_node ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
-        [ a owl:Restriction ;
-            owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:test a owl:Class .
 
@@ -1394,10 +1404,10 @@ ines:has_node a owl:ObjectProperty ;
 ines:node__link__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
@@ -1407,22 +1417,22 @@ ines:solve_pattern a owl:Class .
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
-
-ines:set a owl:Class .
+            owl:onProperty ines:has_unit ] .
 
 ines:link a owl:Class .
+
+ines:set a owl:Class .
 
 ines:unit a owl:Class .
 

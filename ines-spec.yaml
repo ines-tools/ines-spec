@@ -975,7 +975,7 @@ parameter_definitions:
   - null
   - null
   - '[MW or MWh] Maximum investment per period to the aggregated capacity of set member
-    flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods.'
+    flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods.'
 - - set
   - invest_max_total
   - null
@@ -988,7 +988,7 @@ parameter_definitions:
   - null
   - null
   - '[MW or MWh] Minimum investment per period to the aggregated capacity of set member
-    flows (unit__to_node, node__to_unit, link) and storage capacity. Map of periods.'
+    flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods.'
 - - set
   - invest_min_total
   - null
@@ -996,6 +996,18 @@ parameter_definitions:
   - '[MW or MWh] Minimum investment to the aggregated capacity of set member flows
     (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods.
     Constant.'
+- - set
+  - max_cumulative
+  - null
+  - null
+  - '[MW or MWh] Maximum cumulative capacity of set member flows (unit__to_node, node__to_unit,
+    link) and storage capacity. Constant or array of periods.'
+- - set
+  - min_cumulative
+  - null
+  - null
+  - '[MW or MWh] Minimum cumulative capacity of set member flows (unit__to_node, node__to_unit,
+    link) and storage capacity. Constant or array of periods.'
 - - set
   - network_type
   - null
@@ -2486,6 +2498,22 @@ parameter_types:
   - invest_min_total
   - float
   - 0
+- - set
+  - max_cumulative
+  - float
+  - 0
+- - set
+  - max_cumulative
+  - map
+  - 1
+- - set
+  - min_cumulative
+  - float
+  - 0
+- - set
+  - min_cumulative
+  - map
+  - 1
 - - set
   - non_synchronous_limit
   - float
