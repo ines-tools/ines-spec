@@ -1653,6 +1653,13 @@
         ],
         [
             "set",
+            "invest_equal_count",
+            null,
+            null,
+            "[boolean] Set members must have equal count of newly invested assets. For example, fixing the ratio between storage capacity and charging capacity."
+        ],
+        [
+            "set",
             "invest_max_period",
             null,
             null,
@@ -3751,6 +3758,12 @@
             "inertia_limit",
             "time_series",
             1
+        ],
+        [
+            "set",
+            "invest_equal_count",
+            "bool",
+            0
         ],
         [
             "set",
