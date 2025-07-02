@@ -3,6 +3,12 @@ All structural changes to ines-spec are documented here. Changes to the example 
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## [1.1.5]
+
+### Added
+
+- unit__to_node, node__to_unit and link: flow_max_cumulative and flow_min_cumulative
+
 ## [1.1.4]
 
 ### Added

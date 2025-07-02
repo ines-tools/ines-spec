@@ -9,6 +9,8 @@ link,efficiency,,,"[ratio] Efficiency of transfer in either direction. Not used 
 link,efficiency_forecasts,,,"[ratio] Efficiency forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series)."
 link,fixed_co2_emissions,,,[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant or array of periods.
 link,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array of periods.
+link,flow_max_cumulative,,,[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
+link,flow_min_cumulative,,,[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
 link,interest_rate,,,[ratio] e.g. 0.05 is 5 %. Interest rate for transfer link investments. Constant or array of periods.
 link,investment_co2_emissions,,,[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant or array of periods.
 link,investment_cost,,,[CUR/MWh] Investment cost for the transfer capacity. Constant or array of periods.
@@ -111,6 +113,8 @@ node__to_unit,capacity,,,[MW] Capacity for one unit (is therefore multiplied by 
 node__to_unit,constraint_flow_coefficient,,,[p.u.] Multiplier between constraints and the flow. Map of constraints and respective coefficients.
 node__to_unit,conversion_coefficient,,,[p.u.] Multiplier between the flow and the conversion equation of the unit. Not used by coefficients_only conversion_method. Constant.
 node__to_unit,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
+node__to_unit,flow_max_cumulative,,,[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
+node__to_unit,flow_min_cumulative,,,[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
 node__to_unit,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
 node__to_unit,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
 node__to_unit,is_non_synchronous,False,boolean,Chooses whether the unit is synchronously connected to this node.
@@ -233,6 +237,8 @@ unit__to_node,capacity,,,[MW] Capacity for one unit (is therefore multiplied by 
 unit__to_node,constraint_flow_coefficient,,,[p.u.] Multiplier between constraints and the flow. Map of constraints and respective coefficients.
 unit__to_node,conversion_coefficient,,,[p.u.] Multiplier between the flow and the conversion equation of the unit. Not used by coefficients_only conversion_method. Constant.
 unit__to_node,fixed_cost,,,[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.
+unit__to_node,flow_max_cumulative,,,[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
+unit__to_node,flow_min_cumulative,,,[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods.
 unit__to_node,inertia_constant,,,[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.
 unit__to_node,investment_cost,,,[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.
 unit__to_node,is_non_synchronous,False,boolean,Chooses whether the unit is synchronously connected to this node.

@@ -54,6 +54,16 @@ ines:link.fixed_cost a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array of periods." ;
     rdfs:range rdfs:Literal .
 
+ines:link.flow_max_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:link ;
+    rdfs:comment "[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
+ines:link.flow_min_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:link ;
+    rdfs:comment "[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
 ines:link.interest_rate a owl:DatatypeProperty ;
     ns1:domainIncludes ines:link ;
     rdfs:comment "[ratio] e.g. 0.05 is 5 %. Interest rate for transfer link investments. Constant or array of periods." ;
@@ -560,6 +570,16 @@ ines:node__to_unit.fixed_cost a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods." ;
     rdfs:range rdfs:Literal .
 
+ines:node__to_unit.flow_max_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:node__to_unit ;
+    rdfs:comment "[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
+ines:node__to_unit.flow_min_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:node__to_unit ;
+    rdfs:comment "[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
 ines:node__to_unit.inertia_constant a owl:DatatypeProperty ;
     ns1:domainIncludes ines:node__to_unit ;
     rdfs:comment "[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant." ;
@@ -818,18 +838,18 @@ ines:set.time_resolution a owl:DatatypeProperty ;
 ines:set__link a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -877,10 +897,10 @@ ines:set__unit a owl:Class ;
 ines:set__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit_flow ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_unit_flow ] .
 
 ines:solve_pattern.duration a owl:DatatypeProperty ;
     ns1:domainIncludes ines:solve_pattern ;
@@ -1202,6 +1222,16 @@ ines:unit__to_node.fixed_cost a owl:DatatypeProperty ;
     rdfs:comment "[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods." ;
     rdfs:range rdfs:Literal .
 
+ines:unit__to_node.flow_max_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:unit__to_node ;
+    rdfs:comment "[MW] Maximum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
+ines:unit__to_node.flow_min_cumulative a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:unit__to_node ;
+    rdfs:comment "[MW] Minimum average flow. The average value is multiplied by the model duration to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant or map of periods." ;
+    rdfs:range rdfs:Literal .
+
 ines:unit__to_node.inertia_constant a owl:DatatypeProperty ;
     ns1:domainIncludes ines:unit__to_node ;
     rdfs:comment "[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant." ;
@@ -1358,13 +1388,13 @@ ines:has_set a owl:ObjectProperty ;
 ines:link__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ] .
+            owl:onProperty ines:has_node ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1396,10 +1426,10 @@ ines:unit__node__reserve a owl:Class ;
             owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:test a owl:Class .
 
@@ -1409,10 +1439,10 @@ ines:has_node a owl:ObjectProperty ;
 ines:node__link__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .

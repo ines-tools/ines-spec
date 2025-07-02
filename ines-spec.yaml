@@ -196,6 +196,20 @@ parameter_definitions:
   - '[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array
     of periods.'
 - - link
+  - flow_max_cumulative
+  - null
+  - null
+  - '[MW] Maximum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
+- - link
+  - flow_min_cumulative
+  - null
+  - null
+  - '[MW] Minimum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
+- - link
   - interest_rate
   - null
   - null
@@ -787,6 +801,20 @@ parameter_definitions:
   - null
   - null
   - '[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.'
+- - node__to_unit
+  - flow_max_cumulative
+  - null
+  - null
+  - '[MW] Maximum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
+- - node__to_unit
+  - flow_min_cumulative
+  - null
+  - null
+  - '[MW] Minimum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
 - - node__to_unit
   - inertia_constant
   - null
@@ -1489,6 +1517,20 @@ parameter_definitions:
   - null
   - '[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.'
 - - unit__to_node
+  - flow_max_cumulative
+  - null
+  - null
+  - '[MW] Maximum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
+- - unit__to_node
+  - flow_min_cumulative
+  - null
+  - null
+  - '[MW] Minimum average flow. The average value is multiplied by the model duration
+    to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
+    for each period. Constant or map of periods.'
+- - unit__to_node
   - inertia_constant
   - null
   - null
@@ -1682,6 +1724,22 @@ parameter_types:
   - 0
 - - link
   - fixed_cost
+  - map
+  - 1
+- - link
+  - flow_max_cumulative
+  - float
+  - 0
+- - link
+  - flow_max_cumulative
+  - map
+  - 1
+- - link
+  - flow_min_cumulative
+  - float
+  - 0
+- - link
+  - flow_min_cumulative
   - map
   - 1
 - - link
@@ -2278,6 +2336,22 @@ parameter_types:
   - 0
 - - node__to_unit
   - fixed_cost
+  - map
+  - 1
+- - node__to_unit
+  - flow_max_cumulative
+  - float
+  - 0
+- - node__to_unit
+  - flow_max_cumulative
+  - map
+  - 1
+- - node__to_unit
+  - flow_min_cumulative
+  - float
+  - 0
+- - node__to_unit
+  - flow_min_cumulative
   - map
   - 1
 - - node__to_unit
@@ -2890,6 +2964,22 @@ parameter_types:
   - 0
 - - unit__to_node
   - fixed_cost
+  - map
+  - 1
+- - unit__to_node
+  - flow_max_cumulative
+  - float
+  - 0
+- - unit__to_node
+  - flow_max_cumulative
+  - map
+  - 1
+- - unit__to_node
+  - flow_min_cumulative
+  - float
+  - 0
+- - unit__to_node
+  - flow_min_cumulative
   - map
   - 1
 - - unit__to_node
