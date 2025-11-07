@@ -8,6 +8,8 @@
 
 # INES Specification (ines-spec)
 
+[![documentation](https://github.com/ines-tools/ines-spec/actions/workflows/documentation.yaml/badge.svg)](https://ines-tools.github.io/ines-spec/)
+
 The INES (Interoperable Energy System) Specification defines a standardized data format for exchanging energy system models. This specification aims to facilitate interoperability between different energy modeling tools and platforms.
 
 ## Overview
