@@ -1,0 +1,1 @@
+Currently, the ines conversion scripts are ill equiped to deal with alternatives. The ines-certify database is too complex. Therefore, separate databases are collected here until the conversion scripts can deal with this.
