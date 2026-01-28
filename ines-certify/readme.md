@@ -1,1 +1,3 @@
-Currently, the ines conversion scripts are ill equiped to deal with alternatives. The ines-certify database is too complex. Therefore, separate databases are collected here until the conversion scripts can deal with this.
+The ines-certify spec contains all setups for the ines certification process (up to a certain point). However, currently, the ines conversion scripts are ill equipped to deal with alternatives. The ines-certify database is too complex. Therefore, the ines certify spec is separated in a few databases until the conversion scripts can deal with this.
+
+The theoretical setups portray an idea of what the setups should be without consideration for practical implications. The practical setups do have that consideration.
