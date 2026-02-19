@@ -5199,13 +5199,6 @@
         [
             "link",
             "cheap link",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
             "capacity",
             1000.0,
             "Base"
@@ -5227,36 +5220,8 @@
         [
             "link",
             "cheap link",
-            "interest_rate",
-            0.05,
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
-            "investment_cost",
-            1000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5276,13 +5241,6 @@
         [
             "link",
             "expensive link",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
             "capacity",
             1000.0,
             "Base"
@@ -5304,36 +5262,8 @@
         [
             "link",
             "expensive link",
-            "interest_rate",
-            0.05,
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
-            "investment_cost",
-            1000000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5353,13 +5283,6 @@
         [
             "link",
             "triangle",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
             "capacity",
             1000.0,
             "Base"
@@ -5381,36 +5304,8 @@
         [
             "link",
             "triangle",
-            "interest_rate",
-            0.05,
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
-            "investment_cost",
-            1000000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -23204,36 +23099,8 @@
         [
             "unit",
             "cheap unit",
-            "interest_rate",
-            0.05,
-            "Base"
-        ],
-        [
-            "unit",
-            "cheap unit",
-            "investment_method",
-            "cumulative_limits",
-            "Base"
-        ],
-        [
-            "unit",
-            "cheap unit",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "cheap unit",
             "units_existing",
-            0.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "cheap unit",
-            "units_max_cumulative",
-            20.0,
+            1.0,
             "Base"
         ],
         [
@@ -23253,36 +23120,8 @@
         [
             "unit",
             "expensive unit",
-            "interest_rate",
-            0.05,
-            "Base"
-        ],
-        [
-            "unit",
-            "expensive unit",
-            "investment_method",
-            "cumulative_limits",
-            "Base"
-        ],
-        [
-            "unit",
-            "expensive unit",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "expensive unit",
             "units_existing",
-            0.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "expensive unit",
-            "units_max_cumulative",
-            20.0,
+            1.0,
             "Base"
         ],
         [
@@ -23303,16 +23142,6 @@
             ],
             "fixed_cost",
             0.0,
-            "Base"
-        ],
-        [
-            "unit__to_node",
-            [
-                "cheap unit",
-                "cheap supply"
-            ],
-            "investment_cost",
-            2000000.0,
             "Base"
         ],
         [
@@ -23343,16 +23172,6 @@
             ],
             "fixed_cost",
             0.0,
-            "Base"
-        ],
-        [
-            "unit__to_node",
-            [
-                "expensive unit",
-                "expensive supply"
-            ],
-            "investment_cost",
-            2000000.0,
             "Base"
         ],
         [

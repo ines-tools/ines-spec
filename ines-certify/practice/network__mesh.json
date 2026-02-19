@@ -14346,13 +14346,6 @@
         [
             "unit",
             "cheap unit",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "cheap unit",
             "units_existing",
             1.0,
             "Base"
@@ -14369,13 +14362,6 @@
             "expensive unit",
             "efficiency",
             0.4,
-            "Base"
-        ],
-        [
-            "unit",
-            "expensive unit",
-            "lifetime",
-            50.0,
             "Base"
         ],
         [

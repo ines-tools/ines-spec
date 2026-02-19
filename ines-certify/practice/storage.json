@@ -268,11 +268,6 @@
             null
         ],
         [
-            "reserve",
-            "reserves",
-            null
-        ],
-        [
             "solve_pattern",
             "model",
             null
@@ -290,14 +285,6 @@
         [
             "unit",
             "expensive unit",
-            null
-        ],
-        [
-            "node__reserve",
-            [
-                "demand",
-                "reserves"
-            ],
             null
         ],
         [
@@ -329,24 +316,6 @@
             [
                 "expensive unit",
                 "expensive supply"
-            ],
-            null
-        ],
-        [
-            "link__node__reserve",
-            [
-                "cheap link",
-                "demand",
-                "reserves"
-            ],
-            null
-        ],
-        [
-            "link__node__reserve",
-            [
-                "expensive link",
-                "demand",
-                "reserves"
             ],
             null
         ],
@@ -447,14 +416,6 @@
             "period",
             [
                 "2024"
-            ],
-            "Base",
-            true
-        ],
-        [
-            "reserve",
-            [
-                "reserves"
             ],
             "Base",
             true
@@ -5359,28 +5320,6 @@
             "triangle",
             "transfer_method",
             "regular_linear",
-            "Base"
-        ],
-        [
-            "link__node__reserve",
-            [
-                "cheap link",
-                "demand",
-                "reserves"
-            ],
-            "max_reserve_provision",
-            0.0,
-            "Base"
-        ],
-        [
-            "link__node__reserve",
-            [
-                "expensive link",
-                "demand",
-                "reserves"
-            ],
-            "max_reserve_provision",
-            0.8,
             "Base"
         ],
         [
@@ -14215,15 +14154,43 @@
         [
             "node",
             "demand",
-            "penalty_downward",
-            1000.0,
+            "storage_capacity",
+            100.0,
             "Base"
         ],
         [
             "node",
             "demand",
-            "penalty_upward",
-            1000.0,
+            "storage_fixed_cost",
+            10.0,
+            "Base"
+        ],
+        [
+            "node",
+            "demand",
+            "storage_loss_from_storage_capacity",
+            0.1,
+            "Base"
+        ],
+        [
+            "node",
+            "demand",
+            "storage_loss_from_stored_energy",
+            0.1,
+            "Base"
+        ],
+        [
+            "node",
+            "demand",
+            "storage_state_binding_method",
+            "leap_over_within_period",
+            "Base"
+        ],
+        [
+            "node",
+            "demand",
+            "storages_existing",
+            1.0,
             "Base"
         ],
         [
@@ -14314,16 +14281,6 @@
             "Base"
         ],
         [
-            "node__reserve",
-            [
-                "demand",
-                "reserves"
-            ],
-            "reserve_requirement",
-            1.0,
-            "Base"
-        ],
-        [
             "period",
             "2024",
             "start_time",
@@ -14338,13 +14295,6 @@
             "2024",
             "years_represented",
             1.0,
-            "Base"
-        ],
-        [
-            "reserve",
-            "reserves",
-            "reserve_type",
-            "symmetric",
             "Base"
         ],
         [
@@ -23212,8 +23162,8 @@
         [
             "unit",
             "expensive unit",
-            "interest_rate",
-            0.05,
+            "units_existing",
+            1.0,
             "Base"
         ],
         [
@@ -23244,6 +23194,26 @@
             ],
             "other_operational_cost",
             0.001,
+            "Base"
+        ],
+        [
+            "unit__to_node",
+            [
+                "cheap unit",
+                "cheap supply"
+            ],
+            "profile_fix",
+            0.1,
+            "Base"
+        ],
+        [
+            "unit__to_node",
+            [
+                "cheap unit",
+                "cheap supply"
+            ],
+            "profile_method",
+            "fixed",
             "Base"
         ],
         [
