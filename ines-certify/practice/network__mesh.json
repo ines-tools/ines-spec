@@ -5220,13 +5220,6 @@
         [
             "link",
             "cheap link",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "cheap link",
             "links_existing",
             1.0,
             "Base"
@@ -5269,13 +5262,6 @@
         [
             "link",
             "expensive link",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "expensive link",
             "links_existing",
             1.0,
             "Base"
@@ -5313,13 +5299,6 @@
             "triangle",
             "fixed_cost",
             0.0,
-            "Base"
-        ],
-        [
-            "link",
-            "triangle",
-            "lifetime",
-            50.0,
             "Base"
         ],
         [
@@ -14398,7 +14377,7 @@
                 "cheap supply"
             ],
             "other_operational_cost",
-            0.001,
+            0.0,
             "Base"
         ],
         [
@@ -14428,7 +14407,7 @@
                 "expensive supply"
             ],
             "other_operational_cost",
-            0.001,
+            0.0,
             "Base"
         ]
     ],
