@@ -223,8 +223,28 @@
     ],
     "entities": [
         [
+            "link",
+            "cheap link",
+            null
+        ],
+        [
+            "link",
+            "expensive link",
+            null
+        ],
+        [
+            "link",
+            "triangle",
+            null
+        ],
+        [
             "node",
             "cheap source",
+            null
+        ],
+        [
+            "node",
+            "cheap supply",
             null
         ],
         [
@@ -235,6 +255,11 @@
         [
             "node",
             "expensive source",
+            null
+        ],
+        [
+            "node",
+            "expensive supply",
             null
         ],
         [
@@ -282,7 +307,7 @@
             "unit__to_node",
             [
                 "cheap unit",
-                "demand"
+                "cheap supply"
             ],
             null
         ],
@@ -290,6 +315,33 @@
             "unit__to_node",
             [
                 "expensive unit",
+                "expensive supply"
+            ],
+            null
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "cheap link",
+                "demand"
+            ],
+            null
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "triangle",
+                "expensive supply"
+            ],
+            null
+        ],
+        [
+            "node__link__node",
+            [
+                "expensive supply",
+                "expensive link",
                 "demand"
             ],
             null
@@ -297,9 +349,41 @@
     ],
     "entity_alternatives": [
         [
+            "link",
+            [
+                "cheap link"
+            ],
+            "Base",
+            true
+        ],
+        [
+            "link",
+            [
+                "expensive link"
+            ],
+            "Base",
+            true
+        ],
+        [
+            "link",
+            [
+                "triangle"
+            ],
+            "Base",
+            true
+        ],
+        [
             "node",
             [
                 "cheap source"
+            ],
+            "Base",
+            true
+        ],
+        [
+            "node",
+            [
+                "cheap supply"
             ],
             "Base",
             true
@@ -316,6 +400,14 @@
             "node",
             [
                 "expensive source"
+            ],
+            "Base",
+            true
+        ],
+        [
+            "node",
+            [
+                "expensive supply"
             ],
             "Base",
             true
@@ -5105,6 +5197,237 @@
     ],
     "parameter_values": [
         [
+            "link",
+            "cheap link",
+            "availability",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "fixed_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "interest_rate",
+            0.05,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "investment_cost",
+            1000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "investment_method",
+            "no_limits",
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "lifetime",
+            50.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "links_existing",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "operational_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "cheap link",
+            "transfer_method",
+            "regular_linear",
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "availability",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "fixed_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "interest_rate",
+            0.05,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "investment_cost",
+            1000000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "investment_method",
+            "no_limits",
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "lifetime",
+            50.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "links_existing",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "operational_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "expensive link",
+            "transfer_method",
+            "regular_linear",
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "availability",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "fixed_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "interest_rate",
+            0.05,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "investment_cost",
+            1000000.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "investment_method",
+            "no_limits",
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "lifetime",
+            50.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "links_existing",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "operational_cost",
+            0.0,
+            "Base"
+        ],
+        [
+            "link",
+            "triangle",
+            "transfer_method",
+            "regular_linear",
+            "Base"
+        ],
+        [
             "node",
             "cheap source",
             "commodity_price",
@@ -5116,6 +5439,13 @@
             "cheap source",
             "node_type",
             "commodity",
+            "Base"
+        ],
+        [
+            "node",
+            "cheap supply",
+            "node_type",
+            "balance",
             "Base"
         ],
         [
@@ -5172,6 +5502,79 @@
             "Base"
         ],
         [
+            "node",
+            "expensive supply",
+            "node_type",
+            "balance",
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "cheap link",
+                "demand"
+            ],
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "cheap link",
+                "demand"
+            ],
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "triangle",
+                "expensive supply"
+            ],
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "cheap supply",
+                "triangle",
+                "expensive supply"
+            ],
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "expensive supply",
+                "expensive link",
+                "demand"
+            ],
+            "capacity",
+            1000.0,
+            "Base"
+        ],
+        [
+            "node__link__node",
+            [
+                "expensive supply",
+                "expensive link",
+                "demand"
+            ],
+            "efficiency",
+            1.0,
+            "Base"
+        ],
+        [
             "period",
             "2024",
             "start_time",
@@ -5210,6 +5613,33 @@
                 "index_name": "period",
                 "type": "array"
             },
+            "Base"
+        ],
+        [
+            "solve_pattern",
+            "model",
+            "rolling_horizon",
+            {
+                "data": "1Y",
+                "type": "duration"
+            },
+            "Base"
+        ],
+        [
+            "solve_pattern",
+            "model",
+            "rolling_jump",
+            {
+                "data": "4Y",
+                "type": "duration"
+            },
+            "Base"
+        ],
+        [
+            "solve_pattern",
+            "model",
+            "solve_mode",
+            "rolling_window",
             "Base"
         ],
         [
@@ -14112,7 +14542,7 @@
             "unit__to_node",
             [
                 "cheap unit",
-                "demand"
+                "cheap supply"
             ],
             "capacity",
             10.0,
@@ -14122,7 +14552,7 @@
             "unit__to_node",
             [
                 "cheap unit",
-                "demand"
+                "cheap supply"
             ],
             "fixed_cost",
             0.0,
@@ -14132,7 +14562,7 @@
             "unit__to_node",
             [
                 "cheap unit",
-                "demand"
+                "cheap supply"
             ],
             "investment_cost",
             2000000.0,
@@ -14142,7 +14572,7 @@
             "unit__to_node",
             [
                 "cheap unit",
-                "demand"
+                "cheap supply"
             ],
             "other_operational_cost",
             0.001,
@@ -14152,7 +14582,7 @@
             "unit__to_node",
             [
                 "expensive unit",
-                "demand"
+                "expensive supply"
             ],
             "capacity",
             10.0,
@@ -14162,7 +14592,7 @@
             "unit__to_node",
             [
                 "expensive unit",
-                "demand"
+                "expensive supply"
             ],
             "fixed_cost",
             0.0,
@@ -14172,7 +14602,7 @@
             "unit__to_node",
             [
                 "expensive unit",
-                "demand"
+                "expensive supply"
             ],
             "investment_cost",
             2000000.0,
@@ -14182,7 +14612,7 @@
             "unit__to_node",
             [
                 "expensive unit",
-                "demand"
+                "expensive supply"
             ],
             "other_operational_cost",
             0.001,
