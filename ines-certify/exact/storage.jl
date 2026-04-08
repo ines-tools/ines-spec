@@ -29,9 +29,9 @@ p__weight_delta__storage = Dict( # Dict(d => Dict(r => weight))
 p__commodity_price__cheap_source = Dict(r => [1.0 for h in s__h] for r in s__r)
 p__commodity_price__expensive_source = Dict(r => [10.0 for h in s__h] for r in s__r)
 p__flow_profile__demand = Dict(r => [10.0 for h in s__h] for r in s__r)
-p__efficiency__cheap_link = 1.0
-p__efficiency__expensive_link = 1.0
-p__efficiency__triangle = 1.0
+p__efficiency__cheap_link = 0.8
+p__efficiency__expensive_link = 0.8
+p__efficiency__triangle = 0.8
 p__efficiency__cheap_unit = 0.4
 p__efficiency__expensive_unit = 0.4
 p__capacity__cheap_link = 100.0

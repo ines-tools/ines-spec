@@ -20,9 +20,9 @@ p__flow_profile__demand = Dict(
     :expensive_low => [10.0 for t in s__t],
     :expensive_high => [60.0 for t in s__t]
 )
-p__efficiency__cheap_link = 1.0
-p__efficiency__expensive_link = 1.0
-p__efficiency__triangle = 1.0
+p__efficiency__cheap_link = 0.8
+p__efficiency__expensive_link = 0.8
+p__efficiency__triangle = 0.8
 p__efficiency__cheap_unit = 0.4
 p__efficiency__expensive_unit = 0.4
 p__capacity__cheap_link = 100.0

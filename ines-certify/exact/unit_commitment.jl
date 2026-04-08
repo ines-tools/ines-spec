@@ -11,15 +11,15 @@ p__flow_profile__demand = [30.0*(1+sin(t)) for t in s__t]
 p__commodity_price__cheap_source = [1.0 for t in s__t]
 p__commodity_price__expensive_source = [10.0 for t in s__t]
 
-p__efficiency__cheap_link = 1.0
+p__efficiency__cheap_link = 0.8
 p__capacity__cheap_link = 100.0
 p__existing_units__cheap_link = 1.0
 
-p__efficiency__expensive_link = 1.0
+p__efficiency__expensive_link = 0.8
 p__capacity__expensive_link = 100.0
 p__existing_units__expensive_link = 1.0
 
-p__efficiency__triangle = 1.0
+p__efficiency__triangle = 0.8
 p__capacity__triangle = 100.0
 p__existing_units__triangle = 1.0
 

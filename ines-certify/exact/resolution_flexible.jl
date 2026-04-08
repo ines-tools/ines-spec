@@ -13,9 +13,9 @@ dt__cheap = 2
 p__commodity_price__cheap_source = Dict(t=>1.0 for t in s__t_cheap)
 p__commodity_price__expensive_source = [10.0 for t in s__t]
 p__flow_profile__demand = [10.0 for t in s__t]
-p__efficiency__cheap_link = 1.0
-p__efficiency__expensive_link = 1.0
-p__efficiency__triangle = 1.0
+p__efficiency__cheap_link = 0.8
+p__efficiency__expensive_link = 0.8
+p__efficiency__triangle = 0.8
 p__efficiency__cheap_unit = 0.4
 p__efficiency__expensive_unit = 0.4
 p__capacity__cheap_link = 100.0
