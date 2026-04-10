@@ -49,7 +49,7 @@ p__existing_units__expensive_unit = 1.0
 @variable(model,0<=v__flow__expensive_source[s__t,s__s])
 @variable(model,0<=v__flow__expensive_supply[s__t,s__s]<=p__capacity__expensive_unit*p__existing_units__expensive_unit)
 
-@objective(model,Min,sum(sum(p__weight[s]*(p__commodity_price__cheap_source[s][t]*v__flow__cheap_source[t,s]+p__commodity_price__expensive_source[t]*v__flow__expensive_source[t,s]) for s in s__s) for t in s__t))
+@objective(model,Min,sum(p__weight[s]*sum(p__commodity_price__cheap_source[s][t]*v__flow__cheap_source[t,s]+p__commodity_price__expensive_source[t]*v__flow__expensive_source[t,s] for t in s__t) for s in s__s))
 
 @constraint(model,c__balance__demand[t in s__t,s in s__s],p__flow_profile__demand[s][t] == v__flow__cheap_link_out[t,s]+v__flow__expensive_link_out[t,s])
 

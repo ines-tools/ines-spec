@@ -269,12 +269,7 @@
         ],
         [
             "set",
-            "cheap becomes expensive",
-            null
-        ],
-        [
-            "set",
-            "demand forecast",
+            "stochastic",
             null
         ],
         [
@@ -316,7 +311,7 @@
         [
             "set__node",
             [
-                "cheap becomes expensive",
+                "stochastic",
                 "cheap source"
             ],
             null
@@ -324,7 +319,7 @@
         [
             "set__node",
             [
-                "demand forecast",
+                "stochastic",
                 "demand"
             ],
             null
@@ -449,15 +444,7 @@
         [
             "set",
             [
-                "cheap becomes expensive"
-            ],
-            "Base",
-            true
-        ],
-        [
-            "set",
-            [
-                "demand forecast"
+                "stochastic"
             ],
             "Base",
             true
@@ -5380,11 +5367,19 @@
                 "rank": 1,
                 "data": [
                     [
-                        "cheap",
+                        "cheap_low",
                         1.0
                     ],
                     [
-                        "expensive",
+                        "cheap_high",
+                        1.0
+                    ],
+                    [
+                        "expensive_low",
+                        100.0
+                    ],
+                    [
+                        "expensive_high",
                         100.0
                     ]
                 ],
@@ -5422,11 +5417,19 @@
                 "rank": 1,
                 "data": [
                     [
-                        "forecast_low",
+                        "cheap_low",
                         -10.0
                     ],
                     [
-                        "forecast_high",
+                        "cheap_high",
+                        -60.0
+                    ],
+                    [
+                        "expensive_low",
+                        -10.0
+                    ],
+                    [
+                        "expensive_high",
                         -60.0
                     ]
                 ],
@@ -5554,19 +5557,27 @@
         ],
         [
             "set",
-            "cheap becomes expensive",
+            "stochastic",
             "stochastic_forecast_weights",
             {
                 "index_type": "str",
                 "rank": 1,
                 "data": [
                     [
-                        "cheap",
-                        0.5
+                        "cheap_low",
+                        0.25
                     ],
                     [
-                        "expensive",
-                        0.5
+                        "cheap_high",
+                        0.25
+                    ],
+                    [
+                        "expensive_low",
+                        0.25
+                    ],
+                    [
+                        "expensive_high",
+                        0.25
                     ]
                 ],
                 "type": "map"
@@ -5575,35 +5586,7 @@
         ],
         [
             "set",
-            "cheap becomes expensive",
-            "stochastic_method",
-            "analysis_time_forecasts",
-            "Base"
-        ],
-        [
-            "set",
-            "demand forecast",
-            "stochastic_forecast_weights",
-            {
-                "index_type": "str",
-                "rank": 1,
-                "data": [
-                    [
-                        "forecast_low",
-                        0.5
-                    ],
-                    [
-                        "forecast_high",
-                        0.5
-                    ]
-                ],
-                "type": "map"
-            },
-            "Base"
-        ],
-        [
-            "set",
-            "demand forecast",
+            "stochastic",
             "stochastic_method",
             "analysis_time_forecasts",
             "Base"
@@ -5646,7 +5629,7 @@
             "solve_pattern",
             "solve pattern",
             "stochastic_scope",
-            "multiple_sets",
+            "single_set",
             "Base"
         ],
         [
