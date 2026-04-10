@@ -4,86 +4,77 @@ import HiGHS
 
 model = JuMP.Model(HiGHS.Optimizer)
 
-s__h = [h for h in 1:10] #intra
-s__d = [d for d in 1:3] #inter
-s__r = [r for r in 1:2] #representative
+s__t = 1:10
 
-p__weight_economic = Dict( # Dict(r => weight)
-    1 => 2,
-    2 => 1
-)
-p__weight_delta__storage = Dict( # Dict(d => Dict(r => weight))
-    1 => Dict(
-        1 => 1.0,
-        2 => 0.0
-    ),
-    2 => Dict(
-        1 => 0.5,
-        2 => 0.5
-    ),
-    3 => Dict(
-        1 => 0.0,
-        2 => 1.0
-    ),
-)
-p__commodity_price__cheap_source = Dict(r => [1.0 for h in s__h] for r in s__r)
-p__commodity_price__expensive_source = Dict(r => [10.0 for h in s__h] for r in s__r)
-p__flow_profile__demand = Dict(r => [10.0 for h in s__h] for r in s__r)
+p__commodity_price__cheap_source = [1.0 for t in s__t]
+p__commodity_price__expensive_source = [10.0 for t in s__t]
+p__flow_profile__demand = [10.0 for t in s__t]
+p__flow_profile__renewable = [round((sin(pi/2*t)+1)/2;digits=2) for t in s__t]
+
+p__capacity__renewable = 20.0
+p__existing_units__renewable = 1.0
+
 p__efficiency__cheap_link = 0.8
-p__efficiency__expensive_link = 0.8
-p__efficiency__triangle = 0.8
-p__efficiency__cheap_unit = 0.4
-p__efficiency__expensive_unit = 0.4
 p__capacity__cheap_link = 100.0
 p__existing_units__cheap_link = 1.0
+
+p__efficiency__expensive_link = 0.8
 p__capacity__expensive_link = 100.0
 p__existing_units__expensive_link = 1.0
+
+p__efficiency__triangle = 0.8
 p__capacity__triangle = 100.0
 p__existing_units__triangle = 1.0
+
+p__efficiency__cheap_unit = 0.4
 p__capacity__cheap_unit = 100.0
 p__existing_units__cheap_unit = 1.0
+
+p__efficiency__expensive_unit = 0.4
 p__capacity__expensive_unit = 100.0
 p__existing_units__expensive_unit = 1.0
+
+p__efficiency__storage = 0.8
+p__efficiency_charge__storage = 0.8
+p__efficiency_discharge__storage = 0.8
 p__capacity__storage = 100.0
-p__existing_units__storage = 1.0
 p__capacity_charge__storage = 100.0
 p__capacity_discharge__storage = 100.0
-p__efficiency__storage = 0.9
-p__efficiency_charge__storage = 0.7
-p__efficiency_discharge__storage = 0.7
+p__existing_units__storage = 1.0
 
-@variable(model,0<=v__flow__cheap_link_in[s__r,s__h])
-@variable(model,0<=v__flow__cheap_link_out[s__r,s__h]<=p__capacity__cheap_link*p__existing_units__cheap_link)
-@variable(model,0<=v__flow__expensive_link_in[s__r,s__h])
-@variable(model,0<=v__flow__expensive_link_out[s__r,s__h]<=p__capacity__expensive_link*p__existing_units__expensive_link)
-@variable(model,0<=v__flow__triangle_in[s__r,s__h])
-@variable(model,0<=v__flow__triangle_out[s__r,s__h]<=p__capacity__triangle*p__existing_units__triangle)
-@variable(model,0<=v__flow__cheap_source[s__r,s__h])
-@variable(model,0<=v__flow__cheap_supply[s__r,s__h]<=p__capacity__cheap_unit*p__existing_units__cheap_unit)
-@variable(model,0<=v__flow__expensive_source[s__r,s__h])
-@variable(model,0<=v__flow__expensive_supply[s__r,s__h]<=p__capacity__expensive_unit*p__existing_units__expensive_unit)
-@variable(model,0<=v__state_intra__storage[s__r,s__h]<=p__capacity__storage*p__existing_units__storage)
-@variable(model,0<=v__state_inter__storage[s__d]<=p__capacity__storage*p__existing_units__storage)
-@variable(model,0<=v__charge__storage[s__r,s__h]<=p__capacity_charge__storage*p__existing_units__storage)
-@variable(model,0<=v__discharge__storage[s__r,s__h]<=p__capacity_discharge__storage*p__existing_units__storage)
+@variable(model,v__flow__cheap_link_in[s__t])
+@variable(model,0<=v__flow__cheap_link_out[s__t]<=p__capacity__cheap_link*p__existing_units__cheap_link)
+@variable(model,v__flow__expensive_link_in[s__t])
+@variable(model,0<=v__flow__expensive_link_out[s__t]<=p__capacity__expensive_link*p__existing_units__expensive_link)
+@variable(model,v__flow__triangle_in[s__t])
+@variable(model,0<=v__flow__triangle_out[s__t]<=p__capacity__triangle*p__existing_units__triangle)
+@variable(model,v__flow__cheap_source[s__t])
+@variable(model,0<=v__flow__cheap_supply[s__t]<=p__capacity__cheap_unit*p__existing_units__cheap_unit)
+@variable(model,v__flow__expensive_source[s__t])
+@variable(model,0<=v__flow__expensive_supply[s__t]<=p__capacity__expensive_unit*p__existing_units__expensive_unit)
+@variable(model,0<=v__flow__renewable[s__t])
+@variable(model,0<=v__state__storage[s__t]<=p__capacity__storage*p__existing_units__storage)
+@variable(model,0<=v__charge__storage[s__t]<=p__capacity_charge__storage*p__existing_units__storage)
+@variable(model,0<=v__discharge__storage[s__t]<=p__capacity_discharge__storage*p__existing_units__storage)
 
-@objective(model,Min,sum(p__weight_economic[r]*sum(p__commodity_price__cheap_source[r][h]*v__flow__cheap_source[r,h]+p__commodity_price__expensive_source[r][h]*v__flow__expensive_source[r,h] for h in s__h) for r in s__r))
+@objective(model,Min,sum(p__commodity_price__cheap_source[t]*v__flow__cheap_source[t]+p__commodity_price__expensive_source[t]*v__flow__expensive_source[t] for t in s__t))
 
-@constraint(model,c__balance__demand[r in s__r, h in s__h],p__flow_profile__demand[r][h] == v__flow__cheap_link_out[r,h]+v__flow__expensive_link_out[r,h]-v__charge__storage[r,h]+p__efficiency_discharge__storage*v__discharge__storage[r,h])
+@constraint(model,c__balance__demand[t in s__t],p__flow_profile__demand[t] == v__flow__cheap_link_out[t]+v__flow__expensive_link_out[t])
 
-@constraint(model,c__efficiency__cheap_link[r in s__r,h in s__h], v__flow__cheap_link_out[r,h]==p__efficiency__cheap_link*v__flow__cheap_link_in[r,h])
-@constraint(model,c__efficiency__expensive_link[r in s__r,h in s__h],v__flow__expensive_link_out[r,h]==p__efficiency__expensive_link*v__flow__expensive_link_in[r,h])
-@constraint(model,c__efficiency__triangle[r in s__r,h in s__h], v__flow__triangle_out[r,h]==p__efficiency__triangle*v__flow__triangle_in[r,h])
+@constraint(model,c__efficiency__cheap_link[t in s__t], v__flow__cheap_link_out[t]==p__efficiency__cheap_link*v__flow__cheap_link_in[t])
+@constraint(model,c__efficiency__expensive_link[t in s__t],v__flow__expensive_link_out[t]==p__efficiency__expensive_link*v__flow__expensive_link_in[t])
+@constraint(model,c__efficiency__triangle[t in s__t], v__flow__triangle_out[t]==p__efficiency__triangle*v__flow__triangle_in[t])
 
-@constraint(model,c__balance__cheap_supply[r in s__r,h in s__h],v__flow__cheap_supply[r,h]+v__flow__triangle_out[r,h]==v__flow__cheap_link_in[r,h])
-@constraint(model,c__balance__expensive_supply[r in s__r,h in s__h],v__flow__expensive_supply[r,h]==v__flow__expensive_link_in[r,h]+v__flow__triangle_in[r,h])
+@constraint(model,c__balance__cheap_supply[t in s__t],v__flow__cheap_supply[t]+v__flow__triangle_out[t]+p__efficiency_discharge__storage*v__discharge__storage[t]==v__flow__cheap_link_in[t]+v__charge__storage[t])
+@constraint(model,c__balance__expensive_supply[t in s__t],v__flow__expensive_supply[t]+v__flow__renewable[t]==v__flow__expensive_link_in[t]+v__flow__triangle_in[t])
 
-@constraint(model,c__efficiency__cheap_unit[r in s__r,h in s__h],v__flow__cheap_supply[r,h]==p__efficiency__cheap_unit*v__flow__cheap_source[r,h])
-@constraint(model,c__efficiency__expensive_unit[r in s__r,h in s__h], v__flow__expensive_supply[r,h]==p__efficiency__expensive_unit*v__flow__expensive_source[r,h])
+@constraint(model,c__efficiency__cheap_unit[t in s__t],v__flow__cheap_supply[t]==p__efficiency__cheap_unit*v__flow__cheap_source[t])
+@constraint(model,c__efficiency__expensive_unit[t in s__t], v__flow__expensive_supply[t]==p__efficiency__expensive_unit*v__flow__expensive_source[t])
 
-@constraint(model,c__storage_intra__storage[r in s__r,h in s__h[2:end]],v__state_intra__storage[r,h]==v__state_intra__storage[r,h-1]+p__efficiency_charge__storage*v__charge__storage[r,h]-v__discharge__storage[r,h])
-@constraint(model,c__storage_inter__storage[d in s__d[2:end]],v__state_inter__storage[d]==v__state_inter__storage[d-1]+sum(p__weight_delta__storage[d][r]*(v__state_intra__storage[r,s__h[end]]-v__state_intra__storage[r,s__h[1]]) for r in s__r))
-@constraint(model,c__storage_inter_cyclic__storage,v__state_inter__storage[s__d[1]]==v__state_inter__storage[s__d[end]]+sum(p__weight_delta__storage[s__d[1]][r]*(v__state_intra__storage[r,s__h[end]]-v__state_intra__storage[r,s__h[1]]) for r in s__r))
+@constraint(model,c__capacity__renewable[t in s__t],v__flow__renewable[t]<=p__flow_profile__renewable[t]*p__capacity__renewable*p__existing_units__renewable)
+
+@constraint(model,c__storage__storage[t in s__t[2:end]],v__state__storage[t]==p__efficiency__storage*v__state__storage[t-1]+p__efficiency_charge__storage*v__charge__storage[t]-v__discharge__storage[t])
+@constraint(model,c__storage_cyclic__storage,v__state__storage[s__t[1]]==p__efficiency__storage*v__state__storage[s__t[end]]+p__efficiency_charge__storage*v__charge__storage[s__t[1]]-v__discharge__storage[s__t[1]])
 
 JuMP.optimize!(model)
 
@@ -95,5 +86,6 @@ println(JuMP.value(v__flow__cheap_source))
 
 println(JuMP.value(v__flow__expensive_source))
 
-println(JuMP.value(v__state_inter__storage))
-println(JuMP.value(v__state_intra__storage))
+println(JuMP.value(v__flow__renewable))
+
+println(JuMP.value(v__state__storage))

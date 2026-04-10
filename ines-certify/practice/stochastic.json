@@ -309,22 +309,6 @@
             null
         ],
         [
-            "set__node",
-            [
-                "stochastic",
-                "cheap source"
-            ],
-            null
-        ],
-        [
-            "set__node",
-            [
-                "stochastic",
-                "demand"
-            ],
-            null
-        ],
-        [
             "unit__to_node",
             [
                 "cheap unit",
@@ -5629,7 +5613,7 @@
             "solve_pattern",
             "solve pattern",
             "stochastic_scope",
-            "single_set",
+            "whole_model",
             "Base"
         ],
         [
