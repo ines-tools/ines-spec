@@ -7,7 +7,7 @@ model = JuMP.Model(HiGHS.Optimizer)
 s__t = 1:10
 
 p__commodity_price__cheap_source = [1.0 for t in s__t]
-p__commodity_price__expensive_source = [2.0 for t in s__t]
+p__commodity_price__expensive_source = [10.0 for t in s__t]
 p__investment_cost__cheap_unit = 10000.0
 p__investment_cost__expensive_unit = 10000.0
 p__flow_profile__demand = [10.0 for t in s__t]
