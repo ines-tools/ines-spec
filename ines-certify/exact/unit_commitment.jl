@@ -6,7 +6,7 @@ model = JuMP.Model(HiGHS.Optimizer)
 
 s__t = [t for t in 1:10]
 
-p__flow_profile__demand = [30.0*(1+sin(t)) for t in s__t]
+p__flow_profile__demand = [round(30.0*(sin(pi/2*t)+1)/2;digits=2) for t in s__t]
 
 p__commodity_price__cheap_source = [1.0 for t in s__t]
 p__commodity_price__expensive_source = [10.0 for t in s__t]
@@ -25,7 +25,7 @@ p__existing_units__triangle = 1.0
 
 p__efficiency__cheap_unit = 0.4
 p__efficiency_min__cheap_unit = 0.2
-p__capacity__cheap_unit = 50.0
+p__capacity__cheap_unit = 100.0
 p__capacity_min__cheap_unit = 20.0
 p__existing_units__cheap_unit = 1.0
 p__startup_cost__cheap_unit = 100.0
@@ -34,7 +34,7 @@ p__mdt__cheap_unit = 1
 
 p__efficiency__expensive_unit = 0.4
 p__efficiency_min__expensive_unit = 0.2
-p__capacity__expensive_unit = 60.0
+p__capacity__expensive_unit = 100.0
 p__capacity_min__expensive_unit = 0.0
 p__existing_units__expensive_unit = 1.0
 p__startup_cost__expensive_unit = 10.0
