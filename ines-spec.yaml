@@ -141,17 +141,20 @@ parameter_definitions:
   - null
   - null
   - Right hand side of the constraint.
+  - null
 - - constraint
   - sense
   - null
   - sense
   - Is the sense of the constraint equal to, greater than or less than.
+  - null
 - - link
   - availability
   - null
   - null
   - '[ratio] e.g. 0.9 means 90%. Fraction of capacity available for transfer link
     flows. Time series (or constant or array of periods).'
+  - null
 - - link
   - availability_forecasts
   - null
@@ -159,23 +162,27 @@ parameter_definitions:
   - '[p.u.] Availability forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - link
   - capacity
   - null
   - null
   - '[MW] Capacity of one link in either direction for one transfer link. Constant.'
+  - null
 - - link
   - constraint_link_count_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the number of the links. Map of constraints
     and respective coefficients.'
+  - null
 - - link
   - efficiency
   - null
   - null
   - '[ratio] Efficiency of transfer in either direction. Not used by all link_tranfer_methods.
     Constant, array of periods or time series.'
+  - null
 - - link
   - efficiency_forecasts
   - null
@@ -183,18 +190,21 @@ parameter_definitions:
   - '[ratio] Efficiency forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - link
   - fixed_co2_emissions
   - null
   - null
   - '[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant
     or array of periods.'
+  - null
 - - link
   - fixed_cost
   - null
   - null
   - '[CUR/MW/year] Fixed annual cost for the transfer capacity. Constant or array
     of periods.'
+  - null
 - - link
   - flow_max_cumulative
   - null
@@ -202,6 +212,7 @@ parameter_definitions:
   - '[MW] Maximum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - link
   - flow_min_cumulative
   - null
@@ -209,38 +220,45 @@ parameter_definitions:
   - '[MW] Minimum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - link
   - interest_rate
   - null
   - null
   - '[ratio] e.g. 0.05 is 5 %. Interest rate for transfer link investments. Constant
     or array of periods.'
+  - null
 - - link
   - investment_co2_emissions
   - null
   - null
   - '[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant
     or array of periods.'
+  - null
 - - link
   - investment_cost
   - null
   - null
   - '[CUR/MWh] Investment cost for the transfer capacity. Constant or array of periods.'
+  - null
 - - link
   - investment_method
   - null
   - link_invest_method
   - How investments are treated.
+  - null
 - - link
   - investment_uses_integer
   - null
   - boolean
   - Whether investment decisions are using integer variables.
+  - null
 - - link
   - is_non_synchronous
   - false
   - boolean
   - Chooses whether the link connects the two nodes synchronously or not.
+  - null
 - - link
   - lifetime
   - null
@@ -248,55 +266,65 @@ parameter_definitions:
   - "[years] Lifetime of the unit for annuity calculation and for retirement decision\
     \ when using retire_at_the_end_of_lifetime method. Constant or array of periods.\r\
     \n"
+  - null
 - - link
   - links_existing
   - null
   - null
   - '[Number] of existing transfer links. Constant or array of periods.'
+  - null
 - - link
   - links_fix_cumulative
   - null
   - null
   - '[Number] of transfer links that must exist (considers existing, invested and
     retired units). Constant or array of periods.'
+  - null
 - - link
   - links_invest_fix_period
   - null
   - null
   - '[Number] of links that must be invested in. Array of periods.'
+  - null
 - - link
   - links_invest_max_period
   - null
   - null
   - '[Number] of links that can be invested in. Array of periods.'
+  - null
 - - link
   - links_invest_min_period
   - null
   - null
   - '[Number] of links that must at least be invested in. Array of periods.'
+  - null
 - - link
   - links_max_cumulative
   - null
   - null
   - '[Number] of transfer links that can exist (considers existing, invested and retired
     units). Constant or array of periods.'
+  - null
 - - link
   - links_min_cumulative
   - null
   - null
   - '[Number] of transfer links that must at least exist (considers existing, invested
     and retired units). Constant or array of periods.'
+  - null
 - - link
   - links_retire_period
   - null
   - null
   - '[Number] of links that must be retired. Array of periods.'
+  - null
 - - link
   - operational_cost
   - null
   - null
   - '[CUR/MWh] Variable cost for the flow. Applies in both directions when transfer_method
     includes costs. Constant, array of periods or time series.'
+  - null
 - - link
   - operational_cost_forecasts
   - null
@@ -304,57 +332,67 @@ parameter_definitions:
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
     (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension
     forecast name, 2nd analysis time, 3rd time series).'
+  - null
 - - link
   - retirement_method
   - null
   - link_retirement_method
   - How retirements are treated.
+  - null
 - - link
   - salvage_value
   - null
   - null
   - '[CUR/MW] Salvage value of a transfer link at the end of lifetime (constant) or
     after reaching a particular age (map of periods with age and salvage value).'
+  - null
 - - link
   - transfer_method
   - null
   - link_transfer_method
   - How the link transfers.
+  - null
 - - link__node__reserve
   - contingency_causing
   - null
   - boolean
   - Whether the flow causes a need for a contingency reserve.
+  - null
 - - link__node__reserve
   - max_reserve_provision
   - null
   - null
   - '[p.u.] Maximum share of the flow that can be allocated to reserve provision.
     Constant.'
+  - null
 - - link__node__reserve
   - reservation_cost
   - null
   - null
   - '[CUR/MWh/h] Cost of providing the reservation. Constant, array of periods or
     time series.'
+  - null
 - - link__node__reserve
   - reserve_provision_coefficient
   - null
   - null
   - '[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the
     reserve requirement. Constant.'
+  - null
 - - link__node__reserve
   - reserve_requirement_factor
   - null
   - null
   - '[p.u.] The factor is multiplied with the flow to increase the reserve requirement.
     Constant.'
+  - null
 - - node
   - co2_content
   - null
   - null
   - '[ton of CO2/MWh] Implicit CO2 content released when fuel used. Constant or array
     of periods.'
+  - null
 - - node
   - commodity_limit
   - null
@@ -362,12 +400,14 @@ parameter_definitions:
   - '[MWh] Maximum amount of commodity that can be extracted or deposed (negative
     value). Constant (cumulative limit) or a map of periods (applies separately to
     each period).'
+  - null
 - - node
   - commodity_price
   - null
   - null
   - '[CUR/MWh or other unit] Price of the commodity. Constant, array of periods or
     time series.'
+  - null
 - - node
   - commodity_price_forecasts
   - null
@@ -375,36 +415,42 @@ parameter_definitions:
   - '[CUR/MWh] Commodity price forecasts either through forecast time series (1st
     dimension forecast name, 2nd dimension time series) or updating forecasts (1st
     dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node
   - commodity_price_ladder
   - null
   - null
   - "[\u20AC/MWh and MWh] Array of maps with an increasing price and a quantity at\
     \ that price."
+  - null
 - - node
   - constraint_storage_count_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the number of the storage units. Map
     of constraints and respective coefficients.'
+  - null
 - - node
   - constraint_storage_state_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the state of the storage. Map of constraints
     and respective coefficients.'
+  - null
 - - node
   - flow_annual
   - null
   - null
   - '[MWh] Annual flow to scale flow_profile depending on the flow_scaling_method.
     Constant or array of periods.'
+  - null
 - - node
   - flow_profile
   - null
   - null
   - '[MWh or ratio] Inflow is positive and outflow (demand) is negative. Time series,
     constant or array of periods.'
+  - null
 - - node
   - flow_profile_forecasts
   - null
@@ -412,126 +458,149 @@ parameter_definitions:
   - '[MWh or ratio] Inflow forecasts either through forecast time series (1st dimension
     forecast name, 2nd time series) or updating forecasts (1st dimension forecast
     name, 2nd analysis time, 3rd time series).'
+  - null
 - - node
   - flow_scaling_method
   - null
   - flow_scaling_method
   - How to scale/use the flow_profile.
+  - null
 - - node
   - node_type
   - null
   - node_type
   - How the node should behave.
+  - null
 - - node
   - penalty_downward
   - null
   - null
   - '[CUR/MWh] Penalty for removing energy from the node. Constant or array of periods.'
+  - null
 - - node
   - penalty_upward
   - null
   - null
   - '[CUR/MWh] Penalty for adding energy to the node. Constant or array of periods.'
+  - null
 - - node
   - spill_lower_limit
   - null
   - null
   - '[MW] Minimum spill (removed from model scope). Time series, constant or array
     of periods.'
+  - null
 - - node
   - spill_upper_limit
   - null
   - null
   - '[MW] Maximum spill (removed from model scope). Time series, constant or array
     of periods.'
+  - null
 - - node
   - storage_capacity
   - null
   - null
   - '[MWh] Capacity of one storage unit. Constant.'
+  - null
 - - node
   - storage_cost_of_stored_energy
   - null
   - null
   - '[CUR/MWh/h] Cost of storing energy over time. Constant or map of periods.'
+  - null
 - - node
   - storage_fixed_co2_emissions
   - null
   - null
   - '[ton of CO2/MWh/year] Emissions caused by the existense of the asset. Constant
     or array of periods.'
+  - null
 - - node
   - storage_fixed_cost
   - null
   - null
   - '[CUR/MWh/year] Fixed annual cost for the storage capacity. Constant or array
     of periods.'
+  - null
 - - node
   - storage_interest_rate
   - null
   - null
   - '[ratio] e.g. 0.05 is 5 %. Interest rate for storage investments. Constant or
     array of periods.'
+  - null
 - - node
   - storage_investment_co2_emissions
   - null
   - null
   - '[ton of CO2/MWh] Emissions embedded in the assets to be constructed. Constant
     or array of periods.'
+  - null
 - - node
   - storage_investment_cost
   - null
   - null
   - '[CUR/MWh] Investment cost for the storage capacity. Constant or array of periods.'
+  - null
 - - node
   - storage_investment_method
   - null
   - storage_investment_method
   - How investments are treated.
+  - null
 - - node
   - storage_investment_uses_integer
   - null
   - boolean
   - Whether investment decisions are using integer variables.
+  - null
 - - node
   - storage_lifetime
   - null
   - null
   - '[years] Lifetime of the storage plant for annuity calculation and for retirement
     decision depending on the storage_retirement_method. Constant.'
+  - null
 - - node
   - storage_limit_method
   - null
   - profile_method
   - What limits are applied to the storage state.
+  - null
 - - node
   - storage_loss_absolute
   - null
   - null
   - '[MWh/hour] Loss of stored energy over one hour. Constant or map of periods.'
+  - null
 - - node
   - storage_loss_from_storage_capacity
   - null
   - null
   - '[p.u./hour] Loss of stored energy over one hour as a fraction of total storage
     capacity. Constant or map of periods.'
+  - null
 - - node
   - storage_loss_from_stored_energy
   - null
   - null
   - '[fraction/hour] Loss of stored energy over one hour as a fraction of the energy
     stored. Constant or map of periods.'
+  - null
 - - node
   - storage_retirement_method
   - null
   - storage_retirement_method
   - How retirements are treated.
+  - null
 - - node
   - storage_salvage_value
   - null
   - null
   - '[CUR/MWh] Salvage value of a storage at the end of lifetime (constant) or after
     reaching a particular age (map of periods with age and salvage value).'
+  - null
 - - node
   - storage_state_binding_method
   - null
@@ -544,24 +613,28 @@ parameter_definitions:
     fills the holes using the behaviour of the included periods using 'storage_state_representative_map'.
     'fill_with_interlaced_representatives' fills the holes with linear combinations
     of representative periods based on 'storage_state_interlaced_mapping'.
+  - null
 - - node
   - storage_state_downward_absolute_values
   - null
   - null
   - '[CUR/MWh] Downward price ladder for storage state using MWh (absolute) piecewise
     points. MWh value and price/cost in CUR/MWh.'
+  - null
 - - node
   - storage_state_downward_relative_values
   - null
   - null
   - '[CUR/MWh] Downward price ladder for storage state using per unit (relative) piecewise
     points. Per unit value and price/cost in CUR/MWh.'
+  - null
 - - node
   - storage_state_fix
   - null
   - null
   - '[p.u.] Fix the storage state according to the storage_state_fix_method. Time
     series, constant or array of periods.'
+  - null
 - - node
   - storage_state_fix_forecasts
   - null
@@ -569,6 +642,7 @@ parameter_definitions:
   - '[p.u.] Storage state fix forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node
   - storage_state_fix_method
   - null
@@ -578,12 +652,14 @@ parameter_definitions:
     of the model. 'fix_horizon_end' fixes the end state of the storage in every solve.
     'fix_start_and_horizon_end' does both. 'fix_all_timesteps' fixes the storage level
     to predeterminend time series or constant.
+  - null
 - - node
   - storage_state_lower_limit
   - null
   - null
   - '[p.u.] Minimum limit for the state of the storage. Time series, constant or array
     of periods.'
+  - null
 - - node
   - storage_state_lower_limit_forecasts
   - null
@@ -591,12 +667,14 @@ parameter_definitions:
   - '[p.u.] Storage state lower limit forecasts either through forecast time series
     (1st dimension forecast name, 2nd dimension time series) or updating forecasts
     (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node
   - storage_state_upper_limit
   - null
   - null
   - '[p.u.] Maximum limit for the state of the storage. Time series, constant or array
     of periods.'
+  - null
 - - node
   - storage_state_upper_limit_forecasts
   - null
@@ -604,23 +682,27 @@ parameter_definitions:
   - '[p.u.] Storage state upper limit forecasts either through forecast time series
     (1st dimension forecast name, 2nd dimension time series) or updating forecasts
     (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node
   - storage_state_upward_absolute_values
   - null
   - null
   - '[CUR/MWh] Upward price ladder for storage state using MWh (absolute) piecewise
     points. MWh value and price/cost in CUR/MWh.'
+  - null
 - - node
   - storage_state_upward_relative_values
   - null
   - null
   - '[CUR/MWh] Upward price ladder for storage state using per unit (relative) piecewise
     points. Per unit value and price/cost in CUR/MWh.'
+  - null
 - - node
   - storage_state_value
   - null
   - null
   - '[CUR] Value (price) of storage state. Constant, time series or array of periods.'
+  - null
 - - node
   - storage_state_value_forecasts
   - null
@@ -628,6 +710,7 @@ parameter_definitions:
   - '[CUR/MWh] Storage state value forecasts either through forecast time series (1st
     dimension forecast name, 2nd time series) or updating forecasts (1st dimension
     forecast name, 2nd analysis time, 3rd time series).'
+  - null
 - - node
   - storage_state_value_method
   - null
@@ -635,55 +718,65 @@ parameter_definitions:
   - 'How to include value of storage state in the objective function. end_of_solve:
     the last timestep of the solve will get storage_state_value. all_timesteps will
     apply the storage value to each timestep in the model horizon.'
+  - null
 - - node
   - storages_existing
   - null
   - null
   - '[Number] of storages at the start of the model. Constant or map of periods.'
+  - null
 - - node
   - storages_fix_cumulative
   - null
   - null
   - '[Number] of storage units that must exist (considers existing, invested and retired
     units). Constant or array of periods.'
+  - null
 - - node
   - storages_invest_fix_period
   - null
   - null
   - '[Number] of storage units that must be invested in. Array of periods.'
+  - null
 - - node
   - storages_invest_max_period
   - null
   - null
   - '[Number] of storage units that can be invested in. Array of periods.'
+  - null
 - - node
   - storages_invest_min_period
   - null
   - null
   - '[Number] of storage units that must at least be invested in. Array of periods.'
+  - null
 - - node
   - storages_max_cumulative
   - null
   - null
   - '[Number] of storage units that can exist (considers existing, invested and retired
     units). Constant or array of periods.'
+  - null
 - - node
   - storages_min_cumulative
   - null
   - null
   - '[Number] of storage units that must at least exist (considers existing, invested
     and retired units). Constant or array of periods.'
+  - null
 - - node
   - storages_retire_period
   - null
   - null
   - '[Number] of storage units that must be retired. Array of periods.'
+  - null
 - - node__link__node
   - capacity
   - null
   - null
   - '[MW] Capacity in left-to-right direction for one transfer link. Replaces link
     capacity in that direction. Constant.'
+  - null
 - - node__link__node
   - constraint_flow_coefficient
   - null
@@ -691,12 +784,14 @@ parameter_definitions:
   - '[p.u.] Multiplier between constraints and the left-to-right flow in the link.
     Should not be applied in the no_losses_no_cost transfer_method. Map of constraints
     and respective coefficients.'
+  - null
 - - node__link__node
   - efficiency
   - null
   - null
   - '[p.u.] Efficiency of transfer in left-to-right direction. Not used by all link_tranfer_methods.
     Constant, array of periods or time series.'
+  - null
 - - node__link__node
   - efficiency_forecasts
   - null
@@ -704,12 +799,14 @@ parameter_definitions:
   - '[ratio] Efficiency forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node__link__node
   - operational_cost
   - null
   - null
   - '[CUR/MWh] Variable cost for the flow in left-to-right direction. Applies when
     transfer_method includes costs. Constant, array of periods or time series.'
+  - null
 - - node__link__node
   - operational_cost_forecasts
   - null
@@ -717,55 +814,65 @@ parameter_definitions:
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
     (1st dimension forecast name, 2nd dimension time series) or updating forecasts
     (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node__link__node
   - ramp_cost
   - null
   - null
   - '[CUR/MW] Cost of ramping up. Constant or array of periods.'
+  - null
 - - node__link__node
   - ramp_limit_down
   - null
   - null
   - '[p.u./minute] Maximum ramp down speed. Constant.'
+  - null
 - - node__link__node
   - ramp_limit_up
   - null
   - null
   - '[p.u./minute] Maximum ramp up speed. Constant.'
+  - null
 - - node__link__node
   - ramp_method
   - null
   - ramp_method
   - How ramps are constrained and/or valued.
+  - null
 - - node__node
   - diffusion_coefficient
   - null
   - null
   - '[p.u.] Multiplier for diffusing energy between two nodes based on the difference
     in the node storage state. Constant or time series.'
+  - null
 - - node__node
   - junction_type
   - null
   - junction_type
   - What is the interaction type between the two nodes.
+  - null
 - - node__reserve
   - gate_closure
   - null
   - null
   - '[duration] How much time there is between the procurement of reserves (fixing
     the reserve contributions) and when the reserve provision starts.'
+  - null
 - - node__reserve
   - reserve_reactivation_time
   - null
   - null
   - '[duration] How soon after provision of reserve the reserves must be available
     again.'
+  - null
 - - node__reserve
   - reserve_requirement
   - null
   - null
   - '[MW] A reserve requirement for the node. Must be provided into this node. Constant
     or time series.'
+  - null
 - - node__reserve
   - reserve_requirement_forecasts
   - null
@@ -773,34 +880,40 @@ parameter_definitions:
   - '[MW] Reserve requirement forecasts either through forecast time series (1st dimension
     forecast name, 2nd time series) or updating forecasts (1st dimension forecast
     name, 2nd analysis time, 3rd time series).'
+  - null
 - - node__reserve
   - update_frequency
   - null
   - null
   - '[duration] How often the reserve is procured (update of reserve contributions).'
+  - null
 - - node__to_unit
   - capacity
   - null
   - null
   - '[MW] Capacity for one unit (is therefore multiplied by number of existing plus
     invested units). Constant.'
+  - null
 - - node__to_unit
   - constraint_flow_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the flow. Map of constraints and respective
     coefficients.'
+  - null
 - - node__to_unit
   - conversion_coefficient
   - null
   - null
   - '[p.u.] Multiplier between the flow and the conversion equation of the unit. Not
     used by coefficients_only conversion_method. Constant.'
+  - null
 - - node__to_unit
   - fixed_cost
   - null
   - null
   - '[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.'
+  - null
 - - node__to_unit
   - flow_max_cumulative
   - null
@@ -808,6 +921,7 @@ parameter_definitions:
   - '[MW] Maximum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - node__to_unit
   - flow_min_cumulative
   - null
@@ -815,31 +929,37 @@ parameter_definitions:
   - '[MW] Minimum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - node__to_unit
   - inertia_constant
   - null
   - null
   - '[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.'
+  - null
 - - node__to_unit
   - investment_cost
   - null
   - null
   - '[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.'
+  - null
 - - node__to_unit
   - is_non_synchronous
   - false
   - boolean
   - Chooses whether the unit is synchronously connected to this node.
+  - null
 - - node__to_unit
   - nox_emission_rate
   - null
   - null
   - '[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.'
+  - null
 - - node__to_unit
   - other_operational_cost
   - null
   - null
   - '[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series.'
+  - null
 - - node__to_unit
   - other_operational_cost_forecasts
   - null
@@ -847,16 +967,19 @@ parameter_definitions:
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
     (1st dimension forecast name, 2nd time series) or updating forecasts (1st dimension
     forecast name, 2nd analysis time, 3rd time series).'
+  - null
 - - node__to_unit
   - profile_fix
   - null
   - null
   - '[p.u.] Fix the flow. Time series, constant or array of periods.'
+  - null
 - - node__to_unit
   - profile_limit_lower
   - null
   - null
   - '[p.u.] Minimum flow limit. Time series, constant or array of periods.'
+  - null
 - - node__to_unit
   - profile_limit_lower_forecasts
   - null
@@ -864,11 +987,13 @@ parameter_definitions:
   - '[p.u.] Minimum flow limit forecasts either through forecast time series (1st
     dimension forecast name, 2nd dimension time series) or updating forecasts (1st
     dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node__to_unit
   - profile_limit_upper
   - null
   - null
   - '[p.u.] Maximum flow limit. Time series, constant or array of periods.'
+  - null
 - - node__to_unit
   - profile_limit_upper_forecasts
   - null
@@ -876,53 +1001,72 @@ parameter_definitions:
   - '[p.u.] Maximum flow limit forecasts either through forecast time series (1st
     dimension forecast name, 2nd dimension time series) or updating forecasts (1st
     dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - node__to_unit
   - profile_method
   - null
   - profile_method
   - How to limit the flow based on profiles.
+  - null
 - - node__to_unit
   - ramp_cost
   - null
   - null
   - '[CUR/MW] Cost of ramping up. Constant or array of periods.'
+  - null
 - - node__to_unit
   - ramp_limit_down
   - null
   - null
   - '[p.u./minute] Maximum ramp down speed. Constant.'
+  - null
 - - node__to_unit
   - ramp_limit_up
   - null
   - null
   - '[p.u./minute] Maximum ramp up speed. Constant.'
+  - null
 - - node__to_unit
   - ramp_method
   - null
   - ramp_method
   - How ramps are constrained and/or valued.
+  - null
 - - node__to_unit
   - salvage_value
   - null
   - null
   - '[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a
     particular age (map of periods with age and salvage value).'
+  - null
 - - node__to_unit
   - so2_emission_rate
   - null
   - null
   - '[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant.'
+  - null
+- - period
+  - duration
+  - null
+  - null
+  - Duration (from start_time). Array of duration needs to be matched with an array
+    of start_times to pick multiple sequences from the timeline. In case no duration
+    has been provided, the model will extend to the end of the timeline. Duration
+    or array of durations.
+  - null
 - - period
   - start_time
   - null
   - null
   - '[Date_time] for the start of the period'
+  - null
 - - period
   - years_represented
   - null
   - null
   - How many years the period represents before the next period in the solve. Used
     for discounting. Can be below one (multiple periods in one year).
+  - null
 - - reserve
   - reserve_type
   - null
@@ -930,33 +1074,39 @@ parameter_definitions:
   - What kind of reserve is in question (symmetric means that the reserve must be
     provided in both directions, contingency means that the reserve requirement is
     based on the contingency_causing flows).
+  - null
 - - set
   - capacity_margin
   - null
   - null
   - '[MW] Capacity margin across the set of member nodes. Constant or array of periods.'
+  - null
 - - set
   - capacity_margin_method
   - null
   - capacity_margin_method
   - 'How capacity margin is constrained. Dispatch_based: profile limited and storages
     are dispatched, thermal plants based on their availability.'
+  - null
 - - set
   - co2_max_cumulative
   - null
   - null
   - '[ton of CO2] Cumulative limit for CO2 emissions from the member nodes. Constant
     or array of periods.'
+  - null
 - - set
   - co2_max_period
   - null
   - null
   - '[ton of CO2] CO2 limit for each period separately. Array of periods.'
+  - null
 - - set
   - co2_price
   - null
   - null
   - '[CUR/ton] CO2 price for a set of nodes. Constant, array of periods or time series.'
+  - null
 - - set
   - co2_price_forecasts
   - null
@@ -964,6 +1114,7 @@ parameter_definitions:
   - '[CUR/ton] CO2 price forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - set
   - flow_max_cumulative
   - null
@@ -972,12 +1123,14 @@ parameter_definitions:
     link). The average value is multiplied by the model duration to get the cumulative
     limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant
     or map of periods.'
+  - null
 - - set
   - flow_max_instant
   - null
   - null
   - '[MW] Maximum instantenous flow for the aggregated flow of all set members. Constant
     or period.'
+  - null
 - - set
   - flow_min_cumulative
   - null
@@ -986,30 +1139,35 @@ parameter_definitions:
     link). The average value is multiplied by the model duration to get the cumulative
     limit (e.g. by 8760 if a single year is modelled). Applied for each period. Constant
     or map of periods.'
+  - null
 - - set
   - flow_min_instant
   - null
   - null
   - '[MW] Minimum instantenous flow for the aggregated flow of all set members. Constant
     or period.'
+  - null
 - - set
   - inertia_limit
   - null
   - null
   - '[MWs] Minimum for synchronous inertia in the group of nodes. Constant, period,
     time, or period__time.'
+  - null
 - - set
   - invest_equal_count
   - null
   - null
   - '[boolean] Set members must have equal count of newly invested assets. For example,
     fixing the ratio between storage capacity and charging capacity.'
+  - null
 - - set
   - invest_max_period
   - null
   - null
   - '[MW or MWh] Maximum investment per period to the aggregated capacity of set member
     flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods.'
+  - null
 - - set
   - invest_max_total
   - null
@@ -1017,12 +1175,14 @@ parameter_definitions:
   - '[MW or MWh] Maximum investment to the aggregated capacity of set member flows
     (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods.
     Constant.'
+  - null
 - - set
   - invest_min_period
   - null
   - null
   - '[MW or MWh] Minimum investment per period to the aggregated capacity of set member
     flows (unit__to_node, node__to_unit, link) and storage capacity. Array of periods.'
+  - null
 - - set
   - invest_min_total
   - null
@@ -1030,63 +1190,74 @@ parameter_definitions:
   - '[MW or MWh] Minimum investment to the aggregated capacity of set member flows
     (unit__to_node, node__to_unit, link) and storage capacity. Applies in all periods.
     Constant.'
+  - null
 - - set
   - max_cumulative
   - null
   - null
   - '[MW or MWh] Maximum cumulative capacity of set member flows (unit__to_node, node__to_unit,
     link) and storage capacity. Constant or array of periods.'
+  - null
 - - set
   - min_cumulative
   - null
   - null
   - '[MW or MWh] Minimum cumulative capacity of set member flows (unit__to_node, node__to_unit,
     link) and storage capacity. Constant or array of periods.'
+  - null
 - - set
   - network_type
   - null
   - network_type
   - What is the network type for the nodes connected to the set.
+  - null
 - - set
   - non_synchronous_limit
   - null
   - null
   - '[share, e.g. 0.8 means 80%] The maximum share of non-synchronous generation in
     the set of nodes. Constant or period.'
+  - null
 - - set
   - nox_max_cumulative
   - null
   - null
   - '[ton of NOx] Cumulative limit for NOx emissions from the member flows. Constant
     or array of periods.'
+  - null
 - - set
   - nox_max_period
   - null
   - null
   - '[ton of NOx] NOx limit for each period separately from the member flows. Array
     of periods.'
+  - null
 - - set
   - nox_price
   - null
   - null
   - '[CUR/ton] NOx price for a set of member flows. Constant or array of periods.'
+  - null
 - - set
   - so2_max_cumulative
   - null
   - null
   - '[ton of SO2] Cumulative limit for SO2 emissions from the member flows. Constant
     or array of periods.'
+  - null
 - - set
   - so2_max_period
   - null
   - null
   - '[ton of SO2] SO2 limit for each period separately from the member flows. Array
     of periods.'
+  - null
 - - set
   - so2_price
   - null
   - null
   - '[CUR/ton] SO2 price for a set of member flows. Constant or array of periods.'
+  - null
 - - set
   - stochastic_forecast_interpolation_factors
   - null
@@ -1094,12 +1265,14 @@ parameter_definitions:
   - '[ratio] between 0-1. How much each consequent timestep, starting from the first
     timestep of the solve, takes from the realization time series (the rest comes
     from the forecast time series).'
+  - null
 - - set
   - stochastic_forecast_weights
   - null
   - null
   - '[ratio between 0-1] Probability weight of each forecast. Name of forecast combined
     with its weight.'
+  - null
 - - set
   - stochastic_method
   - null
@@ -1109,41 +1282,48 @@ parameter_definitions:
     realization closer to first solve timestep. 'analysis_time_forecasts' has separate
     forecasts (1 or more) for each analysis timestep with the assumption the model
     rolls forward from analysis time to the next.
+  - null
 - - set
   - time_resolution
   - null
   - null
   - Which time resolution the set will propagate to the set members (node, node__unit,
     link) overriding time_resolution from the solve_pattern.
+  - null
 - - set__reserve
   - activation_time
   - null
   - null
   - '[duration] How fast the reserve must be provided. Typically not used by models,
     but can help to set max_reserve_provision for specific technologies.'
+  - null
 - - set__reserve
   - duration
   - null
   - null
   - '[duration] How long the reserve provision needs to last.'
+  - null
 - - set__reserve
   - gate_closure
   - null
   - null
   - '[duration] How much time there is between the procurement of reserves (fixing
     the reserve contributions) and when the reserve provision starts.'
+  - null
 - - set__reserve
   - reserve_reactivation_time
   - null
   - null
   - '[duration] How soon after provision of reserve the reserves must be available
     again.'
+  - null
 - - set__reserve
   - reserve_requirement
   - null
   - null
   - '[MW] A shared reserve requirement for the set of nodes. Reserve can be provided
     into any of the nodes. Constant or time series.'
+  - null
 - - set__reserve
   - reserve_requirement_forecasts
   - null
@@ -1151,11 +1331,13 @@ parameter_definitions:
   - '[MW] Reserve requirement forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - set__reserve
   - update_frequency
   - null
   - null
   - '[duration] How often the reserve is procured (update of reserve contributions).'
+  - null
 - - solve_pattern
   - duration
   - null
@@ -1164,32 +1346,38 @@ parameter_definitions:
     of start_times to pick multiple sequences from the timeline. In case no duration
     has been provided, the model will extend to the end of the timeline. Duration
     or array of durations.
+  - null
 - - solve_pattern
   - includes_solve_pattern
   - null
   - null
   - Points to an inner solve_pattern. Used to create nested model structures.
+  - null
 - - solve_pattern
   - period
   - null
   - null
   - A single period or an array of periods or a map of period arrays (for rolling
     and possibly myopic invesments).
+  - null
 - - solve_pattern
   - rolling_horizon
   - null
   - null
   - Duration of the model horizon for rolling window models.
+  - null
 - - solve_pattern
   - rolling_jump
   - null
   - null
   - Duration of the model jump between two solves in rolling window models.
+  - null
 - - solve_pattern
   - solve_mode
   - single_solve
   - solve_mode
   - Rolling or single solve model.
+  - null
 - - solve_pattern
   - start_time
   - null
@@ -1198,85 +1386,101 @@ parameter_definitions:
     an array of durations to pick multiple sequences from the timeline. If no start
     time has been provided, the model will start from the beginning of the timeline.
     Date_time or an array of date_times.
+  - null
 - - solve_pattern
   - stochastic_scope
   - none
   - stochastic_scope
   - Which parameters will use the forecast versions if available.
+  - null
 - - solve_pattern
   - time_resolution
   - null
   - null
   - '[duration] Time resolution of the model (unless re-defined by a time resolution
     of a set).'
+  - null
 - - solve_pattern
   - time_resolution_scope
   - whole_model
   - time_resolution_scope
   - At what level time resolution in the model is defined.
+  - null
 - - system
   - discount_rate
   - null
   - null
   - '[ratio] e.g. 0.05 is 5%. Discount rate for the value of future compared to today.
     Constant or map of periods.'
+  - null
 - - system
   - timeline
   - null
   - null
   - Time steps that can be present in a model instance. Needs to be in date_time format.
     Tries to ensure that all time series data is from matching time steps.
+  - null
 - - test
   - downward_slack
   - null
   - null
   - '[MWh] Used for correct answer when downward slack variable is being tested.'
+  - null
 - - test
   - flow
   - null
   - null
   - '[MWh] Used for correct answer when flow variable is being tested.'
+  - null
 - - test
   - investment
   - null
   - null
   - '[MW] Used for correct answer when investment variable is being tested.'
+  - null
 - - test
   - online
   - null
   - null
   - '[MW] Used for correct answer when online variable is being tested.'
+  - null
 - - test
   - reserve
   - null
   - null
   - '[MW] Used for correct answer when reserve variable is being tested.'
+  - null
 - - test
   - retirement
   - null
   - null
   - '[MW] Used for correct answer when retirement variable is being tested.'
+  - null
 - - test
   - state
   - null
   - null
   - '[MWh] Used for correct answer when storage state variable is being tested.'
+  - null
 - - test
   - target
   - null
   - null
   - '[entity_class__entity] to be tested.'
+  - null
 - - test
   - upward_slack
   - null
   - null
   - '[MWh] Used for correct answer when upward slack variable is being tested.'
+  - null
 - - unit
   - availability
   - null
   - null
   - '[p.u.] Fraction of the unit available for operation. Time series (or constant
     or array of periods).'
+  - null
 - - unit
   - availability_forecasts
   - null
@@ -1284,28 +1488,33 @@ parameter_definitions:
   - '[p.u.] Availability forecasts either through forecast time series (1st dimension
     forecast name, 2nd dimension time series) or updating forecasts (1st dimension
     forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - unit
   - constraint_online_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the online status of the unit. Map
     of constraints and respective coefficients.'
+  - null
 - - unit
   - constraint_unit_count_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the number of the units. Map of constraints
     and respective coefficients.'
+  - null
 - - unit
   - conversion_method
   - null
   - unit_conversion_method
   - What method to use when converting inputs to outputs.
+  - null
 - - unit
   - cooling_time_to_tiers
   - null
   - null
   - '[minutes] Time to cool to the startup tier from shutdown.'
+  - null
 - - unit
   - efficiency
   - null
@@ -1315,6 +1524,7 @@ parameter_definitions:
     instead of efficiency). Map is used to give pairs of operating point (float) and
     efficiency (float) - in partial_load_efficiency only the first and last pair is
     used. Constant, map and time series.'
+  - null
 - - unit
   - efficiency_forecasts
   - null
@@ -1322,200 +1532,236 @@ parameter_definitions:
   - '[p.u.] Efficiency forecasts either through forecast time series (1st dimension
     forecast name, 2nd time series) or updating forecasts (1st dimension forecast
     name, 2nd analysis time, 3rd time series).'
+  - null
 - - unit
   - fixed_co2_emissions
   - null
   - null
   - '[ton of CO2/MW/year] Emissions caused by the existense of the asset. Constant
     or array of periods.'
+  - null
 - - unit
   - interest_rate
   - null
   - null
   - '[ratio] e.g. 0.05 is 5 %. Interest rate for investing in the unit. Constant or
     array of periods.'
+  - null
 - - unit
   - investment_co2_emissions
   - null
   - null
   - '[ton of CO2/MW] Emissions embedded in the assets to be constructed. Constant
     or array of periods.'
+  - null
 - - unit
   - investment_method
   - null
   - unit_invest_method
   - How investments are treated.
+  - null
 - - unit
   - investment_uses_integer
   - null
   - boolean
   - Whether investment decisions are using integer variables.
+  - null
 - - unit
   - lifetime
   - null
   - null
   - '[years] Lifetime of the unit for annuity calculation and for retirement decision
     depending on the unit_retirement_method. Constant.'
+  - null
 - - unit
   - min_downtime
   - null
   - null
   - '[minutes] When unit is turned off, how many minutes it must stay turned off.
     Constant.'
+  - null
 - - unit
   - min_uptime
   - null
   - null
   - '[minutes] When unit is turned on, how many minutes it must stay turned on. Constant.'
+  - null
 - - unit
   - online_cost
   - null
   - null
   - '[CUR/p.u./h] Cost of keeping unit online for one hour. Constant or array of periods.'
+  - null
 - - unit
   - retirement_method
   - null
   - unit_retirement_method
   - How retirements are treated.
+  - null
 - - unit
   - shutdown_cost
   - null
   - null
   - '[CUR/p.u.] Cost of one full shutdown. Constant or array of periods.'
+  - null
 - - unit
   - startup_co2_emission
   - null
   - null
   - '[ton of CO2] Additional CO2 emissions from one full startup (do not include emissions
     already included in fuel use).'
+  - null
 - - unit
   - startup_co2_emission_tiers
   - null
   - null
   - '[ton of CO2] Additional CO2 emissions from one full startup started from the
     tier temperature (do not include emissions already included in fuel use).'
+  - null
 - - unit
   - startup_cost
   - null
   - null
   - '[CUR/p.u.] Cost of one full startup. Constant or array of periods.'
+  - null
 - - unit
   - startup_cost_tiers
   - null
   - null
   - '[CUR/p.u.] Cost of one full startup for tiers of cooldown. Array of tiers starting
     from 0, whic is ''hot'' start and uses no cooling time.'
+  - null
 - - unit
   - startup_method
   - null
   - unit_startup_method
   - What method is used for unit startups.
+  - null
 - - unit
   - units_existing
   - null
   - null
   - '[Number] of existing units. Constant or array of periods.'
+  - null
 - - unit
   - units_fix_cumulative
   - null
   - null
   - '[Number] of units that must exist (considers existing, invested and retired units).
     Constant or array of periods.'
+  - null
 - - unit
   - units_invest_fix_period
   - null
   - null
   - '[Number] of units that must be invested in. Array of periods.'
+  - null
 - - unit
   - units_invest_max_period
   - null
   - null
   - '[Number] of units that can be invested in. Array of periods.'
+  - null
 - - unit
   - units_invest_min_period
   - null
   - null
   - '[Number] of units that must at least be invested in. Array of periods.'
+  - null
 - - unit
   - units_max_cumulative
   - null
   - null
   - '[Number] of units that can exist (considers existing, invested and retired units).
     Constant or array of periods.'
+  - null
 - - unit
   - units_min_cumulative
   - null
   - null
   - '[Number] of units that must at least exist (considers existing, invested and
     retired units). Constant or array of periods.'
+  - null
 - - unit
   - units_retire_period
   - null
   - null
   - '[Number] of units that must be retired. Array of periods.'
+  - null
 - - unit__node__reserve
   - contingency_causing
   - null
   - boolean
   - Whether the flow causes a need for a contingency reserve.
+  - null
 - - unit__node__reserve
   - forward_reserve_to_reserve
   - null
   - null
   - '[p.u.] The share from procured reserve that is calculated also in a second reserve
     category. Map of target reserves with a value.'
+  - null
 - - unit__node__reserve
   - max_reserve_provision
   - null
   - null
   - '[p.u.] Maximum share of the flow that can be allocated to reserve provision.
     Constant.'
+  - null
 - - unit__node__reserve
   - offline_reserve_provision_share
   - null
   - null
   - '[p.u.] The share of capacity that can be used to provide reserve while unit is
     offline. Constant.'
+  - null
 - - unit__node__reserve
   - reservation_cost
   - null
   - null
   - '[CUR/MWh/h] Cost of providing the reservation.'
+  - null
 - - unit__node__reserve
   - reserve_provision_coefficient
   - null
   - null
   - '[ratio] e.g. 0.8 means that 80% of the provided reserve is contributing to the
     reserve requirement. Constant.'
+  - null
 - - unit__node__reserve
   - reserve_requirement_factor
   - null
   - null
   - '[p.u.] The factor is multiplied with the flow to increase the reserve requirement.
     Constant.'
+  - null
 - - unit__to_node
   - capacity
   - null
   - null
   - '[MW] Capacity for one unit (is therefore multiplied by number of existing plus
     invested units). Constant.'
+  - null
 - - unit__to_node
   - constraint_flow_coefficient
   - null
   - null
   - '[p.u.] Multiplier between constraints and the flow. Map of constraints and respective
     coefficients.'
+  - null
 - - unit__to_node
   - conversion_coefficient
   - null
   - null
   - '[p.u.] Multiplier between the flow and the conversion equation of the unit. Not
     used by coefficients_only conversion_method. Constant.'
+  - null
 - - unit__to_node
   - fixed_cost
   - null
   - null
   - '[CUR/MW/year] Fixed annual cost for the flow capacity. Constant or array of periods.'
+  - null
 - - unit__to_node
   - flow_max_cumulative
   - null
@@ -1523,6 +1769,7 @@ parameter_definitions:
   - '[MW] Maximum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - unit__to_node
   - flow_min_cumulative
   - null
@@ -1530,31 +1777,37 @@ parameter_definitions:
   - '[MW] Minimum average flow. The average value is multiplied by the model duration
     to get the cumulative limit (e.g. by 8760 if a single year is modelled). Applied
     for each period. Constant or map of periods.'
+  - null
 - - unit__to_node
   - inertia_constant
   - null
   - null
   - '[MWs/MW] Inertia constant for a synchronously connected unit to this node. Constant.'
+  - null
 - - unit__to_node
   - investment_cost
   - null
   - null
   - '[CUR/MW] Investment cost for the flow capacity. Constant or array of periods.'
+  - null
 - - unit__to_node
   - is_non_synchronous
   - false
   - boolean
   - Chooses whether the unit is synchronously connected to this node.
+  - null
 - - unit__to_node
   - nox_emission_rate
   - null
   - null
   - '[kg of NOx emissions/MWh] NOx emission rate per MWh of flow. Constant.'
+  - null
 - - unit__to_node
   - other_operational_cost
   - null
   - null
   - '[CUR/MWh] Variable cost for the flow. Constant, array of periods or time series.'
+  - null
 - - unit__to_node
   - other_operational_cost_forecasts
   - null
@@ -1562,16 +1815,19 @@ parameter_definitions:
   - '[CUR/MWh] Variable operational cost forecasts either through forecast time series
     (1st dimension forecast name, 2nd dimension time series) or updating forecasts
     (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - unit__to_node
   - profile_fix
   - null
   - null
   - '[p.u.] Fix the flow. Time series, constant or array of periods.'
+  - null
 - - unit__to_node
   - profile_limit_lower
   - null
   - null
   - '[p.u.] Minimum flow limit. Time series, constant or array of periods.'
+  - null
 - - unit__to_node
   - profile_limit_lower_forecasts
   - null
@@ -1579,11 +1835,13 @@ parameter_definitions:
   - '[p.u.] Minimum flow limit forecasts either through forecast time series (1st
     dimension forecast name, 2nd dimension time series) or updating forecasts (1st
     dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - unit__to_node
   - profile_limit_upper
   - null
   - null
   - '[p.u.] Maximum flow limit. Time series, constant or array of periods.'
+  - null
 - - unit__to_node
   - profile_limit_upper_forecasts
   - null
@@ -1591,72 +1849,86 @@ parameter_definitions:
   - '[p.u.] Maximum flow limit forecasts either through forecast time series (1st
     dimension forecast name, 2nd dimension time series) or updating forecasts (1st
     dimension forecast name, 2nd dimension analysis time, 3rd time series).'
+  - null
 - - unit__to_node
   - profile_method
   - no_profile
   - profile_method
   - How to limit the flow based on profiles.
+  - null
 - - unit__to_node
   - ramp_cost
   - null
   - null
   - '[CUR/MW] Cost of ramping up. Constant or array of periods.'
+  - null
 - - unit__to_node
   - ramp_limit_down
   - null
   - null
   - '[p.u./minute] Maximum ramp down speed. Constant.'
+  - null
 - - unit__to_node
   - ramp_limit_up
   - null
   - null
   - '[p.u./minute] Maximum ramp up speed. Constant.'
+  - null
 - - unit__to_node
   - ramp_method
   - no_constraint
   - ramp_method
   - How ramps are constrained and/or valued.
+  - null
 - - unit__to_node
   - salvage_value
   - null
   - null
   - '[CUR/MW] Salvage value at the end of lifetime (constant) or after reaching a
     particular age (map of periods with age and salvage value).'
+  - null
 - - unit__to_node
   - so2_emission_rate
   - null
   - null
   - '[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant.'
+  - null
 - - unit_flow__unit_flow
   - equality_constant
   - null
   - null
   - '[MW] Constant C in [flow_1 = A x flow_2 + C] for equality constraints'
+  - null
 - - unit_flow__unit_flow
   - equality_ratio
   - null
   - null
   - '[ratio] Ratio A in [flow_1 = A x flow_2 + C] for equality constraints'
+  - null
 - - unit_flow__unit_flow
   - greater_than_constant
   - null
   - null
   - '[MW] Constant C in [flow_1 = A x flow_2 + C] for greater than constraints'
+  - null
 - - unit_flow__unit_flow
   - greater_than_ratio
   - null
   - null
   - '[ratio] Ratio A in [flow_1 = A x flow_2 + C] for greater than constraints'
+  - null
 - - unit_flow__unit_flow
   - less_than_constant
   - null
   - null
   - '[MW] Constant C in [flow_1 = A x flow_2 + C] for less than constraints'
+  - null
 - - unit_flow__unit_flow
   - less_than_ratio
   - null
   - null
   - '[ratio] Ratio A in [flow_1 = A x flow_2 + C] for less than constraints'
+  - null
 parameter_types:
 - - constraint
   - constant
@@ -2469,6 +2741,14 @@ parameter_types:
 - - node__to_unit
   - so2_emission_rate
   - float
+  - 0
+- - period
+  - duration
+  - array
+  - 1
+- - period
+  - duration
+  - duration
   - 0
 - - period
   - start_time

@@ -670,6 +670,11 @@ ines:node__to_unit.so2_emission_rate a owl:DatatypeProperty ;
     rdfs:comment "[kg of SO2 emissions/MWh] SO2 emission rate per MWh of flow. Constant." ;
     rdfs:range rdfs:Literal .
 
+ines:period.duration a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:period ;
+    rdfs:comment "Duration (from start_time). Array of duration needs to be matched with an array of start_times to pick multiple sequences from the timeline. In case no duration has been provided, the model will extend to the end of the timeline. Duration or array of durations." ;
+    rdfs:range rdfs:Literal .
+
 ines:period.start_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:period ;
     rdfs:comment "[Date_time] for the start of the period" ;
@@ -846,10 +851,10 @@ ines:set__link a owl:Class ;
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_set ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ] .
+            owl:onProperty ines:has_node ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -1364,8 +1369,6 @@ ines:node__node a owl:Class ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_node ] .
 
-ines:period a owl:Class .
-
 ines:reserve a owl:Class .
 
 ines:system a owl:Class .
@@ -1375,6 +1378,8 @@ ines:has_link a owl:ObjectProperty ;
 
 ines:has_unit_flow a owl:ObjectProperty ;
     rdfs:range ines:unit_flow .
+
+ines:period a owl:Class .
 
 ines:has_reserve a owl:ObjectProperty ;
     rdfs:range ines:reserve .
@@ -1391,10 +1396,10 @@ ines:link__node__reserve a owl:Class ;
             owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1415,21 +1420,21 @@ ines:unit_flow__unit_flow a owl:Class ;
 ines:set__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ] .
+            owl:onProperty ines:has_set ] .
 
 ines:unit__node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
             owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:test a owl:Class .
 
