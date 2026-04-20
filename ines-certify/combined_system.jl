@@ -148,7 +148,7 @@ p__efficiency_discharge__battery = 0.7
 
 @constraint(model,c__storage__battery[s in s__s, t in s__t[2:end]],v__state__battery[s,t]==p__efficiency__battery*v__state__battery[s,t-1]+p__efficiency_charge__battery*v__charge__battery[s,t]-v__discharge__battery[s,t])
 #@constraint(model,c__storage_cyclic__battery[s in s__s],v__state__battery[s,s__t[1]]==p__efficiency__battery*v__state__battery[s,s__t[end]]+p__efficiency_charge__battery*v__charge__battery[s,s__t[1]]-v__discharge__battery[s,s__t[1]])
-@constraint(model,c__storage_init__battery[s in s__s],v__state__battery[s,s__t[1]]==0.0)
+@constraint(model,c__storage_init__battery[s in s__s],v__state__battery[s,s__t[1]]==p__efficiency_charge__battery*v__charge__battery[s,s__t[1]]-v__discharge__battery[s,s__t[1]])
 
 @constraint(model,c__capacity_charge__battery[s in s__s, t in s__t],v__charge__battery[s,t]<=p__capacity_charge__battery*v__investment__battery)
 @constraint(model,c__capacity_discharge__battery[s in s__s, t in s__t],v__discharge__battery[s,t]<=p__capacity_discharge__battery*v__investment__battery)

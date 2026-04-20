@@ -15,15 +15,15 @@ p__capacity__renewable = 20.0
 p__existing_units__renewable = 1.0
 
 p__efficiency__cheap_link = 0.8
-p__capacity__cheap_link = 100.0
+p__capacity__cheap_link = 1000.0
 p__existing_units__cheap_link = 1.0
 
 p__efficiency__expensive_link = 0.8
-p__capacity__expensive_link = 100.0
+p__capacity__expensive_link = 1000.0
 p__existing_units__expensive_link = 1.0
 
 p__efficiency__triangle = 0.8
-p__capacity__triangle = 100.0
+p__capacity__triangle = 1000.0
 p__existing_units__triangle = 1.0
 
 p__efficiency__cheap_unit = 0.4
@@ -34,9 +34,9 @@ p__efficiency__expensive_unit = 0.4
 p__capacity__expensive_unit = 100.0
 p__existing_units__expensive_unit = 1.0
 
-p__efficiency__storage = 0.8
-p__efficiency_charge__storage = 0.8
-p__efficiency_discharge__storage = 0.8
+p__efficiency__storage = 1.0#0.8
+p__efficiency_charge__storage = 1.0#0.8
+p__efficiency_discharge__storage = 1.0#0.8
 p__capacity__storage = 100.0
 p__capacity_charge__storage = 100.0
 p__capacity_discharge__storage = 100.0
@@ -75,7 +75,7 @@ p__existing_units__storage = 1.0
 
 @constraint(model,c__storage__storage[t in s__t[2:end]],v__state__storage[t]==p__efficiency__storage*v__state__storage[t-1]+p__efficiency_charge__storage*v__charge__storage[t]-v__discharge__storage[t])
 #@constraint(model,c__storage_cyclic__storage,v__state__storage[s__t[1]]==p__efficiency__storage*v__state__storage[s__t[end]]+p__efficiency_charge__storage*v__charge__storage[s__t[1]]-v__discharge__storage[s__t[1]])
-@constraint(model,c__storage_init__storage,v__state__storage[s__t[1]]==0.0)
+@constraint(model,c__storage_init__storage,v__state__storage[s__t[1]]==p__efficiency_charge__storage*v__charge__storage[s__t[1]]-v__discharge__storage[s__t[1]])
 
 JuMP.optimize!(model)
 
