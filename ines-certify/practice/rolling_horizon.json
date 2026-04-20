@@ -5249,7 +5249,7 @@
             "link",
             "cheap link",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5319,7 +5319,7 @@
             "link",
             "expensive link",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5389,7 +5389,7 @@
             "link",
             "triangle",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5591,7 +5591,7 @@
             "solve pattern",
             "rolling_jump",
             {
-                "data": "0h",
+                "data": "10h",
                 "type": "duration"
             },
             "Base"
@@ -5758,7 +5758,7 @@
                 "cheap supply"
             ],
             "capacity",
-            10.0,
+            100.0,
             "Base"
         ],
         [
@@ -5788,7 +5788,7 @@
                 "expensive supply"
             ],
             "capacity",
-            10.0,
+            100.0,
             "Base"
         ],
         [

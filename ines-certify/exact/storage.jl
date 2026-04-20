@@ -74,7 +74,8 @@ p__existing_units__storage = 1.0
 @constraint(model,c__capacity__renewable[t in s__t],v__flow__renewable[t]<=p__flow_profile__renewable[t]*p__capacity__renewable*p__existing_units__renewable)
 
 @constraint(model,c__storage__storage[t in s__t[2:end]],v__state__storage[t]==p__efficiency__storage*v__state__storage[t-1]+p__efficiency_charge__storage*v__charge__storage[t]-v__discharge__storage[t])
-@constraint(model,c__storage_cyclic__storage,v__state__storage[s__t[1]]==p__efficiency__storage*v__state__storage[s__t[end]]+p__efficiency_charge__storage*v__charge__storage[s__t[1]]-v__discharge__storage[s__t[1]])
+#@constraint(model,c__storage_cyclic__storage,v__state__storage[s__t[1]]==p__efficiency__storage*v__state__storage[s__t[end]]+p__efficiency_charge__storage*v__charge__storage[s__t[1]]-v__discharge__storage[s__t[1]])
+@constraint(model,c__storage_init__storage,v__state__storage[s__t[1]]==0.0)
 
 JuMP.optimize!(model)
 
