@@ -5381,22 +5381,15 @@
         [
             "node",
             "cheap supply",
-            "storage_loss_from_storage_capacity",
-            0.8,
-            "Base"
-        ],
-        [
-            "node",
-            "cheap supply",
-            "storage_loss_from_stored_energy",
-            0.8,
+            "storage_state_fix",
+            0.0,
             "Base"
         ],
         [
             "node",
             "cheap supply",
             "storage_state_fix_method",
-            "fix_start_and_horizon_end",
+            "fix_start",
             "Base"
         ],
         [
@@ -5651,22 +5644,22 @@
             "availability",
             {
                 "index": {
-                    "start": "2000-01-01 00:00:00",
+                    "start": "2025-01-01 00:00:00",
                     "resolution": "1h",
                     "ignore_year": false,
                     "repeat": false
                 },
                 "data": [
                     1.0,
-                    0.6,
-                    0.2,
-                    0.6,
+                    0.5,
+                    0.0,
+                    0.5,
                     1.0,
-                    0.6,
-                    0.2,
-                    0.6,
+                    0.5,
+                    0.0,
+                    0.5,
                     1.0,
-                    0.6
+                    0.5
                 ],
                 "type": "time_series"
             },
