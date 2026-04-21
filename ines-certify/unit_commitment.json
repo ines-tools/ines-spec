@@ -5207,7 +5207,7 @@
             "link",
             "cheap link",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5249,7 +5249,7 @@
             "link",
             "expensive link",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5291,7 +5291,7 @@
             "link",
             "triangle",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5404,7 +5404,7 @@
                 "demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5426,7 +5426,7 @@
                 "expensive supply"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5448,7 +5448,7 @@
                 "demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
