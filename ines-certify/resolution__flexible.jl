@@ -12,7 +12,7 @@ dt__cheap = 2
 
 p__commodity_price__cheap_source = Dict(t=>1.0 for t in s__t_cheap)
 p__commodity_price__expensive_source = [10.0 for t in s__t]
-p__flow_profile__demand = [10.0 for t in s__t]
+p__flow_profile__demand = [round(20.0*(sin(pi/2*t)+1)/2;digits=2) for t in s__t]#[10.0 for t in s__t]
 p__efficiency__cheap_link = 0.8
 p__efficiency__expensive_link = 0.8
 p__efficiency__triangle = 0.8
@@ -40,7 +40,7 @@ p__existing_units__expensive_unit = 1.0
 @variable(model,0<=v__flow__expensive_source[s__t])
 @variable(model,0<=v__flow__expensive_supply[s__t]<=p__capacity__expensive_unit*p__existing_units__expensive_unit)
 
-@objective(model,Min,sum(p__commodity_price__cheap_source[t_cheap]*v__flow__cheap_source[t_cheap] for t_cheap in s__t_cheap)+sum(p__commodity_price__expensive_source[t]*v__flow__expensive_source[t] for t in s__t))
+@objective(model,Min,sum(p__commodity_price__cheap_source[t_cheap]*v__flow__cheap_source[t_cheap]*dt__cheap for t_cheap in s__t_cheap)+sum(p__commodity_price__expensive_source[t]*v__flow__expensive_source[t] for t in s__t))
 
 @constraint(model,c__balance__demand[t in s__t],p__flow_profile__demand[t] == v__flow__cheap_link_out[t]+v__flow__expensive_link_out[t])
 

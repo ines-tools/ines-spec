@@ -5368,7 +5368,27 @@
             "node",
             "demand",
             "flow_profile",
-            -10.0,
+            {
+                "index": {
+                    "start": "2025-01-01 00:00:00",
+                    "resolution": "1h",
+                    "ignore_year": false,
+                    "repeat": false
+                },
+                "data": [
+                    -20.0,
+                    -10.0,
+                    -0.0,
+                    -10.0,
+                    -20.0,
+                    -10.0,
+                    -0.0,
+                    -10.0,
+                    -20.0,
+                    -10.0
+                ],
+                "type": "time_series"
+            },
             "Base"
         ],
         [
