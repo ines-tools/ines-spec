@@ -9,7 +9,7 @@ model = JuMP.Model(HiGHS.Optimizer)
 s__t = 1:10
 
 p__commodity_price__cheap_source = [1.0 for t in s__t]
-p__commodity_price__expensive_source = [2.0 for t in s__t]
+p__commodity_price__expensive_source = [10.0 for t in s__t]
 p__investment_cost__cheap_unit = 10000.0
 p__investment_cost__expensive_unit = 10000.0
 p__flow_profile__demand = [10.0 for t in s__t]
@@ -24,9 +24,9 @@ p__capacity__expensive_link = 100.0
 p__existing_units__expensive_link = 1.0
 p__capacity__triangle = 100.0
 p__existing_units__triangle = 1.0
-p__capacity__cheap_unit = 5.0
+p__capacity__cheap_unit = 100.0#20
 p__existing_units__cheap_unit = 0.0
-p__capacity__expensive_unit = 5.0
+p__capacity__expensive_unit = 100.0#20
 p__existing_units__expensive_unit = 1.0
 
 @variable(model,0<=v__flow__cheap_link_in[s__t])
@@ -79,9 +79,9 @@ println(JuMP.value(v__investment__expensive_unit))
 
 model = JuMP.Model(HiGHS.Optimizer)
 
-p__commodity_price__cheap_source = [2.0 for t in s__t]
-p__commodity_price__expensive_source = [1.0 for t in s__t]
-p__flow_profile__demand = [20.0 for t in s__t]
+p__commodity_price__cheap_source = [1.0 for t in s__t]#10
+p__commodity_price__expensive_source = [10.0 for t in s__t]#1
+p__flow_profile__demand = [10.0 for t in s__t]#20
 p__existing_units__cheap_unit = JuMP.value(v__investment__cheap_unit)
 p__existing_units__expensive_unit = JuMP.value(v__investment__expensive_unit)
 
