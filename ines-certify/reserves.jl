@@ -11,7 +11,7 @@ p__commodity_price__expensive_source = [10.0 for t in s__t]
 p__flow_profile__demand = [10.0 for t in s__t]
 
 p__reserve__demand = [5.0 for t in s__t]
-p__penalty__demand = 100.0
+p__penalty__demand = 1000.0
 
 p__efficiency__cheap_link = 0.8
 p__efficiency__expensive_link = 0.8
