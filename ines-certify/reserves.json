@@ -333,24 +333,6 @@
             null
         ],
         [
-            "link__node__reserve",
-            [
-                "cheap link",
-                "demand",
-                "reserves"
-            ],
-            null
-        ],
-        [
-            "link__node__reserve",
-            [
-                "expensive link",
-                "demand",
-                "reserves"
-            ],
-            null
-        ],
-        [
             "node__link__node",
             [
                 "cheap supply",
@@ -374,6 +356,24 @@
                 "expensive supply",
                 "expensive link",
                 "demand"
+            ],
+            null
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "cheap unit",
+                "demand",
+                "reserves"
+            ],
+            null
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "expensive unit",
+                "demand",
+                "reserves"
             ],
             null
         ]
@@ -5246,7 +5246,7 @@
             "link",
             "cheap link",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5288,7 +5288,7 @@
             "link",
             "expensive link",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5330,7 +5330,7 @@
             "link",
             "triangle",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5359,28 +5359,6 @@
             "triangle",
             "transfer_method",
             "regular_linear",
-            "Base"
-        ],
-        [
-            "link__node__reserve",
-            [
-                "cheap link",
-                "demand",
-                "reserves"
-            ],
-            "max_reserve_provision",
-            0.0,
-            "Base"
-        ],
-        [
-            "link__node__reserve",
-            [
-                "expensive link",
-                "demand",
-                "reserves"
-            ],
-            "max_reserve_provision",
-            0.8,
             "Base"
         ],
         [
@@ -5479,7 +5457,7 @@
                 "demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5501,7 +5479,7 @@
                 "expensive supply"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5523,7 +5501,7 @@
                 "demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5533,7 +5511,7 @@
                 "reserves"
             ],
             "reserve_requirement",
-            1.0,
+            5.0,
             "Base"
         ],
         [
@@ -5557,7 +5535,7 @@
             "reserve",
             "reserves",
             "reserve_type",
-            "symmetric",
+            "upward",
             "Base"
         ],
         [
@@ -5671,6 +5649,50 @@
             "expensive unit",
             "efficiency",
             0.4,
+            "Base"
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "cheap unit",
+                "demand",
+                "reserves"
+            ],
+            "max_reserve_provision",
+            2.0,
+            "Base"
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "cheap unit",
+                "demand",
+                "reserves"
+            ],
+            "reservation_cost",
+            2.0,
+            "Base"
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "expensive unit",
+                "demand",
+                "reserves"
+            ],
+            "max_reserve_provision",
+            3.0,
+            "Base"
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "expensive unit",
+                "demand",
+                "reserves"
+            ],
+            "reservation_cost",
+            3.0,
             "Base"
         ],
         [
