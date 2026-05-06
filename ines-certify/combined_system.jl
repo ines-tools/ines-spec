@@ -255,7 +255,7 @@ p__existing_units__solar_unit = JuMP.value(v__investment__solar_unit)
 
 @constraint(model,c__efficiency__gas_unit[s in s__s, t in s__t_gas],sum(v__flow__gas_unit_out[s,t_in_gas] for t_in_gas in s__t_in_gas[t])==dt__gas*p__efficiency__gas_unit*v__flow__gas_unit_in[s,t])
 @constraint(model,c__capacity__gas_unit_in[s in s__s, t in s__t_gas],v__flow__gas_unit_in[s,t] <= (p__capacity__gas_unit/p__efficiency__gas_unit)*v__investment__gas_unit)
-#@constraint(model,c__capacity__gas_unit_out[s in s__s, t in s__t],v__flow__gas_unit_out[s,t] <= p__capacity__gas_unit*v__investment__gas_unit)
+@constraint(model,c__capacity__gas_unit_out[s in s__s, t in s__t],v__flow__gas_unit_out[s,t] <= p__capacity__gas_unit*v__investment__gas_unit)
 
 @constraint(model,c__on__nuclear_unit[s in s__s, t in s__t[2:end]],v__on__nuclear_unit[s,t]==v__on__nuclear_unit[s,t-1]+v__on_up__nuclear_unit[s,t]-v__on_down__nuclear_unit[s,t])
 @constraint(model,c__on_up__nuclear_unit[s in s__s, t in s__t[p__mdt__nuclear_unit:end]],v__on_up__nuclear_unit[s,t]<=1-v__on__nuclear_unit[s,t]-sum(v__on_down__nuclear_unit[s,t-tk] for tk in 1:p__mdt__nuclear_unit-1))
