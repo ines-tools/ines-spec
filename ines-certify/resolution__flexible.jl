@@ -35,7 +35,7 @@ p__existing_units__expensive_unit = 1.0
 @variable(model,0<=v__flow__expensive_link_out[s__t]<=p__capacity__expensive_link*p__existing_units__expensive_link)
 @variable(model,0<=v__flow__triangle_in[s__t])
 @variable(model,0<=v__flow__triangle_out[s__t]<=p__capacity__triangle*p__existing_units__triangle)
-@variable(model,0<=v__flow__cheap_source[s__t_cheap])#s__t_cheap
+@variable(model,0<=v__flow__cheap_source[s__t_cheap]<=p__capacity__cheap_unit*p__existing_units__cheap_unit/p__efficiency__cheap_unit)#s__t_cheap
 @variable(model,0<=v__flow__cheap_supply[s__t]<=p__capacity__cheap_unit*p__existing_units__cheap_unit)
 @variable(model,0<=v__flow__expensive_source[s__t])
 @variable(model,0<=v__flow__expensive_supply[s__t]<=p__capacity__expensive_unit*p__existing_units__expensive_unit)
