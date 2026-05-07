@@ -363,7 +363,7 @@
             "unit__node__reserve",
             [
                 "cheap unit",
-                "demand",
+                "cheap supply",
                 "reserves"
             ],
             null
@@ -372,7 +372,7 @@
             "unit__node__reserve",
             [
                 "expensive unit",
-                "demand",
+                "expensive supply",
                 "reserves"
             ],
             null
@@ -5655,21 +5655,32 @@
             "unit__node__reserve",
             [
                 "cheap unit",
-                "demand",
+                "cheap supply",
                 "reserves"
             ],
             "max_reserve_provision",
-            2.0,
+            3.0,
             "Base"
         ],
         [
             "unit__node__reserve",
             [
                 "cheap unit",
-                "demand",
+                "cheap supply",
                 "reserves"
             ],
             "reservation_cost",
+            3.0,
+            "Base"
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "expensive unit",
+                "expensive supply",
+                "reserves"
+            ],
+            "max_reserve_provision",
             2.0,
             "Base"
         ],
@@ -5677,22 +5688,11 @@
             "unit__node__reserve",
             [
                 "expensive unit",
-                "demand",
-                "reserves"
-            ],
-            "max_reserve_provision",
-            3.0,
-            "Base"
-        ],
-        [
-            "unit__node__reserve",
-            [
-                "expensive unit",
-                "demand",
+                "expensive supply",
                 "reserves"
             ],
             "reservation_cost",
-            3.0,
+            2.0,
             "Base"
         ],
         [
