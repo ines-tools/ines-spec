@@ -919,7 +919,7 @@
             "max_reserve_provision",
             null,
             null,
-            "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant.",
+            "[ratio] Maximum share of the capacity that can be allocated to reserve provision. Constant.",
             null
         ],
         [
@@ -2479,7 +2479,7 @@
             "forward_reserve_to_reserve",
             null,
             null,
-            "[p.u.] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value.",
+            "[ratio] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value.",
             null
         ],
         [
@@ -2487,7 +2487,7 @@
             "max_reserve_provision",
             null,
             null,
-            "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant.",
+            "[ratio] Maximum share of the capacity that can be allocated to reserve provision. Constant.",
             null
         ],
         [
@@ -2495,7 +2495,7 @@
             "offline_reserve_provision_share",
             null,
             null,
-            "[p.u.] The share of capacity that can be used to provide reserve while unit is offline. Constant.",
+            "[ratio] The share of capacity that can be used to provide reserve while unit is offline. Constant.",
             null
         ],
         [

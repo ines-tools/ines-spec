@@ -172,7 +172,7 @@ ines:link__node__reserve.contingency_causing a owl:DatatypeProperty ;
 
 ines:link__node__reserve.max_reserve_provision a owl:DatatypeProperty ;
     ns1:domainIncludes ines:link__node__reserve ;
-    rdfs:comment "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant." ;
+    rdfs:comment "[ratio] Maximum share of the capacity that can be allocated to reserve provision. Constant." ;
     rdfs:range rdfs:Literal .
 
 ines:link__node__reserve.reservation_cost a owl:DatatypeProperty ;
@@ -851,10 +851,10 @@ ines:set__link a owl:Class ;
 ines:set__node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_set ] .
 
 ines:set__reserve.activation_time a owl:DatatypeProperty ;
     ns1:domainIncludes ines:set__reserve ;
@@ -1179,17 +1179,17 @@ ines:unit__node__reserve.contingency_causing a owl:DatatypeProperty ;
 
 ines:unit__node__reserve.forward_reserve_to_reserve a owl:DatatypeProperty ;
     ns1:domainIncludes ines:unit__node__reserve ;
-    rdfs:comment "[p.u.] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value." ;
+    rdfs:comment "[ratio] The share from procured reserve that is calculated also in a second reserve category. Map of target reserves with a value." ;
     rdfs:range rdfs:Literal .
 
 ines:unit__node__reserve.max_reserve_provision a owl:DatatypeProperty ;
     ns1:domainIncludes ines:unit__node__reserve ;
-    rdfs:comment "[p.u.] Maximum share of the flow that can be allocated to reserve provision. Constant." ;
+    rdfs:comment "[ratio] Maximum share of the capacity that can be allocated to reserve provision. Constant." ;
     rdfs:range rdfs:Literal .
 
 ines:unit__node__reserve.offline_reserve_provision_share a owl:DatatypeProperty ;
     ns1:domainIncludes ines:unit__node__reserve ;
-    rdfs:comment "[p.u.] The share of capacity that can be used to provide reserve while unit is offline. Constant." ;
+    rdfs:comment "[ratio] The share of capacity that can be used to provide reserve while unit is offline. Constant." ;
     rdfs:range rdfs:Literal .
 
 ines:unit__node__reserve.reservation_cost a owl:DatatypeProperty ;
@@ -1396,10 +1396,10 @@ ines:link__node__reserve a owl:Class ;
             owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ] .
+            owl:onProperty ines:has_node ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1457,18 +1457,18 @@ ines:solve_pattern a owl:Class .
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ],
+            owl:onProperty ines:has_unit ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ] .
+            owl:onProperty ines:has_node ] .
 
 ines:link a owl:Class .
 
