@@ -25,7 +25,7 @@ p__capacity__triangle = 1000.0
 p__existing_units__triangle = 1.0
 
 p__efficiency__cheap_unit = 0.4
-p__capacity__cheap_unit = 100.0
+p__capacity__cheap_unit = 10.0
 p__existing_units__cheap_unit = 1.0
 p__procurement_cost__cheap_unit = 2.0
 p__max_reserve__cheap_unit = 2.0
@@ -78,9 +78,9 @@ println(JuMP.termination_status(model))
 
 println(JuMP.objective_value(model))
 
-println(JuMP.value(v__flow__cheap_source))
+println(JuMP.value(v__flow__cheap_supply))
 
-println(JuMP.value(v__flow__expensive_source))
+println(JuMP.value(v__flow__expensive_supply))
 
 println(JuMP.value(v__slack__demand))
 

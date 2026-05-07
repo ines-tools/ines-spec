@@ -5659,7 +5659,7 @@
                 "reserves"
             ],
             "max_reserve_provision",
-            0.02,
+            2.0,
             "Base"
         ],
         [
@@ -5681,7 +5681,7 @@
                 "reserves"
             ],
             "max_reserve_provision",
-            0.03,
+            3.0,
             "Base"
         ],
         [
@@ -5702,7 +5702,7 @@
                 "cheap supply"
             ],
             "capacity",
-            100.0,
+            10.0,
             "Base"
         ],
         [

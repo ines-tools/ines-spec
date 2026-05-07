@@ -47,7 +47,7 @@ p__existing_units__electricity_import = 1.0
 p__flow_profile__gas_demand = Dict(t => 60.0 for t in s__t_gas)
 p__flow_profile__electricity_demand = Dict(t => 60.0 for t in s__t)
 p__reserve__electricity_demand = Dict(t => 10.0 for t in s__t)
-p__penalty__electricity_demand = 1000.0
+p__penalty__electricity_demand = 10000.0
 
 p__efficiency__gas_distribution = 0.8
 p__capacity__gas_distribution = 1000.0
@@ -67,7 +67,7 @@ p__capacity__nuclear_unit = 20.0
 p__mut__nuclear_unit = 2
 p__mdt__nuclear_unit = 1
 p__procurement_cost__nuclear_unit = 2.0
-p__max_reserve__nuclear_unit = 2.0
+p__max_reserve__nuclear_unit = 4.0
 
 p__efficiency__gas_unit = 0.4
 p__investment_cost__gas_unit = 600.0
@@ -174,13 +174,19 @@ println(JuMP.termination_status(model))
 
 println(JuMP.objective_value(model))
 
-println(JuMP.value(v__flow__gas_unit_out))
+#println(JuMP.value(v__flow__gas_unit_out))
 
-println(JuMP.value(v__flow__nuclear_unit))
+#println(JuMP.value(v__flow__nuclear_unit))
 
 println(JuMP.value(v__state__battery))
 
-# window 2
+println("investments of gas, battery, wind and solar")
+println(JuMP.value(v__investment__gas_unit))
+println(JuMP.value(v__investment__battery))
+println(JuMP.value(v__investment__wind_unit))
+println(JuMP.value(v__investment__solar_unit))
+
+#= window 2
 
 model = JuMP.Model(HiGHS.Optimizer)
 
@@ -286,3 +292,4 @@ println(JuMP.value(v__flow__gas_unit_out))
 println(JuMP.value(v__flow__nuclear_unit))
 
 println(JuMP.value(v__state__battery))
+=#
