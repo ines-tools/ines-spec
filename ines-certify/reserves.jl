@@ -27,14 +27,14 @@ p__existing_units__triangle = 1.0
 p__efficiency__cheap_unit = 0.4
 p__capacity__cheap_unit = 10.0
 p__existing_units__cheap_unit = 1.0
-p__procurement_cost__cheap_unit = 2.0
-p__max_reserve__cheap_unit = 2.0
+p__procurement_cost__cheap_unit = 3.0
+p__max_reserve__cheap_unit = 3.0
 
 p__efficiency__expensive_unit = 0.4
 p__capacity__expensive_unit = 100.0
 p__existing_units__expensive_unit = 1.0
-p__procurement_cost__expensive_unit = 3.0
-p__max_reserve__expensive_unit = 3.0
+p__procurement_cost__expensive_unit = 2.0
+p__max_reserve__expensive_unit = 2.0
 
 @variable(model,0<=v__slack__demand[s__t])
 
