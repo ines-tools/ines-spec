@@ -229,7 +229,7 @@
         ],
         [
             "link",
-            "electricity transport",
+            "electricity transmission",
             null
         ],
         [
@@ -249,6 +249,11 @@
         ],
         [
             "node",
+            "electricity remote hub",
+            null
+        ],
+        [
+            "node",
             "gas demand",
             null
         ],
@@ -258,18 +263,13 @@
             null
         ],
         [
-            "node",
-            "remote electricity hub",
-            null
-        ],
-        [
             "period",
             "2025",
             null
         ],
         [
-            "set",
-            "forecast",
+            "reserve",
+            "reserves",
             null
         ],
         [
@@ -279,12 +279,12 @@
         ],
         [
             "solve_pattern",
-            "solve_pattern",
+            "model",
             null
         ],
         [
             "system",
-            "system",
+            "model",
             null
         ],
         [
@@ -309,12 +309,20 @@
         ],
         [
             "unit",
-            "solar",
+            "solar unit",
             null
         ],
         [
             "unit",
-            "wind",
+            "wind unit",
+            null
+        ],
+        [
+            "node__reserve",
+            [
+                "electricity demand",
+                "reserves"
+            ],
             null
         ],
         [
@@ -345,7 +353,7 @@
             "unit__to_node",
             [
                 "electricity import",
-                "remote electricity hub"
+                "electricity remote hub"
             ],
             null
         ],
@@ -376,7 +384,7 @@
         [
             "unit__to_node",
             [
-                "solar",
+                "solar unit",
                 "electricity demand"
             ],
             null
@@ -384,8 +392,8 @@
         [
             "unit__to_node",
             [
-                "wind",
-                "remote electricity hub"
+                "wind unit",
+                "electricity remote hub"
             ],
             null
         ],
@@ -402,8 +410,8 @@
             "node__link__node",
             [
                 "electricity hub",
-                "electricity transport",
-                "remote electricity hub"
+                "electricity transmission",
+                "electricity remote hub"
             ],
             null
         ],
@@ -413,6 +421,24 @@
                 "gas hub",
                 "gas distribution",
                 "gas demand"
+            ],
+            null
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "gas unit",
+                "electricity hub",
+                "reserves"
+            ],
+            null
+        ],
+        [
+            "unit__node__reserve",
+            [
+                "nuclear unit",
+                "electricity hub",
+                "reserves"
             ],
             null
         ]
@@ -429,7 +455,7 @@
         [
             "link",
             [
-                "electricity transport"
+                "electricity transmission"
             ],
             "Base",
             true
@@ -461,6 +487,14 @@
         [
             "node",
             [
+                "electricity remote hub"
+            ],
+            "Base",
+            true
+        ],
+        [
+            "node",
+            [
                 "gas demand"
             ],
             "Base",
@@ -475,14 +509,6 @@
             true
         ],
         [
-            "node",
-            [
-                "remote electricity hub"
-            ],
-            "Base",
-            true
-        ],
-        [
             "period",
             [
                 "2025"
@@ -491,9 +517,9 @@
             true
         ],
         [
-            "set",
+            "reserve",
             [
-                "forecast"
+                "reserves"
             ],
             "Base",
             true
@@ -509,7 +535,7 @@
         [
             "solve_pattern",
             [
-                "solve_pattern"
+                "model"
             ],
             "Base",
             true
@@ -517,7 +543,7 @@
         [
             "system",
             [
-                "system"
+                "model"
             ],
             "Base",
             true
@@ -557,7 +583,7 @@
         [
             "unit",
             [
-                "solar"
+                "solar unit"
             ],
             "Base",
             true
@@ -565,7 +591,7 @@
         [
             "unit",
             [
-                "wind"
+                "wind unit"
             ],
             "Base",
             true
@@ -5317,13 +5343,6 @@
         [
             "link",
             "electricity distribution",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity distribution",
             "capacity",
             1000.0,
             "Base"
@@ -5332,7 +5351,7 @@
             "link",
             "electricity distribution",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5345,29 +5364,8 @@
         [
             "link",
             "electricity distribution",
-            "investment_cost",
-            1000000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity distribution",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "electricity distribution",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity distribution",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5386,70 +5384,42 @@
         ],
         [
             "link",
-            "electricity transport",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity transport",
+            "electricity transmission",
             "capacity",
             1000.0,
             "Base"
         ],
         [
             "link",
-            "electricity transport",
+            "electricity transmission",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
             "link",
-            "electricity transport",
+            "electricity transmission",
             "fixed_cost",
             0.0,
             "Base"
         ],
         [
             "link",
-            "electricity transport",
-            "investment_cost",
-            1000000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity transport",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "electricity transport",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "electricity transport",
+            "electricity transmission",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
             "link",
-            "electricity transport",
+            "electricity transmission",
             "operational_cost",
             0.0,
             "Base"
         ],
         [
             "link",
-            "electricity transport",
+            "electricity transmission",
             "transfer_method",
             "regular_linear",
             "Base"
@@ -5457,13 +5427,6 @@
         [
             "link",
             "gas distribution",
-            "availability",
-            1.0,
-            "Base"
-        ],
-        [
-            "link",
-            "gas distribution",
             "capacity",
             1000.0,
             "Base"
@@ -5472,7 +5435,7 @@
             "link",
             "gas distribution",
             "efficiency",
-            0.8,
+            1.0,
             "Base"
         ],
         [
@@ -5485,36 +5448,8 @@
         [
             "link",
             "gas distribution",
-            "interest_rate",
-            0.0,
-            "Base"
-        ],
-        [
-            "link",
-            "gas distribution",
-            "investment_cost",
-            1000000.0,
-            "Base"
-        ],
-        [
-            "link",
-            "gas distribution",
-            "investment_method",
-            "no_limits",
-            "Base"
-        ],
-        [
-            "link",
-            "gas distribution",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "link",
-            "gas distribution",
             "links_existing",
-            0.0,
+            1.0,
             "Base"
         ],
         [
@@ -5535,7 +5470,7 @@
             "node",
             "electricity demand",
             "flow_profile",
-            -10.0,
+            -20,
             "Base"
         ],
         [
@@ -5563,7 +5498,7 @@
             "node",
             "electricity hub",
             "storage_capacity",
-            100.0,
+            50.0,
             "Base"
         ],
         [
@@ -5576,22 +5511,15 @@
         [
             "node",
             "electricity hub",
-            "storage_loss_from_storage_capacity",
-            0.8,
-            "Base"
-        ],
-        [
-            "node",
-            "electricity hub",
-            "storage_loss_from_stored_energy",
-            0.8,
+            "storage_state_fix",
+            0.0,
             "Base"
         ],
         [
             "node",
             "electricity hub",
             "storage_state_fix_method",
-            "fix_start_and_horizon_end",
+            "fix_start",
             "Base"
         ],
         [
@@ -5603,9 +5531,16 @@
         ],
         [
             "node",
+            "electricity remote hub",
+            "node_type",
+            "balance",
+            "Base"
+        ],
+        [
+            "node",
             "gas demand",
             "flow_profile",
-            -10.0,
+            -20.0,
             "Base"
         ],
         [
@@ -5630,13 +5565,6 @@
             "Base"
         ],
         [
-            "node",
-            "remote electricity hub",
-            "node_type",
-            "balance",
-            "Base"
-        ],
-        [
             "node__link__node",
             [
                 "electricity hub",
@@ -5655,15 +5583,15 @@
                 "electricity demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
             "node__link__node",
             [
                 "electricity hub",
-                "electricity transport",
-                "remote electricity hub"
+                "electricity transmission",
+                "electricity remote hub"
             ],
             "capacity",
             1000.0,
@@ -5673,11 +5601,11 @@
             "node__link__node",
             [
                 "electricity hub",
-                "electricity transport",
-                "remote electricity hub"
+                "electricity transmission",
+                "electricity remote hub"
             ],
             "efficiency",
-            1.0,
+            0.8,
             "Base"
         ],
         [
@@ -5699,7 +5627,17 @@
                 "gas demand"
             ],
             "efficiency",
-            1.0,
+            0.8,
+            "Base"
+        ],
+        [
+            "node__reserve",
+            [
+                "electricity demand",
+                "reserves"
+            ],
+            "reserve_requirement",
+            10.0,
             "Base"
         ],
         [
@@ -5720,39 +5658,10 @@
             "Base"
         ],
         [
-            "set",
-            "forecast",
-            "stochastic_forecast_weights",
-            {
-                "index_type": "str",
-                "rank": 1,
-                "data": [
-                    [
-                        "cheap_low",
-                        0.25
-                    ],
-                    [
-                        "cheap_high",
-                        0.25
-                    ],
-                    [
-                        "expensive_low",
-                        0.25
-                    ],
-                    [
-                        "expensive_high",
-                        0.25
-                    ]
-                ],
-                "type": "map"
-            },
-            "Base"
-        ],
-        [
-            "set",
-            "forecast",
-            "stochastic_method",
-            "analysis_time_forecasts",
+            "reserve",
+            "reserves",
+            "reserve_type",
+            "upward",
             "Base"
         ],
         [
@@ -5767,7 +5676,7 @@
         ],
         [
             "solve_pattern",
-            "solve_pattern",
+            "model",
             "duration",
             {
                 "data": "10h",
@@ -5777,48 +5686,20 @@
         ],
         [
             "solve_pattern",
-            "solve_pattern",
+            "model",
             "period",
             {
                 "value_type": "str",
                 "data": [
                     "2025"
                 ],
-                "index_name": "period",
                 "type": "array"
             },
             "Base"
         ],
         [
             "solve_pattern",
-            "solve_pattern",
-            "rolling_horizon",
-            {
-                "data": "10h",
-                "type": "duration"
-            },
-            "Base"
-        ],
-        [
-            "solve_pattern",
-            "solve_pattern",
-            "rolling_jump",
-            {
-                "data": "2h",
-                "type": "duration"
-            },
-            "Base"
-        ],
-        [
-            "solve_pattern",
-            "solve_pattern",
-            "solve_mode",
-            "rolling_window",
-            "Base"
-        ],
-        [
-            "solve_pattern",
-            "solve_pattern",
+            "model",
             "start_time",
             {
                 "data": "2025-01-01T00:00:00",
@@ -5828,14 +5709,7 @@
         ],
         [
             "solve_pattern",
-            "solve_pattern",
-            "stochastic_scope",
-            "whole_model",
-            "Base"
-        ],
-        [
-            "solve_pattern",
-            "solve_pattern",
+            "model",
             "time_resolution",
             {
                 "data": "1h",
@@ -5845,35 +5719,41 @@
         ],
         [
             "solve_pattern",
-            "solve_pattern",
+            "model",
             "time_resolution_scope",
-            "whole_model",
+            "set_based_override",
             "Base"
         ],
         [
             "system",
-            "system",
+            "model",
             "discount_rate",
             0.0,
             "Base"
         ],
         [
             "system",
-            "system",
+            "model",
             "timeline",
             {
-                "data": {
-                    "2025-01-01T00:00:00": 1.0,
-                    "2025-01-01T01:00:00": 1.0,
-                    "2025-01-01T02:00:00": 1.0,
-                    "2025-01-01T03:00:00": 1.0,
-                    "2025-01-01T04:00:00": 1.0,
-                    "2025-01-01T05:00:00": 1.0,
-                    "2025-01-01T06:00:00": 1.0,
-                    "2025-01-01T07:00:00": 1.0,
-                    "2025-01-01T08:00:00": 1.0,
-                    "2025-01-01T09:00:00": 1.0
+                "index": {
+                    "start": "2025-01-01 00:00:00",
+                    "resolution": "1h",
+                    "ignore_year": false,
+                    "repeat": false
                 },
+                "data": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
                 "type": "time_series"
             },
             "Base"
@@ -5881,7 +5761,21 @@
         [
             "unit",
             "electricity import",
+            "availability",
+            1.0,
+            "Base"
+        ],
+        [
+            "unit",
+            "electricity import",
             "units_existing",
+            1.0,
+            "Base"
+        ],
+        [
+            "unit",
+            "gas import",
+            "availability",
             1.0,
             "Base"
         ],
@@ -5916,13 +5810,6 @@
         [
             "unit",
             "gas unit",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "gas unit",
             "units_existing",
             0.0,
             "Base"
@@ -5931,42 +5818,35 @@
             "unit",
             "gas unit",
             "units_max_cumulative",
-            20.0,
+            10.0,
             "Base"
         ],
         [
             "unit",
             "nuclear unit",
-            "investment_method",
-            "cumulative_limits",
-            "Base"
-        ],
-        [
-            "unit",
-            "nuclear unit",
-            "lifetime",
-            50.0,
+            "availability",
+            1.0,
             "Base"
         ],
         [
             "unit",
             "nuclear unit",
             "min_downtime",
-            4.0,
+            1.0,
             "Base"
         ],
         [
             "unit",
             "nuclear unit",
             "min_uptime",
-            4.0,
+            2.0,
             "Base"
         ],
         [
             "unit",
             "nuclear unit",
             "startup_cost",
-            50.0,
+            40.0,
             "Base"
         ],
         [
@@ -5980,180 +5860,167 @@
             "unit",
             "nuclear unit",
             "units_existing",
+            1,
+            "Base"
+        ],
+        [
+            "unit",
+            "solar unit",
+            "availability",
+            {
+                "index": {
+                    "start": "2025-01-01 00:00:00",
+                    "resolution": "1h",
+                    "ignore_year": false,
+                    "repeat": false
+                },
+                "data": [
+                    1.0,
+                    0.5,
+                    0.0,
+                    0.5,
+                    1.0,
+                    0.5,
+                    0.0,
+                    0.5,
+                    1.0,
+                    0.5
+                ],
+                "type": "time_series"
+            },
+            "Base"
+        ],
+        [
+            "unit",
+            "solar unit",
+            "investment_method",
+            "cumulative_limits",
+            "Base"
+        ],
+        [
+            "unit",
+            "solar unit",
+            "units_existing",
             0.0,
             "Base"
         ],
         [
             "unit",
-            "nuclear unit",
+            "solar unit",
             "units_max_cumulative",
-            20.0,
+            1.0,
             "Base"
         ],
         [
             "unit",
-            "solar",
+            "wind unit",
             "availability",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "solar",
-            "availability_forecasts",
             {
-                "index_type": "str",
-                "rank": 1,
+                "index": {
+                    "start": "2025-01-01 00:00:00",
+                    "resolution": "1h",
+                    "ignore_year": false,
+                    "repeat": false
+                },
                 "data": [
-                    [
-                        "cheap_low",
-                        50.0
-                    ],
-                    [
-                        "cheap_high",
-                        100.0
-                    ],
-                    [
-                        "expensive_low",
-                        50.0
-                    ],
-                    [
-                        "expensive_high",
-                        100.0
-                    ]
+                    0.0,
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    1.0
                 ],
-                "type": "map"
+                "type": "time_series"
             },
             "Base"
         ],
         [
             "unit",
-            "solar",
+            "wind unit",
             "investment_method",
             "cumulative_limits",
             "Base"
         ],
         [
             "unit",
-            "solar",
-            "lifetime",
-            50.0,
+            "wind unit",
+            "units_existing",
+            0.0,
             "Base"
         ],
         [
             "unit",
-            "solar",
-            "units_existing",
+            "wind unit",
+            "units_max_cumulative",
             1.0,
             "Base"
         ],
         [
-            "unit",
-            "wind",
-            "availability",
-            50.0,
+            "unit__node__reserve",
+            [
+                "gas unit",
+                "electricity hub",
+                "reserves"
+            ],
+            "max_reserve_provision",
+            0.4,
             "Base"
         ],
         [
-            "unit",
-            "wind",
-            "availability_forecasts",
-            {
-                "index_type": "str",
-                "rank": 1,
-                "data": [
-                    [
-                        "cheap_low",
-                        50.0
-                    ],
-                    [
-                        "cheap_high",
-                        100.0
-                    ],
-                    [
-                        "expensive_low",
-                        50.0
-                    ],
-                    [
-                        "expensive_high",
-                        100.0
-                    ]
-                ],
-                "type": "map"
-            },
+            "unit__node__reserve",
+            [
+                "gas unit",
+                "electricity hub",
+                "reserves"
+            ],
+            "reservation_cost",
+            4.0,
             "Base"
         ],
         [
-            "unit",
-            "wind",
-            "investment_method",
-            "cumulative_limits",
+            "unit__node__reserve",
+            [
+                "nuclear unit",
+                "electricity hub",
+                "reserves"
+            ],
+            "max_reserve_provision",
+            0.2,
             "Base"
         ],
         [
-            "unit",
-            "wind",
-            "lifetime",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit",
-            "wind",
-            "units_existing",
-            1.0,
+            "unit__node__reserve",
+            [
+                "nuclear unit",
+                "electricity hub",
+                "reserves"
+            ],
+            "reservation_cost",
+            2.0,
             "Base"
         ],
         [
             "unit__to_node",
             [
                 "electricity import",
-                "remote electricity hub"
+                "electricity remote hub"
             ],
             "capacity",
-            25.0,
+            10.0,
             "Base"
         ],
         [
             "unit__to_node",
             [
                 "electricity import",
-                "remote electricity hub"
+                "electricity remote hub"
             ],
             "other_operational_cost",
-            50.0,
-            "Base"
-        ],
-        [
-            "unit__to_node",
-            [
-                "electricity import",
-                "remote electricity hub"
-            ],
-            "other_operational_cost_forecasts",
-            {
-                "index_type": "str",
-                "rank": 1,
-                "data": [
-                    [
-                        "cheap_low",
-                        50.0
-                    ],
-                    [
-                        "cheap_high",
-                        50.0
-                    ],
-                    [
-                        "expensive_low",
-                        100.0
-                    ],
-                    [
-                        "expensive_high",
-                        100.0
-                    ]
-                ],
-                "type": "map"
-            },
+            40.0,
             "Base"
         ],
         [
@@ -6173,39 +6040,7 @@
                 "gas hub"
             ],
             "other_operational_cost",
-            20.0,
-            "Base"
-        ],
-        [
-            "unit__to_node",
-            [
-                "gas import",
-                "gas hub"
-            ],
-            "other_operational_cost_forecasts",
-            {
-                "index_type": "str",
-                "rank": 1,
-                "data": [
-                    [
-                        "cheap_low",
-                        10.0
-                    ],
-                    [
-                        "cheap_high",
-                        10.0
-                    ],
-                    [
-                        "expensive_low",
-                        20.0
-                    ],
-                    [
-                        "expensive_high",
-                        20.0
-                    ]
-                ],
-                "type": "map"
-            },
+            10.0,
             "Base"
         ],
         [
@@ -6235,7 +6070,7 @@
                 "electricity hub"
             ],
             "investment_cost",
-            2000000.0,
+            600.0,
             "Base"
         ],
         [
@@ -6245,17 +6080,7 @@
                 "electricity hub"
             ],
             "capacity",
-            40.0,
-            "Base"
-        ],
-        [
-            "unit__to_node",
-            [
-                "nuclear unit",
-                "electricity hub"
-            ],
-            "investment_cost",
-            1000,
+            20.0,
             "Base"
         ],
         [
@@ -6265,13 +6090,23 @@
                 "electricity hub"
             ],
             "other_operational_cost",
-            50.0,
+            40.0,
             "Base"
         ],
         [
             "unit__to_node",
             [
-                "solar",
+                "solar unit",
+                "electricity demand"
+            ],
+            "capacity",
+            10,
+            "Base"
+        ],
+        [
+            "unit__to_node",
+            [
+                "solar unit",
                 "electricity demand"
             ],
             "investment_cost",
@@ -6281,8 +6116,18 @@
         [
             "unit__to_node",
             [
-                "wind",
-                "remote electricity hub"
+                "wind unit",
+                "electricity remote hub"
+            ],
+            "capacity",
+            10.0,
+            "Base"
+        ],
+        [
+            "unit__to_node",
+            [
+                "wind unit",
+                "electricity remote hub"
             ],
             "investment_cost",
             200.0,
