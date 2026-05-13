@@ -10,7 +10,7 @@
 
 [![documentation](https://github.com/ines-tools/ines-spec/actions/workflows/documentation.yaml/badge.svg)](https://ines-tools.github.io/ines-spec/)
 
-The INES (Interoperable Energy System) Specification defines a standardized data format for exchanging energy system models. This specification aims to facilitate interoperability between different energy modeling tools and platforms.
+The INES (Interoperable Energy System) Specification defines a standardized data format for exchanging energy system models. This specification aims to facilitate interoperability between different energy modelling tools and platforms.
 
 ## Overview
 
@@ -18,7 +18,7 @@ The INES Specification is designed to support the seamless exchange of energy sy
 
 ## Features
 
-- **Interoperability**: Enables the exchange of data between various energy modeling tools.
+- **Interoperability**: Enables the exchange of data between various energy modelling tools.
 - **Flexibility**: Supports complex parameter structures and alternative parameter values to facilitate scenario building.
 - **Compatibility**: Compatible with Spine Toolbox v0.8 and later versions.
 
@@ -26,7 +26,7 @@ The INES Specification is designed to support the seamless exchange of energy sy
 
 The specification does not need to be installed. It is a schema to be followed and the schema is stored, for convenience, in multiple formats. The fastest way to see the schema is to open the csv files in this repository in your browser. For more structured views, use an ontology editor like Protégé to open a ttl file or Spine Toolbox to open the sqlite file (you can also open the sqlite file in the DB Browser, but it's not very convenient to browse that way).
 
-However, when using the schema to convert data from and to INES, the current implementation uses Spine Database API (and Spine Toolbox as a GUI). This includes all the sister repositories in this GitHub organisation. Please use the latest versions of Spine tools, which you can download them from the official [Spine Toolbox repository](https://github.com/spine-tools/Spine-Toolbox).
+However, when using the schema to convert data from and to INES, the current implementation uses Spine Database API (and Spine Toolbox as a GUI). This includes all the sister repositories in this GitHub organization. Please use the latest versions of Spine tools, which you can download them from the official [Spine Toolbox repository](https://github.com/spine-tools/Spine-Toolbox).
 
 ## Usage
 
@@ -41,7 +41,7 @@ However, when using the schema to convert data from and to INES, the current imp
 
 - Storages are special nodes (nodes that have a state)
 - Commodities are also special nodes (nodes that do not have a balance constraint, but have a price).
-- Units and links are quite similar - they could be grouped into one, but they are kept separate to allow better organisation of energy system model data.
+- Units and links are quite similar - they could be grouped into one, but they are kept separate to allow better organization of energy system model data.
 The intention is that units convert energy (or material) while links transfer energy (or material). Transfer links are often two-way, but not necessarily. Similarly, units are typically one-way,
 but two-way option is available.
 - Links always connect two nodes. The connections are represented by node__link__node entity.
@@ -73,23 +73,23 @@ If only one of these is defined, then given parameter values apply to both direc
 - Solve_pattern parameter stochastic_scope defines whether the model has stochastics and how it should be applied (for whole model, part of the model or multiple separate stochastics).
 - Stochastic data can be given to each parameter that has a '_forecasts' in its name. Those parameters contain only forecasts - the realization is in the regular parameter (without '_forecasts').
 - Whether stochastic parameter is used, depends on the stochastic_scope and possibly the set level choices (including entity_alternative status of the set).
-- Set parameter stochastic_method allows to choose between methods to organize stochastic forecasts.
+- Set parameter stochastic_method allows choosing between methods to organize stochastic forecasts.
 - Set parameter stochastic_forecast_weights contains the probabilistic weight for each forecast branch.
 - Set parameter stochastic_forecast_interpolation factors are used with the stochastic method that uses interpolation to make forecasts approach the realization.
 
 ### Sets define shared constraints
 
-- Sets are used to set constraints on a group of flows, capacities or emissions. They can be cumulative, period-wise or instantenous (apply to each timestep). 
+- Sets are used to set constraints on a group of flows, capacities or emissions. They can be cumulative, period-wise or instantaneous (apply to each timestep). 
 - Sets are also used to indicate what belong together, for example to the same grid.
 
-### Constraints allow to define user-defined restrictions
+### Constraints allow defining user-defined restrictions
 
 - Constraint entity sets the sense and optional constant for a user-defined constraint equation
 - Flows, nodes, quantities, and online variables can be connected to the constraint by using respective constraint_..._coefficient parametiers
 
 ### Unit, node and link capacities
 
-- Units and links are invested in and turned on/off on per unit basis. Consequently, every unit/link needs to have capacity of one unit defined. For units this is defined in unit__to_node and node__to_unit allowing different capacities across multiple inputs and outputs. Number of units is a property of unit class.
+- Units and links are invested in and turned on/off on-per unit basis. Consequently, every unit/link needs to have capacity of one unit defined. For units this is defined in unit__to_node and node__to_unit allowing different capacities across multiple inputs and outputs. Number of units is a property of unit class.
 - For units, the capacity is defined for each unit_flow. If unit has one input or one output, it can be sufficient to define capacity only for that (but with multiple inputs/outputs, care has to be taken to define a valid operating area).
 - Links and nodes have capacity defined on the link/node entity,
 but links can redefine the capacity through node__link__node if the two directions differ.
