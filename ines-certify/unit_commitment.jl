@@ -1,3 +1,5 @@
+#Note: there is already some code in place for a future improvement of the setup. It is disabled by means of certain parameter values.
+
 import JuMP
 using JuMP:@variable, @objective, @constraint
 import HiGHS

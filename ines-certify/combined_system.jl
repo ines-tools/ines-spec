@@ -1,4 +1,4 @@
-#Note: rolling horizon and stochastics are disabled
+#Note: There is already some code available for future improvements of the setup. Rolling horizon is explicitly disabled and stochastics are disabled by certain parameter values.
 
 import JuMP
 using JuMP:@variable, @objective, @constraint
