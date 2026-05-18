@@ -1,3 +1,5 @@
+#Note: there are already some improvements here for future setups, i.e. there is a slack for the demand. That is not an issue as the current setup does not use the slack.
+
 import JuMP
 using JuMP:@variable, @objective, @constraint
 import HiGHS
