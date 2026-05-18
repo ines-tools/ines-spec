@@ -1,4 +1,4 @@
-#Note: there is already some code in place for a future improvement of the setup. It is disabled by means of certain parameter values.
+#Note: there is already some code in place for a future improvement of the setup. Part load efficiency and minimum output are disabled by means of certain parameter values.
 
 import JuMP
 using JuMP:@variable, @objective, @constraint
