@@ -424,6 +424,13 @@ parameter_definitions:
     \ that price."
   - null
 - - node
+  - constraint_demand_coefficient
+  - null
+  - null
+  - '[p.u.] Multiplier between constraints and demand of the node. Map of constraints
+    and respective coefficients.'
+  - null
+- - node
   - constraint_storage_count_coefficient
   - null
   - null
@@ -2184,6 +2191,10 @@ parameter_types:
   - 2
 - - node
   - commodity_price_ladder
+  - map
+  - 1
+- - node
+  - constraint_demand_coefficient
   - map
   - 1
 - - node

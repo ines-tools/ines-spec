@@ -215,6 +215,11 @@ ines:node.commodity_price_ladder a owl:DatatypeProperty ;
     rdfs:comment "[€/MWh and MWh] Array of maps with an increasing price and a quantity at that price." ;
     rdfs:range rdfs:Literal .
 
+ines:node.constraint_demand_coefficient a owl:DatatypeProperty ;
+    ns1:domainIncludes ines:node ;
+    rdfs:comment "[p.u.] Multiplier between constraints and demand of the node. Map of constraints and respective coefficients." ;
+    rdfs:range rdfs:Literal .
+
 ines:node.constraint_storage_count_coefficient a owl:DatatypeProperty ;
     ns1:domainIncludes ines:node ;
     rdfs:comment "[p.u.] Multiplier between constraints and the number of the storage units. Map of constraints and respective coefficients." ;
@@ -902,10 +907,10 @@ ines:set__unit a owl:Class ;
 ines:set__unit_flow a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_set ],
+            owl:onProperty ines:has_unit_flow ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit_flow ] .
+            owl:onProperty ines:has_set ] .
 
 ines:solve_pattern.duration a owl:DatatypeProperty ;
     ns1:domainIncludes ines:solve_pattern ;
@@ -1396,10 +1401,10 @@ ines:link__node__reserve a owl:Class ;
             owl:onProperty ines:has_link ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_reserve ] .
 
 ines:node__reserve a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1431,10 +1436,10 @@ ines:unit__node__reserve a owl:Class ;
             owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_reserve ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_reserve ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:test a owl:Class .
 
@@ -1447,28 +1452,28 @@ ines:node__link__node a owl:Class ;
             owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_link ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_link ] .
 
 ines:solve_pattern a owl:Class .
 
 ines:node__to_unit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:unit__to_node a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_unit ],
+            owl:onProperty ines:has_node ],
         [ a owl:Restriction ;
             owl:cardinality 1 ;
-            owl:onProperty ines:has_node ] .
+            owl:onProperty ines:has_unit ] .
 
 ines:link a owl:Class .
 
