@@ -1,5 +1,5 @@
 import JuMP
-using JuMP:@variable, @objective, @constraint
+import  JuMP:@variable, @objective, @constraint
 import HiGHS
 
 model = JuMP.Model(HiGHS.Optimizer)

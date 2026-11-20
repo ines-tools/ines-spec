@@ -1,7 +1,7 @@
 #Note: There is already some code available for future improvements of the setup. Rolling horizon is explicitly disabled, stochastics are disabled by certain parameter values, reserve slack is ignored as it is not used anyway in the current setup.
 
 import JuMP
-using JuMP:@variable, @objective, @constraint
+import JuMP:@variable, @objective, @constraint
 import HiGHS
 
 # window 1
